@@ -1,0 +1,22 @@
+/* --- VARIABLES.CSS --- */
+
+:root {
+  /* Colors */
+  --primary: #4a57ff;
+  --dark: #1e1e1e;
+  --light: #f5f5f5;
+
+  /* Font Sizes */
+  --fs-lg: 2rem;
+  --fs-md: 1rem;
+  --fs-sm: 0.875rem;
+
+  /* Spacing */
+  --space: 1rem;
+
+  /* Radius */
+  --radius: 8px;
+
+  /* Container width */
+  --max-width: 1200px;
+}

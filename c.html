@@ -1,0 +1,177 @@
+<!-- ===== ABOUT ARUDHRA CREATIONS — Enhanced Split Layout ===== -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<section id="about-arudhra" class="ac-section" aria-labelledby="ac-heading">
+  <div class="ac-container">
+    <!-- LEFT: Logo + Story -->
+    <div class="ac-left">
+      <div class="ac-left-top">
+        <img src="path/to/logo.png" alt="Arudhra Creations logo" class="ac-logo" />
+        <div class="ac-title-wrap">
+          <h2 id="ac-heading">Arudhra Creations Private Limited</h2>
+          <p class="ac-sub">Women-led · Temple-inspired</p>
+        </div>
+      </div>
+
+      <p class="ac-lead">
+        Every day, temples across South India receive beautiful flowers offered with devotion. Instead of becoming waste, Arudhra Creations gives these blessed blooms a respectful second life — transforming them into premium, carbon-free agarbathi sticks that bring the temple’s fragrance into homes and sacred spaces.
+      </p>
+
+      <div class="ac-meta">
+        <span class="meta-pill"><i class="fa-solid fa-certificate" aria-hidden="true"></i> Registered: <strong>U20238TZ2025PTC035616</strong></span>
+        <span class="meta-pill"><i class="fa-solid fa-map-pin" aria-hidden="true"></i> Salem, Tamil Nadu</span>
+      </div>
+
+      <ul class="ac-why">
+        <li><i class="fa-solid fa-seedling" aria-hidden="true"></i> <strong>Eco-first:</strong> No charcoal base • Biodegradable composition.</li>
+        <li><i class="fa-solid fa-hands-holding-child" aria-hidden="true"></i> <strong>Women-led:</strong> Providing dignified livelihoods to artisans in and around Salem.</li>
+        <li><i class="fa-solid fa-eye" aria-hidden="true"></i> <strong>Respectful sourcing:</strong> Collected directly from partner temples before disposal.</li>
+      </ul>
+    </div>
+
+    <!-- RIGHT: Feature cards -->
+    <aside class="ac-right" aria-labelledby="ac-features-heading">
+      <h3 id="ac-features-heading" class="sr-only">Key highlights</h3>
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fa-solid fa-venus"></i></div>
+        <div class="feature-body">
+          <h4>Women-Led Innovation</h4>
+          <p>Managed by a dedicated women's team skilled in flower processing, fragrance blending and traditional rolling techniques.</p>
+          <ul class="small-bullets">
+            <li>Training & fair wages</li>
+            <li>Handcraft + semi-mechanised QC</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon accent"><i class="fa-solid fa-city"></i></div>
+        <div class="feature-body">
+          <h4>Salem-Rooted & Temple-Focused</h4>
+          <p>Registered in Salem; we partner closely with temples across the district and neighboring regions to collect sacred flowers respectfully.</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fa-solid fa-heart"></i></div>
+        <div class="feature-body">
+          <h4>Purpose-Driven Model</h4>
+          <p>We prevent sacred flowers from ending in landfills, extending their spiritual life through careful, transparent processing.</p>
+          <div class="feature-cta">
+            <button class="btn-ghost" onclick="scrollToContact && scrollToContact()">Contact for Partnership</button>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Decorative floral svg -->
+  <svg class="ac-decor" viewBox="0 0 220 220" aria-hidden="true">
+    <defs>
+      <linearGradient id="AGrad" x1="0" x2="1"><stop offset="0" stop-color="#f5c14a"/><stop offset="1" stop-color="#7a0f0f"/></linearGradient>
+    </defs>
+    <path d="M110 12 C140 22,180 36,170 78 C160 120,120 110,100 140 C80 170,40 150,28 118 C14 84,36 60,62 38 C88 16,110 12,110 12Z" fill="url(#AGrad)" opacity="0.06"/>
+  </svg>
+</section>
+
+<style>
+  :root{
+    --maxw:1200px;
+    --accent:#7a0f0f;
+    --accent-2:#f5c14a;
+    --muted:#5f6368;
+    --card:#fff;
+    --glass:rgba(255,255,255,0.7);
+    --radius:14px;
+    --shadow: 0 12px 30px rgba(10,10,10,0.06);
+    --ease: cubic-bezier(.2,.9,.2,1);
+    font-synthesis: none;
+  }
+
+  /* Section base */
+  .ac-section{
+    padding:48px 20px;
+    background:linear-gradient(180deg,#fffaf6,#fff);
+    position:relative;
+    overflow:hidden;
+  }
+  .ac-container{
+    max-width:var(--maxw);
+    margin:0 auto;
+    display:grid;
+    grid-template-columns: 1fr 420px;
+    gap:28px;
+    align-items:start;
+  }
+
+  /* LEFT */
+  .ac-left{padding:22px;border-radius:16px;background:linear-gradient(180deg,#fff,#fffef8);box-shadow:var(--shadow);border:1px solid rgba(122,15,15,0.03)}
+  .ac-left-top{display:flex;gap:16px;align-items:center}
+  .ac-logo{width:84px;height:84px;object-fit:contain;border-radius:10px;padding:8px;background:linear-gradient(180deg,#fff,#fffef8);box-shadow:0 10px 22px rgba(122,15,15,0.06)}
+  .ac-title-wrap h2{margin:0;font-family:"Playfair Display", serif;font-size:28px;color:var(--accent);letter-spacing:0.2px}
+  .ac-sub{margin:6px 0 0;color:var(--muted);font-weight:600}
+
+  .ac-lead{margin-top:16px;color:#2e2e2e;line-height:1.68;font-size:16px}
+  .ac-meta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+  .meta-pill{display:inline-flex;gap:8px;align-items:center;background:linear-gradient(180deg,rgba(122,15,15,0.04), rgba(245,193,74,0.02));padding:8px 12px;border-radius:999px;color:var(--accent);font-weight:600;border:1px solid rgba(122,15,15,0.04)}
+  .meta-pill i{font-size:14px}
+
+  .ac-why{margin-top:18px;padding:0;list-style:none}
+  .ac-why li{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-top:1px dashed rgba(0,0,0,0.03);color:var(--muted)}
+  .ac-why li:first-of-type{border-top:0}
+  .ac-why i{width:36px;height:36px;display:grid;place-items:center;border-radius:8px;background:linear-gradient(180deg,#fff,#fffef8);color:var(--accent);box-shadow:0 8px 18px rgba(10,10,10,0.03)}
+
+  /* RIGHT (features) */
+  .ac-right{display:flex;flex-direction:column;gap:14px;padding:12px}
+  .feature-card{display:flex;gap:14px;align-items:flex-start;padding:16px;background:linear-gradient(180deg,#fff,#fffef8);border-radius:12px;border-left:6px solid rgba(122,15,15,0.06);box-shadow:0 8px 20px rgba(8,8,8,0.03);transition:transform .36s var(--ease),box-shadow .36s var(--ease)}
+  .feature-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(10,10,10,0.08)}
+  .feature-icon{width:56px;height:56px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(180deg,#fff,#fffef7);font-size:20px;color:var(--accent);box-shadow:0 8px 18px rgba(8,8,8,0.04);flex-shrink:0}
+  .feature-icon.accent{background:linear-gradient(135deg,var(--accent),#9f3a3a);color:var(--accent-2);font-size:20px}
+  .feature-body h4{margin:0;color:var(--accent);font-size:18px}
+  .feature-body p{margin:8px 0 0;color:var(--muted);line-height:1.48}
+  .small-bullets{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:14px}
+
+  .feature-cta{margin-top:10px}
+  .btn-ghost{background:transparent;border:1px solid rgba(122,15,15,0.08);padding:8px 12px;border-radius:10px;color:var(--accent);font-weight:700;cursor:pointer;transition:all .2s var(--ease)}
+  .btn-ghost:hover{background:linear-gradient(90deg,rgba(122,15,15,0.06),rgba(245,193,74,0.02))}
+
+  /* Decorative SVG */
+  .ac-decor{position:absolute;right:-40px;top:-34px;width:360px;height:360px;pointer-events:none;transform:rotate(8deg)}
+
+  /* Accessibility helpers */
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+  /* Responsive */
+  @media (max-width:980px){
+    .ac-container{grid-template-columns:1fr; gap:18px}
+    .ac-right{order:2}
+    .ac-decor{display:none}
+    .ac-logo{width:68px;height:68px}
+  }
+
+  /* Entrance reveal */
+  #about-arudhra{opacity:0;transform:translateY(10px);transition:all .8s var(--ease)}
+  #about-arudhra.show{opacity:1;transform:none}
+</style>
+
+<script>
+  // Reveal section on scroll
+  (function(){
+    const sec = document.getElementById('about-arudhra');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ sec.classList.add('show'); io.disconnect(); }
+      });
+    }, {threshold:0.16});
+    io.observe(sec);
+
+    // Optional helper for CTA button (if you have contact section id)
+    window.scrollToContact = function(){
+      const el = document.getElementById('contact') || document.getElementById('contact-us') || null;
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+      else alert('Contact section not found — replace scrollToContact() implementation with your contact link.');
+    }
+  })();
+</script>

@@ -1,0 +1,2434 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Header (HTML/CSS only)</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./css/footer.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --header-height: 80px;
+        --max-width: 1200px;
+        --bg-gradient-start: #ffffff;
+        --bg-gradient-end: #f7f7f8;
+        --accent: #ffffff; /* blue-600 */
+        --muted: #3d3d3d; /* gray-500 */
+        --header-z: 50;
+      }
+      /* Hide scrollbar for Chrome, Edge, Safari */
+      ::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+      }
+
+      /* Hide scrollbar for Firefox */
+      html,
+      body {
+        scrollbar-width: none;
+      }
+
+      /* Hide scrollbar for IE/old Edge */
+      body {
+        -ms-overflow-style: none;
+      }
+
+      /* Simple full-page background on the <body> (replace the path) */
+      /* --- Make only the first section have the background image --- */
+      /* This overrides the body background you set earlier without removing other styles. */
+      body {
+        /* keep other body properties but remove background-image so it's not global */
+        background-image: none !important;
+        background-color: #f7f7f7; /* keep your fallback */
+        scrollbar-width: none;
+      }
+
+      /* Full-screen behavior for each section (so each is a 'page') */
+      main > section {
+        min-height: 100vh; /* occupy full viewport */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        box-sizing: border-box;
+        scroll-margin-top: calc(
+          var(--header-height) + 20px
+        ); /* prevent header from covering anchors */
+      }
+
+      /* First section (home) - use your image path */
+      main > section:nth-of-type(1) {
+        background-image: url("./assets/images/images/home.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        background-attachment: fixed; /* optional parallax-like feel */
+        color: #fff; /* text on image should be light */
+        position: relative;
+      }
+
+      /* optional overlay for better contrast on first section */
+      main > section:nth-of-type(1)::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(
+          0,
+          0,
+          0,
+          0.32
+        ); /* dark overlay — adjust opacity if needed */
+        pointer-events: none;
+        z-index: 1;
+      }
+      main > section:nth-of-type(1) > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Third section — plain blue full page */
+      main > section:nth-of-type(3) {
+        background: #2563eb; /* blue */
+        color: #fff;
+      }
+
+      /* Fourth section — plain orange full page */
+
+      /* Fifth section — plain green full page */
+
+      /* Optional: make headings scale nicely on hero */
+      main > section h1,
+      main > section h2,
+      main > section p {
+        margin: 0;
+      }
+
+      /* Respect reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        main > section:nth-of-type(1) {
+          background-attachment: scroll;
+        }
+      }
+
+      /* Alternative: hero section with a semi-transparent overlay for better text contrast */
+      .home-hero {
+        position: relative;
+        min-height: 100vh; /* or a fixed height like 560px */
+        background-image: url("./assets/images/images/home.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        background-attachment: scroll; /* use 'fixed' if you want parallax effect */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff; /* text color over image */
+      }
+
+      /* overlay layer */
+      .home-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0; /* top:0; right:0; bottom:0; left:0; */
+        background: rgba(
+          0,
+          0,
+          0,
+          0.35
+        ); /* adjust alpha and color for stronger/weaker overlay */
+        pointer-events: none;
+      }
+
+      /* content inside hero (keeps above overlay) */
+      .home-hero .hero-content {
+        position: relative;
+        z-index: 1;
+        padding: 2rem;
+        text-align: center;
+        max-width: 1100px;
+      }
+
+      /* Accessibility: respect reduced motion preference */
+      @media (prefers-reduced-motion: reduce) {
+        body,
+        .home-hero {
+          background-attachment: scroll;
+        }
+      }
+
+      /* Reset-ish */
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial;
+        color: #111827;
+
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Header */
+      .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: var(--header-z);
+        backdrop-filter: blur(6px);
+
+        box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+      }
+
+      /* Container */
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 16px;
+      }
+
+      /* nav row */
+      .nav-row {
+        height: var(--header-height);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      /* logo */
+      .logo-wrap {
+        display: flex;
+        align-items: center;
+      }
+      .logo {
+        height: 100px;
+        width: auto;
+        border-radius: 10px;
+        transition: transform 0.25s ease;
+      }
+      .logo:hover {
+        transform: scale(1.05);
+      }
+
+      /* Desktop nav */
+      .desktop-nav {
+        display: none;
+        align-items: center;
+        gap: 18px;
+      }
+
+      /* link style */
+      .nav-link {
+        color: var(--muted);
+        text-decoration: none;
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-size: 15px;
+        font-weight: 500;
+        position: relative;
+        transition: color 0.25s ease, background 0.25s ease,
+          transform 0.25s ease;
+        overflow: visible;
+      }
+
+      /* underline effect using a small absolute bar (span child) */
+      .nav-link .underline {
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        height: 2px;
+        width: 0%;
+        background: var(--accent);
+        transition: width 0.28s cubic-bezier(0.2, 0.9, 0.2, 1);
+        border-radius: 2px;
+      }
+      .nav-link:hover {
+        color: var(--accent);
+        background: rgb(0, 0, 0);
+        transform: translateY(0);
+      }
+      .nav-link:hover .underline {
+        width: 100%;
+      }
+
+      /* Icon button for mobile (we'll use label+checkbox) */
+      .icon-button {
+        background: transparent;
+        border: none;
+        padding: 8px;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: #374151; /* gray-700 */
+        transition: color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+      }
+      .icon-button:hover {
+        color: var(--accent);
+        background: rgba(37, 99, 235, 0.06);
+        transform: translateY(0);
+      }
+
+      /* Mobile menu -- hidden by default */
+      .mobile-menu {
+        padding: 12px 16px 18px;
+        animation: fadeIn 0.22s ease both;
+        display: none;
+      }
+
+      /* mobile link styles */
+      .mobile-links .mobile-link {
+        display: block;
+        text-decoration: none;
+        color: #374151;
+        padding: 10px 14px;
+        border-radius: 12px;
+        font-size: 16px;
+        margin-bottom: 8px;
+        transition: transform 0.18s ease, background 0.18s ease,
+          color 0.18s ease;
+      }
+      .mobile-links .mobile-link:hover {
+        color: var(--accent);
+        background: rgba(37, 99, 235, 0.06);
+        transform: translateX(8px);
+      }
+
+      /* small screens: show mobile button, hide desktop nav */
+      @media (max-width: 767px) {
+        .desktop-nav {
+          display: none;
+        }
+        .mobile-button-wrap {
+          display: block;
+        }
+      }
+
+      /* medium and up: show desktop nav, hide mobile button/menu */
+      @media (min-width: 768px) {
+        .desktop-nav {
+          display: flex;
+        }
+        .mobile-button-wrap {
+          display: none;
+        }
+        .mobile-menu {
+          display: none !important;
+        }
+      }
+
+      /* --- Checkbox toggle logic --- */
+      /* hide the checkbox visually but keep it accessible */
+      .menu-checkbox {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+        width: 0;
+        height: 0;
+      }
+
+      /* when checkbox is checked, show the mobile menu */
+      .menu-checkbox:checked ~ .mobile-menu {
+        display: block;
+      }
+
+      /* show/hide icons inside the label depending on checkbox state */
+      .menu-label .icon-open {
+        display: inline;
+      }
+      .menu-label .icon-close {
+        display: none;
+      }
+      .menu-checkbox:checked + .menu-label .icon-open {
+        display: none;
+      }
+      .menu-checkbox:checked + .menu-label .icon-close {
+        display: inline;
+      }
+
+      /* style the label like the icon-button */
+      .menu-label {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        border-radius: 999px;
+        cursor: pointer;
+        color: #374151;
+        transition: color 0.2s ease, background 0.2s ease;
+      }
+      .menu-label:hover {
+        color: var(--accent);
+        background: rgba(37, 99, 235, 0.06);
+      }
+
+      /* menu slide/fade effect */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* small accessibility helpers */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* small enhancement: focus visible */
+      a:focus,
+      .menu-label:focus {
+        outline: 3px solid rgba(37, 99, 235, 0.12);
+        outline-offset: 3px;
+      }
+      /* --- Split layout styles for second page --- */
+      .split-section {
+        /* keep full-page behavior */
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+
+        font-family: "Poppins", sans-serif;
+        line-height: 1.6;
+        color: var(--ui-text);
+        background-color: #f8f9fa;
+
+        background-image: linear-gradient(to bottom right, #fdfcfb, #f9f5eb);
+      }
+
+      /* inner grid */
+      .split-inner {
+        width: 100%;
+        max-width: 1200px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+      }
+
+      /* LEFT column */
+      .split-left .content {
+        color: #111827;
+        padding: 20px 10px;
+      }
+      .split-left h2 {
+        font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+        margin: 0 0 2rem;
+      }
+      .split-left .lead {
+        font-size: 1.05rem;
+        color: var(--ui-text-light);
+        margin-bottom: 1.25rem;
+        line-height: 1.5;
+      }
+
+      /* counters */
+      .counters {
+        display: flex;
+        gap: 18px;
+        margin: 18px 0;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        justify-content: end;
+      }
+      .counter {
+        min-width: 90px;
+        background: rgba(255, 255, 255, 0.06);
+        padding: 12px 14px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+      }
+      .counter .num {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--accent);
+      }
+      .counter .label {
+        font-size: 0.85rem;
+        color: #374151;
+      }
+
+      /* buttons */
+
+      /* RIGHT column - modern clipped image */
+      .split-right {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 420px;
+      }
+
+      /* IMAGE WRAPPER — rectangular, full-fit image, responsive */
+      .image-wrap {
+        width: 100%; /* keep half-width in the two-column layout */
+        max-width: 520px;
+        /* preserves intended shape; remove if you prefer natural image height */
+        overflow: hidden;
+        border-radius: 20px; /* rounded corners */
+        transform: translateY(0);
+        transition: transform 360ms cubic-bezier(0.2, 0.9, 0.2, 1),
+          box-shadow 360ms;
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+        position: relative;
+        background: #eee; /* fallback while image loads */
+      }
+
+      /* Image fills wrapper perfectly, cropped as needed */
+      .image-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* fill and crop as needed */
+        display: block;
+        transform: scale(1);
+        transition: transform 520ms cubic-bezier(0.2, 0.9, 0.2, 1);
+        will-change: transform;
+        border-radius: inherit; /* matches wrapper corners */
+      }
+
+      /* Hover: subtle lift + smooth zoom (desktop only) */
+      .image-wrap:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 30px 70px rgba(15, 23, 42, 0.18);
+      }
+      .image-wrap:hover img {
+        transform: scale(1.06); /* zoom only */
+      }
+
+      /* Mobile: stack and avoid hover effects */
+      @media (max-width: 767px) {
+        .image-wrap {
+          width: 100%;
+          max-width: 100%;
+          aspect-ratio: 16 / 9; /* more natural on narrow screens */
+          border-radius: 14px;
+          box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+        }
+        .image-wrap:hover {
+          transform: none;
+          box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+        }
+        .image-wrap:hover img {
+          transform: none;
+        }
+      }
+
+      /* Respect reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .image-wrap,
+        .image-wrap img {
+          transition: none;
+          transform: none !important;
+        }
+      }
+
+      /* ensure left column is the positioning context for shapes */
+      .split-left {
+        position: relative; /* add this so .shape absolute positions are relative to left column */
+      }
+
+      /* base shape (shared) */
+      .shape {
+        position: absolute;
+        border-radius: 999px;
+        filter: blur(28px);
+        opacity: 0.55;
+        pointer-events: none;
+        z-index: 0; /* behind text */
+        transition: transform 1200ms ease, opacity 900ms ease;
+      }
+
+      /* Left-side blobs (positioned relative to .split-left) */
+      .shape-1 {
+        width: 160px;
+        height: 160px;
+        left: -40px; /* moved to the left side */
+        top: -100px;
+        background: linear-gradient(
+          135deg,
+          rgba(99, 102, 241, 0.9),
+          rgba(139, 92, 246, 0.7)
+        );
+        transform: rotate(-18deg);
+      }
+
+      .shape-2 {
+        width: 220px;
+        height: 220px;
+        left: -80px; /* moved to the left side */
+        bottom: -100px;
+        background: linear-gradient(
+          135deg,
+          rgba(16, 185, 129, 0.9),
+          rgba(34, 197, 94, 0.7)
+        );
+        transform: rotate(6deg);
+      }
+
+      /* subtle float animation */
+      @keyframes shapeFloat {
+        0% {
+          transform: translateY(0) scale(1);
+          opacity: 0.56;
+        }
+        50% {
+          transform: translateY(-8px) scale(1.02);
+          opacity: 0.7;
+        }
+        100% {
+          transform: translateY(0) scale(1);
+          opacity: 0.56;
+        }
+      }
+      .shape-1 {
+        animation: shapeFloat 9000ms ease-in-out infinite;
+        animation-delay: 0ms;
+      }
+      .shape-2 {
+        animation: shapeFloat 8200ms ease-in-out infinite;
+        animation-delay: 300ms;
+      }
+
+      /* scale slightly when user hovers the image area for a bit of life */
+      .image-wrap:hover ~ .shape,
+      .image-wrap:hover + .shape,
+      .image-wrap:hover .shape,
+      .split-left:hover .shape {
+        transform: scale(1.04);
+        opacity: 0.78;
+      }
+
+      /* hide shapes on small screens */
+      @media (max-width: 767px) {
+        .shape {
+          display: none;
+        }
+      }
+
+      /* respect reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .shape {
+          animation: none;
+          transition: none;
+        }
+      }
+
+      .site-header {
+        transition: opacity 0.4s ease;
+      }
+      /* small screens: stack columns */
+      @media (max-width: 767px) {
+        .split-inner {
+          grid-template-columns: 1fr;
+          gap: 22px;
+          padding: 0 12px;
+        }
+        .split-right {
+          order: -1;
+        } /* show image above content on mobile (change if you prefer) */
+        .image-wrap {
+          max-width: 100%;
+          aspect-ratio: 16/9;
+          border-radius: 18px;
+        }
+        .shape-1,
+        .shape-2 {
+          display: none;
+        }
+        .counters {
+          justify-content: center;
+        }
+        .actions {
+          justify-content: center;
+        }
+      }
+
+      /* HOME SECTION STYLES */
+      /* Image viewer (section 3) */
+      .viewer-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        width: 100%;
+        padding: 36px;
+        box-sizing: border-box;
+      }
+
+      /* Buttons */
+      .viewer-btn {
+        width: 56px;
+        height: 56px;
+        border-radius: 12px;
+        border: none;
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        font-size: 20px;
+        display: inline-grid;
+        place-items: center;
+        cursor: pointer;
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+        transition: transform 0.18s, background 0.18s, opacity 0.18s;
+      }
+      .viewer-btn:hover {
+        transform: translateY(-3px);
+        background: rgba(255, 255, 255, 0.18);
+      }
+      .viewer-btn:active {
+        transform: translateY(0);
+      }
+
+      /* Main viewer */
+      .viewer {
+        width: min(920px, 88%);
+        max-width: 920px;
+        height: min(560px, 100vh);
+
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Image inside */
+      .viewer img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* use 'cover' if you want full-bleed crop */
+        display: block;
+        opacity: 1;
+        transition: opacity 0.45s ease, transform 0.45s ease;
+      }
+
+      /* caption */
+      .viewer-caption {
+        position: absolute;
+        right: 12px;
+        bottom: 12px;
+        background: rgba(0, 0, 0, 0.36);
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-size: 14px;
+        backdrop-filter: blur(4px);
+      }
+
+      /* Responsive: smaller buttons on narrow screens */
+      @media (max-width: 600px) {
+        .viewer-btn {
+          width: 44px;
+          height: 44px;
+          font-size: 18px;
+          border-radius: 10px;
+        }
+        .viewer {
+          height: 46vh;
+          border-radius: 12px;
+        }
+      }
+      /* layout: left info + viewer + controls */
+      .viewer-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        width: 100%;
+        padding: 36px;
+        box-sizing: border-box;
+      }
+
+      /* Info panel on left */
+      .viewer-info {
+        width: 100%;
+        height: 100%;
+
+        color: #fff;
+        z-index: 6;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      /* small meta */
+      .flavor-category {
+        font-size: 13px;
+        opacity: 0.85;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .flavor-title {
+        font-size: 1.6rem;
+        margin: 6px 0;
+        line-height: 1.05;
+      }
+      .flavor-sub {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.9);
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .flavor-sub .dot {
+        opacity: 0.6;
+      }
+      .flavor-short {
+        font-size: 0.97rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin: 6px 0 0;
+      }
+
+      /* long description block */
+      .flavor-desc {
+        font-size: 0.92rem;
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.5;
+        margin-top: 6px;
+        max-height: 220px;
+        overflow: auto;
+      }
+
+      /* actions */
+      .viewer-actions {
+        margin-top: 8px;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .btn-buy {
+        background: #fff;
+        color: #111827;
+        border: none;
+        padding: 10px 14px;
+        border-radius: 999px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      /* responsive: stack on small screens */
+      @media (max-width: 900px) {
+        .viewer-wrap {
+          flex-direction: column;
+          gap: 18px;
+          padding: 22px;
+        }
+        .viewer-info {
+          width: 100%;
+          max-width: 920px;
+          border-radius: 14px;
+        }
+        .viewer {
+          width: 100%;
+          max-width: 920px;
+          height: 46vh;
+        }
+        .viewer-btn {
+          order: 3;
+        } /* move controls below on tiny screens if needed */
+      }
+
+      /* responsive tweaks */
+      @media (max-width: 600px) {
+        .viewer-btn {
+          width: 44px;
+          height: 44px;
+          font-size: 18px;
+          border-radius: 10px;
+        }
+        .viewer {
+          height: 46vh;
+          border-radius: 12px;
+        }
+      }
+      /* SECTION STYLING LIKE YOUR REFERENCE */
+      .history-section {
+        height: 50vh; /* 50% of the screen height */
+        width: 100%;
+        background: #ffffff; /* dark maroon similar to reference */
+        display: flex;
+        align-items: center; /* vertically center */
+        justify-content: space-evenly;
+        flex-direction: column; /* horizontally center */
+        padding: 10px 20px;
+        box-sizing: border-box;
+        text-align: center;
+      }
+
+      /* CONTAINER */
+      .history-content {
+        max-width: 950px; /* same wide block as reference */
+      }
+
+      /* TITLE */
+      .history-title {
+        font-size: clamp(1.8rem, 4vw, 3rem);
+        color: #ffffff;
+        font-weight: 600;
+        letter-spacing: 2px;
+        margin-bottom: 26px;
+      }
+
+      /* DESCRIPTION TEXT */
+      .history-text {
+        font-size: clamp(1rem, 1.4vw, 1.3rem);
+        color: #e6d6d6;
+        line-height: 1.7;
+        font-weight: 300;
+      }
+      #page3 {
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+
+    <header class="site-header" role="banner">
+      <nav class="container" aria-label="Main navigation">
+        <div class="nav-row">
+          <div class="logo-wrap">
+            <img
+              id="site-logo"
+              class="logo"
+              src="./assets/images/logo/Logo.png"
+            />
+          </div>
+
+          <!-- Desktop nav (static HTML) -->
+          <div
+            id="desktop-nav"
+            class="desktop-nav"
+            role="menubar"
+            aria-label="Primary"
+          >
+            <a class="nav-link" href="#" role="menuitem"
+              >Home<span class="underline" aria-hidden="true"></span
+            ></a>
+            <a class="nav-link" href="#" role="menuitem"
+              >Services<span class="underline" aria-hidden="true"></span
+            ></a>
+            <a class="nav-link" href="#" role="menuitem"
+              >Fragrances<span class="underline" aria-hidden="true"></span
+            ></a>
+            <a class="nav-link" href="#" role="menuitem"
+              >Contact Us<span class="underline" aria-hidden="true"></span
+            ></a>
+            <a class="nav-link" href="#" role="menuitem"
+              >About Us<span class="underline" aria-hidden="true"></span
+            ></a>
+          </div>
+
+          <!-- Mobile toggle (checkbox + label) -->
+          <div class="mobile-button-wrap">
+            <!-- checkbox controls the menu; it's placed BEFORE the label so sibling selectors work -->
+            <input
+              id="menu-toggle"
+              class="menu-checkbox"
+              type="checkbox"
+              aria-hidden="true"
+            />
+
+            <!-- label acts as the button; it comes immediately after the checkbox so CSS selectors apply -->
+            <label
+              for="menu-toggle"
+              class="menu-label"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
+              onclick="this.previousElementSibling.checked ? this.setAttribute('aria-expanded','true') : this.setAttribute('aria-expanded','false')"
+            >
+              <!-- accessible text for screen readers -->
+              <span class="sr-only">Toggle navigation</span>
+
+              <!-- open icon -->
+              <svg
+                class="icon-open"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+
+              <!-- close icon -->
+              <svg
+                class="icon-close"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M18 6L6 18M6 6l12 12"></path>
+              </svg>
+            </label>
+          </div>
+        </div>
+
+        <!-- Mobile menu (pure CSS show/hide) -->
+        <div
+          id="mobile-menu"
+          class="mobile-menu"
+          role="menu"
+          aria-label="Mobile primary"
+        >
+          <div class="mobile-links">
+            <a class="mobile-link" href="#" role="menuitem">Products</a>
+            <a class="mobile-link" href="#" role="menuitem">Services</a>
+            <a class="mobile-link" href="#" role="menuitem">NRI</a>
+            <a class="mobile-link" href="#" role="menuitem">Contact Us</a>
+            <a class="mobile-link" href="#" role="menuitem">About Us</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page filler so header overlay is visible -->
+    <main>
+      <section>
+        <div class="hero-content"></div>
+      </section>
+
+      <!-- SECOND PAGE: split left/right -->
+      <section class="split-section">
+        <div class="split-inner">
+          <!-- LEFT: content -->
+          <div class="split-left">
+            <div class="content">
+              <h2 class="attractive">
+                Shri Agarbathi Premium Quality Sacred Origins
+              </h2>
+              <p class="lead">
+                Crafted to capture the sacred ambience, spiritual depth, and
+                timeless fragrance traditions of South Indian temples—bringing
+                their serene essence into every moment.
+              </p>
+
+              <div class="counters">
+                <div class="counter">
+                  <div class="num">120+</div>
+                  <div class="label">Projects</div>
+                </div>
+                <div class="counter">
+                  <div class="num">15</div>
+                  <div class="label">Team</div>
+                </div>
+                <div class="counter">
+                  <div class="num">8</div>
+                  <div class="label">Fragrances</div>
+                </div>
+              </div>
+            </div>
+            <span class="shape shape-1"></span>
+            <span class="shape shape-2"></span>
+          </div>
+
+          <!-- RIGHT: image with modern clipped shape + decorations -->
+          <div class="split-right" aria-hidden="true">
+            <div class="image-wrap">
+              <img
+                src="./assets/images/images/8fragrances.png"
+                alt="Decorative hero"
+              />
+            </div>
+
+            <!-- decorative blurred shapes (pure CSS) -->
+          </div>
+        </div>
+      </section>
+
+      <!-- THIRD PAGE: single centered image with prev/next -->
+      <section id="page3" aria-label="Image viewer">
+        <style>
+          .flavor-meta {
+            position: absolute;
+            top: 80px;
+            left: 80px;
+            text-transform: uppercase;
+          }
+          .flavor-title {
+            font-size: 42px;
+            font-weight: 700;
+            color: rgb(255, 255, 255);
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 5;
+          }
+          #flavorShort {
+            position: absolute;
+            bottom: 80px;
+            left: 80px;
+          }
+          #flavorDesc {
+            position: absolute;
+            bottom: 50px;
+            right: 40px;
+            text-align: justify;
+            width: 400px;
+          }
+        </style>
+        <div class="viewer-wrap">
+          <!-- LEFT: dynamic product info -->
+          <div class="viewer-info" aria-hidden="false">
+            <div class="flavor-meta">
+              <h1 id="flavorTitle" class="flavor-title attractive">
+                Sublime Lime
+              </h1>
+            </div>
+
+            <b id="flavorShort" class="flavor-short">
+              Soft, devotional floral fragrance — perfect for daily puja and
+              meditation.
+            </b>
+
+            <div id="flavorDesc" class="flavor-desc">
+              <!-- long description will be injected here -->
+            </div>
+          </div>
+
+          <!-- CENTER: gallery controls + viewer -->
+          <button
+            class="viewer-btn prev"
+            aria-label="Previous image"
+            id="viewerPrev"
+          >
+            &larr;
+          </button>
+
+          <div
+            class="viewer"
+            id="viewer"
+            role="region"
+            aria-roledescription="image gallery"
+            aria-label="Product gallery"
+          >
+            <img
+              id="viewerImg"
+              src="./assets/images/images/sample1.png"
+              alt="Gallery image"
+            />
+            <div
+              id="viewerCaption"
+              class="viewer-caption"
+              style="display: none"
+            >
+              Image 1 of 8
+            </div>
+
+            <!-- overlay for gradient crossfade (kept for compatibility) -->
+            <div id="page3-bg-overlay" aria-hidden="true"></div>
+          </div>
+
+          <button
+            class="viewer-btn next"
+            aria-label="Next image"
+            id="viewerNext"
+          >
+            &rarr;
+          </button>
+        </div>
+      </section>
+
+      <section class="about-section" id="about">
+        <div class="about-container">
+          <!-- Left Main Content (layout and classes unchanged) -->
+          <div class="main-content">
+            <div class="company-header">
+              <div class="logo-container">
+                <div class="logo-gradient">
+                  <img
+                    src="./assets/images/logo/ARUDHRA_CREATIONS_LOGO_page-0001.jpg"
+                    alt="Arudhra Creations"
+                    class="company-logo"
+                  />
+                </div>
+              </div>
+              <div class="company-info">
+                <div class="badge-row">
+                  <span class="est-badge">Est. 2025</span>
+                  <span class="type-badge"
+                    ><i class="fas fa-certificate"></i> Private Limited</span
+                  >
+                </div>
+                <h1 class="company-name">Arudhra Creations Private Limited</h1>
+                <p class="company-tagline">Women-led · Temple-inspired</p>
+              </div>
+            </div>
+
+            <!-- Mission / About narrative replaced with official content -->
+            <div class="mission-statement">
+              <div class="mission-icon">
+                <i class="fas fa-praying-hands"></i>
+              </div>
+              <p class="mission-text">
+                Every day, South Indian temples receive beautiful flowers
+                offered with reverence and devotion. Sacred garlands adorn the
+                deities, fragrant petals spread across altars, and lotus blooms
+                grace the sanctum. Yet by the next morning these same blessed
+                flowers — once fragrant and full of life — are discarded as
+                waste.
+                <br /><br />
+                Arudhra Creations Private Limited believes these flowers deserve
+                a second, sacred life. We are a women-led enterprise based in
+                Salem, Tamil Nadu, committed to transforming temple-blessed
+                flowers into premium, carbon-free agarbathi sticks that bring
+                the divine essence of South Indian temples into everyday homes
+                and sacred spaces.
+              </p>
+            </div>
+
+            <!-- Key points: replaced with the official highlights -->
+            <div class="key-points">
+              <div class="point-card">
+                <div class="point-icon eco">
+                  <i class="fas fa-leaf"></i>
+                </div>
+                <div class="point-content">
+                  <h3>Women-Led Innovation</h3>
+                  <p>
+                    A skilled women’s team leads our flower processing,
+                    fragrance blending, and hand-rolling, creating dignified
+                    livelihoods across Salem.
+                  </p>
+                </div>
+              </div>
+
+              <div class="point-card">
+                <div class="point-icon women">
+                  <i class="fas fa-hands-holding-heart"></i>
+                </div>
+                <div class="point-content">
+                  <h3>Salem-Rooted, Temple-Focused</h3>
+                  <p>
+                    Based in Salem (U20238TZ2025PTC035616), we partner with
+                    temples across the region to respectfully collect sacred
+                    flowers before disposal.
+                  </p>
+                </div>
+              </div>
+
+              <div class="point-card">
+                <div class="point-icon temple">
+                  <i class="fas fa-place-of-worship"></i>
+                </div>
+                <div class="point-content">
+                  <h3>Purpose-Driven Model</h3>
+                  <p>
+                    We prevent sacred flowers from becoming waste, giving them a
+                    renewed spiritual purpose through eco-friendly, respectful
+                    transformation.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Company details: registration & HQ -->
+            <div class="company-details">
+              <div class="detail-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                  <span class="detail-label">Headquarters</span>
+                  <span class="detail-value">Salem, Tamil Nadu</span>
+                </div>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-id-card"></i>
+                <div>
+                  <span class="detail-label">Registration</span>
+                  <span class="detail-value">U20238TZ2025PTC035616</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Highlight Cards (layout & classes unchanged, content replaced) -->
+          <div class="highlights-sidebar">
+            <div class="section-label">
+              <span>Key Highlights</span>
+              <div class="label-line"></div>
+            </div>
+
+            <div class="highlight-card">
+              <div class="card-header">
+                <div class="card-icon innovation">
+                  <i class="fas fa-seedling"></i>
+                </div>
+                <div class="card-title">
+                  <h3>Women-Led Innovation</h3>
+                  <span class="card-subtitle"
+                    >Artisan-led sustainable craft</span
+                  >
+                </div>
+              </div>
+              <p class="card-desc">
+                Dignified livelihoods for women artisans — blending traditional
+                skills with modern quality control. Skilled teams handle flower
+                processing, blending, and rolling to create premium, consistent
+                incense.
+              </p>
+              <div class="card-features">
+                <span class="feature-tag">Training & Fair Wages</span>
+                <span class="feature-tag">Handcraft + QC</span>
+              </div>
+            </div>
+
+            <div class="highlight-card">
+              <div class="card-header">
+                <div class="card-icon impact">
+                  <i class="fas fa-city"></i>
+                </div>
+                <div class="card-title">
+                  <h3>Salem-Rooted & Temple-Focused</h3>
+                  <span class="card-subtitle"
+                    >Ethical sourcing partnerships</span
+                  >
+                </div>
+              </div>
+              <p class="card-desc">
+                We partner respectfully with temples across Salem and nearby
+                regions to collect offerings before disposal, minimizing waste
+                and preserving the sanctity of the flowers.
+              </p>
+              <div class="card-stats">
+                <div class="stat">
+                  <span class="stat-value">Local</span>
+                  <span class="stat-label">Salem-rooted</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-value">Regional</span>
+                  <span class="stat-label">Tamil Nadu</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-value">Ethical</span>
+                  <span class="stat-label">Temple partnerships</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="highlight-card">
+              <div class="card-header">
+                <div class="card-icon partnership">
+                  <i class="fas fa-heart"></i>
+                </div>
+                <div class="card-title">
+                  <h3>Commitment to Quality & Transparency</h3>
+                  <span class="card-subtitle"
+                    >Handcrafted • Charcoal-free • Rigorous QC</span
+                  >
+                </div>
+              </div>
+              <p class="card-desc">
+                Every stick is handcrafted or semi-mechanized using traditional
+                South Indian methods. No charcoal base — eco-friendly,
+                biodegradable composition — and strict quality checks at every
+                stage.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- <section class="history-section">
+        <div class="history-content">
+          <img src="" alt="" />
+        </div>
+        <div class="history-content">
+          <h2 class="history-title">
+            A HISTORY OF PURITY & ETHICAL CRAFTSMANSHIP
+          </h2>
+
+          <p class="history-text">
+            Shri Agarbathi was founded with purity and ethical craftsmanship as
+            our guiding values. What began as a humble devotion grew into a
+            renowned incense brand cherished for its authentic fragrances. Every
+            stick is crafted with the finest natural ingredients, deep
+            tradition, and meticulous care—bringing serenity and spiritual
+            harmony into every home.
+          </p>
+        </div>
+      </section> -->
+
+      <div class="story-section">
+        <h2 class="section-title fade-up attractive">
+          Our Journey From Temple Blessing to Fragrant Stick
+        </h2>
+        <h3 class="section-subtitle fade-up">
+          The Sacred Journey of Temple-Flower Transformation
+        </h3>
+
+        <div class="story-container" id="storyContainer"></div>
+
+        <div class="summary fade-up" id="summaryBox"></div>
+      </div>
+
+      <div class="body">
+        <div class="form-container">
+          <div class="form-header-section">
+            <h1>Enquiry & Order Information</h1>
+            <p class="tagline">
+              We welcome inquiries for bulk orders, partnerships, and customized
+              solutions. Please fill out the form below, and our team will
+              respond within 24 business hours.
+            </p>
+          </div>
+
+          <div class="content-wrapper">
+            <section class="info-section">
+              <h2><i class="fas fa-info-circle"></i> Our Services</h2>
+              <ul class="info-list">
+                <li>
+                  <i class="fas fa-boxes"></i> Bulk Orders for Retail & B2B
+                </li>
+                <li>
+                  <i class="fas fa-hands-praying"></i> Temple Supply Agreements
+                </li>
+                <li><i class="fas fa-gift"></i> Return Gift Customization</li>
+                <li>
+                  <i class="fas fa-building"></i> Corporate Gifting Solutions
+                </li>
+                <li>
+                  <i class="fas fa-handshake"></i> Wholesale & Distributor
+                  Partnerships
+                </li>
+                <li>
+                  <i class="fas fa-store"></i> Retail Stockist Opportunities
+                </li>
+                <li>
+                  <i class="fas fa-wind"></i> Customized Fragrance Development
+                </li>
+                <li>
+                  <i class="fas fa-calendar-star"></i> Event-Specific Gifting
+                  Solutions
+                </li>
+              </ul>
+
+              <div class="business-hours">
+                <h3>
+                  <i class="fas fa-clock"></i> Business Hours & Response Policy
+                </h3>
+                <p>
+                  <i class="fas fa-reply"></i>
+                  <span class="highlight">Typical response time:</span> Within
+                  24 business hours
+                </p>
+                <p>
+                  <i class="fas fa-cogs"></i>
+                  <span class="highlight">Orders processed:</span> Monday to
+                  Friday, 9 AM to 6 PM IST
+                </p>
+                <p>
+                  <i class="fas fa-bolt"></i>
+                  <span class="highlight">Emergency inquiries:</span> WhatsApp
+                  recommended for faster response
+                </p>
+
+                <a
+                  href="https://wa.me/1234567890"
+                  class="whatsapp-contact"
+                  target="_blank"
+                >
+                  <i class="fab fa-whatsapp"></i> Contact via WhatsApp
+                </a>
+              </div>
+            </section>
+
+            <section class="form-section">
+              <div class="form-header">
+                <div class="form-title">
+                  <h2><i class="fas fa-edit"></i> Contact Form</h2>
+                </div>
+                <div class="required-note">
+                  Fields marked with <span>*</span> are required
+                </div>
+              </div>
+
+              <form id="inquiryForm">
+                <div class="form-group">
+                  <label for="fullName" class="required"
+                    ><i class="fas fa-user"></i> Full Name</label
+                  >
+                  <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    placeholder="Enter your full name"
+                  />
+                  <div class="error-message" id="fullNameError">
+                    Please enter your full name
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="mobile" class="required"
+                    ><i class="fas fa-mobile-alt"></i> Mobile Number</label
+                  >
+                  <input
+                    type="tel"
+                    id="mobile"
+                    name="mobile"
+                    placeholder="Enter your 10-digit mobile number"
+                  />
+                  <div class="error-message" id="mobileError">
+                    Please enter a valid 10-digit mobile number
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="email" class="required"
+                    ><i class="fas fa-envelope"></i> Email Address</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email address"
+                  />
+                  <div class="error-message" id="emailError">
+                    Please enter a valid email address
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="city"
+                    ><i class="fas fa-city"></i> City/Region
+                    <span class="optional">(Optional)</span></label
+                  >
+                  <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    placeholder="Enter your city or region"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="purpose" class="required"
+                    ><i class="fas fa-bullseye"></i> Purpose of Inquiry</label
+                  >
+                  <select id="purpose" name="purpose">
+                    <option value="" disabled selected>
+                      Select your inquiry purpose
+                    </option>
+                    <option value="Bulk Order Inquiry">
+                      Bulk Order Inquiry
+                    </option>
+                    <option value="Retail / B2B Inquiry">
+                      Retail / B2B Inquiry
+                    </option>
+                    <option value="Temple Supply Partnership">
+                      Temple Supply Partnership
+                    </option>
+                    <option value="Return Gift Customization">
+                      Return Gift Customization
+                    </option>
+                    <option value="Corporate Gifting">Corporate Gifting</option>
+                    <option value="Wholesale / Distributor Interest">
+                      Wholesale / Distributor Interest
+                    </option>
+                    <option value="Event-Specific Inquiry">
+                      Event-Specific Inquiry
+                    </option>
+                    <option value="Product Customization">
+                      Product Customization
+                    </option>
+                    <option value="General Enquiry">General Enquiry</option>
+                  </select>
+                  <div class="error-message" id="purposeError">
+                    Please select a purpose for your inquiry
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="message"
+                    ><i class="fas fa-comment-dots"></i> Message
+                    <span class="optional"
+                      >(Optional - detailed inquiry or special requests)</span
+                    ></label
+                  >
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    placeholder="Please provide any additional details about your inquiry..."
+                  ></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                  <i class="fas fa-paper-plane"></i> Submit Inquiry
+                </button>
+
+                <div class="response-message" id="responseMessage"></div>
+              </form>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <footer class="modern-footer">
+        <div class="footer-container">
+          <div class="footer-row">
+            <div class="footer-col about">
+              <h3>Address</h3>
+              <p>
+                Arudhra Creations Private Limited Salem, Tamil Nadu, India
+                (Specific address to be confirmed with user)
+              </p>
+            </div>
+
+            <div class="footer-col">
+              <h3>Categories</h3>
+              <ul>
+                <li><a href="#">Website Design</a></li>
+                <li><a href="#">UI Design</a></li>
+                <li><a href="#">Web Development</a></li>
+                <li><a href="#">Video Editor</a></li>
+                <li><a href="#">Theme Creator</a></li>
+                <li><a href="#">Templates</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-col">
+              <h3>Quick Links</h3>
+              <ul>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Contribute</a></li>
+                <li><a href="#">Privacy policy</a></li>
+                <li><a href="#">Sitemap</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-col social">
+              <h3>Follow Us</h3>
+              <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <hr />
+
+          <div class="footer-bottom">
+            <p>
+              © Arudhra Creations Private Limited, Salem | All rights reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <!-- Note: No external JS file. Optional inline image fallback uses small inline JS (onerror). -->
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="./js/form.js"></script>
+  <script>
+    window.addEventListener("DOMContentLoaded", function () {
+      (function () {
+        /* --- paste your entire existing IIFE contents here, unchanged --- */
+      })();
+    });
+
+    const storyData = [
+      {
+        number: "01",
+        title: "Offered at South Indian Temples",
+        text: "Devotees and priests offer fresh flowers—rose, jasmine, champa, sambrani—during archana and festivals. These sacred blooms fill temples with divine fragrance and devotion.",
+      },
+      {
+        number: "02",
+        title: "Respectfully Collected",
+        text: "Before flowers are discarded, our team collects them from partnered temples with reverence, ensuring spiritual sanctity is preserved while preventing floral waste.",
+      },
+      {
+        number: "03",
+        title: "Gently Dried & Hand-Processed",
+        text: "Flowers are dried under controlled conditions and blended with sandalwood, rose, jasmine, and natural aromatics. No synthetic chemicals. No charcoal binding.",
+      },
+      {
+        number: "04",
+        title: "Rolled into 'Shri' Agarbathi",
+        text: "Skilled artisans hand-roll each 9-inch stick. The final agarbathi retains temple purity and gives 45 minutes of continuous divine fragrance.",
+      },
+    ];
+
+    const summaryText =
+      "Carbon-free, temple-flower based, and crafted for daily puja, meditation, celebrations, and spiritual gatherings.";
+
+    const container = document.getElementById("storyContainer");
+    const summaryBox = document.getElementById("summaryBox");
+
+    storyData.forEach((item) => {
+      const card = document.createElement("div");
+      card.classList.add("story-card", "fade-up");
+      card.innerHTML = `
+      <div class="story-number">${item.number}</div>
+      <div class="story-title">${item.title}</div>
+      <div class="story-line"></div>
+      <p class="story-text">${item.text}</p>
+    `;
+      container.appendChild(card);
+    });
+
+    summaryBox.innerText = summaryText;
+
+    /* Scroll Reveal Animation */
+    const revealElements = document.querySelectorAll(".fade-up");
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    revealElements.forEach((el) => revealObserver.observe(el));
+
+    const header = document.querySelector(".site-header");
+    const firstSection = document.querySelector(
+      "main > section:nth-of-type(1)"
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // First page visible → show header
+            header.style.opacity = "1";
+            header.style.pointerEvents = "auto";
+          } else {
+            // Scrolled away → hide header
+            header.style.opacity = "0";
+            header.style.pointerEvents = "none";
+          }
+        });
+      },
+      { threshold: 0.12 } // 40% of first section must be visible
+    );
+
+    observer.observe(firstSection);
+
+    (function () {
+      // ---------- kept arrays ----------
+      const images = [
+        "./assets/images/Fragrances/1.png",
+        "./assets/images/Fragrances/2.png",
+        "./ChatGPT Image Dec 8, 2025, 09_52_25 PM.png",
+        "./assets/images/Fragrances/4.png",
+        "./assets/images/Fragrances/5.png",
+        "./assets/images/Fragrances/6.png",
+        "./assets/images/Fragrances/7.png",
+        "./assets/images/Fragrances/8.png",
+      ];
+      const bgGradients = [
+        "radial-gradient(circle,rgba(255,255,255,1) 0%, rgba(8,150,0,1) 82%)",
+        "radial-gradient(circle,rgba(255, 255, 255, 1) 30%, rgba(255, 213, 0, 1) 82%)",
+        "radial-gradient(circle,rgba(255,255,255,1) 0%, rgba(83,0,191,1) 82%)",
+        "radial-gradient(circle,rgba(255,255,255,1) 20%, rgba(45,158,0,1) 82%)",
+        "radial-gradient(circle,rgba(255, 255, 255, 1) 30%, rgba(189, 0, 79, 1) 82%)",
+        "radial-gradient(circle,rgba(255,255,255,1) 30%, rgba(158,66,0,1) 100%)",
+        "radial-gradient(circle,rgba(255,255,255,1) 30%, rgba(158,124,0,1) 100%)",
+        "radial-gradient(circle,rgba(255,255,255,1) 30%, rgba(60,80,200,1) 100%)",
+      ];
+
+      const profiles = [
+        {
+          title: "Jasmine",
+          short: "Fresh, floral jasmine aroma",
+          desc: `<ul><li>Inspired by jasmine garlands in Tamil temples</li><li>Perfect for festive and celebratory spiritual ambience</li><li>Popular during weddings and family gatherings</li></ul>`,
+        },
+        {
+          title: "Champa",
+          short: "Traditional temple floral scent",
+          desc: `<ul><li>Iconic in South Indian shrine traditions</li><li>Reminiscent of ancient Tamil temples and pilgrimage centres</li><li>Perfect for family puja and festive occasions</li></ul>`,
+        },
+        {
+          title: "Lavender",
+          short: "Calming and soothing aromatic notes",
+          desc: `<ul><li>Brings tranquility and relaxation to meditation practice</li><li>Excellent for yoga spaces, personal prayer rooms, and bedtime rituals</li><li>Blended from traditional South Indian herbal essences</li></ul>`,
+        },
+        {
+          title: "Screw Pine",
+          short: "Delicate, unique floral aroma",
+          desc: `<ul><li>Inspired by screw pine flowers used in worship</li><li>Traditional and culturally rooted fragrance experience</li><li>Ideal for those seeking a regional temple aroma</li></ul>`,
+        },
+        {
+          title: "Rose",
+          short: "Soft, devotional floral fragrance",
+          desc: `<ul><li>Reminiscent of rose garlands offered to goddesses in South Indian temples</li><li>Perfect for daily puja, meditation, and creating a soothing home ambience</li><li>Ideal for Durga Puja, Lakshmi Puja, and feminine spiritual spaces</li></ul>`,
+        },
+        {
+          title: "Sandal",
+          short: "Classic woody, sacred aroma",
+          desc: `<ul><li>Highly revered in Hindu rituals and Vedic practices</li><li>Suited for homams, special poojas and ceremonial occasions</li><li>Enhances spiritual focus and inner clarity</li></ul>`,
+        },
+        {
+          title: "Sacred Resin",
+          short: "Resinous temple-style fragrance",
+          desc: `<ul><li>Believed to have purifying and cleansing properties</li><li>Creates sacred ambience during rituals and ceremonies</li><li>Used in temple archana and purification practices</li></ul>`,
+        },
+        {
+          title: "Javathu",
+          short: "Rich, distinctive devotional fragrance",
+          desc: `<ul><li>Represents the aromatic heritage of Tamil Nadu</li><li>Carries deep spiritual significance in customs</li><li>Perfect for connecting with ancestral and cultural roots</li></ul>`,
+        },
+      ];
+
+      // ---------- elements ----------
+      const viewer = document.getElementById("viewer");
+      const imgEl = document.getElementById("viewerImg");
+      const captionEl = document.getElementById("viewerCaption");
+      const prevBtn = document.getElementById("viewerPrev");
+      const nextBtn = document.getElementById("viewerNext");
+      const page3 = document.getElementById("page3");
+      const titleEl = document.getElementById("flavorTitle");
+      const shortEl = document.getElementById("flavorShort");
+      const descEl = document.getElementById("flavorDesc");
+
+      let index = 0;
+      let isAnimating = false;
+      let idleTween = null;
+
+      // preload
+      images.forEach((s) => {
+        const i = new Image();
+        i.src = s;
+      });
+
+      function norm(i) {
+        if (i < 0) return images.length - 1;
+        if (i >= images.length) return 0;
+        return i;
+      }
+      function renderInfo(i) {
+        const p = profiles[i] || {};
+        titleEl.textContent = p.title || "";
+        shortEl.textContent = p.short || "";
+        descEl.innerHTML = p.desc || "";
+      }
+
+      const prefersReduced = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      // small idle movement
+      function stopIdle() {
+        if (idleTween) {
+          try {
+            idleTween.kill();
+          } catch (e) {}
+          idleTween = null;
+          if (typeof gsap !== "undefined")
+            gsap.set(imgEl, { clearProps: "all" });
+        }
+      }
+      function startIdle() {
+        stopIdle();
+        if (prefersReduced || typeof gsap === "undefined") return;
+        idleTween = gsap.to(imgEl, {
+          y: "random(-3,3)",
+          x: "random(-2,2)",
+          rotation: "random(-0.5,0.5)",
+          duration: 4.5,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1,
+          repeatRefresh: true,
+        });
+      }
+
+      // utility: create a positioned clone of current image for the outgoing travel
+      function createOutgoingClone(src) {
+        const clone = imgEl.cloneNode(true);
+        clone.src = src;
+        clone.style.position = "absolute";
+        clone.style.left = "50%";
+        clone.style.top = "50%";
+        clone.style.transform = "translate(-50%,-50%)";
+        clone.style.width = "100%";
+        clone.style.height = "100%";
+        clone.style.objectFit = "contain";
+        clone.style.zIndex = 50;
+        clone.style.pointerEvents = "none";
+        viewer.appendChild(clone);
+        return clone;
+      }
+
+      // ensure perspective
+      if (page3) page3.style.perspective = page3.style.perspective || "1100px";
+
+      // MAIN: accepts direction "next" or "prev" to mirror animations
+      function goTo(newIndex, direction = "next") {
+        if (isAnimating) return;
+        newIndex = norm(newIndex);
+
+        if (prefersReduced || typeof gsap === "undefined") {
+          index = newIndex;
+          imgEl.src = images[index];
+          imgEl.alt = "Gallery image " + (index + 1);
+          captionEl.textContent = `Image ${index + 1} of ${images.length}`;
+          if (page3) page3.style.background = bgGradients[index];
+          renderInfo(index);
+          return;
+        }
+
+        isAnimating = true;
+        stopIdle();
+
+        const isNext = direction === "next";
+        const oldSrc = imgEl.src;
+        const outgoing = createOutgoingClone(oldSrc);
+
+        // prepare real image for incoming - set new src immediately but keep it offscreen & small on the correct side
+        index = newIndex;
+        if (page3) page3.style.background = bgGradients[index];
+        imgEl.src = images[index];
+        imgEl.alt = "Gallery image " + (index + 1);
+        captionEl.textContent = `Image ${index + 1} of ${images.length}`;
+
+        // starting X for incoming depends on direction
+        const incomingStartX = isNext ? "120%" : "-120%";
+        const outgoingFirstMoveX = isNext ? "40%" : "-40%";
+        const outgoingSweepX = isNext ? "-120%" : "120%";
+        const outgoingRotationStart = isNext ? 2 : -2;
+        const outgoingRotationEnd = isNext ? -8 : 8;
+        const incomingRotationStart = isNext ? 6 : -6;
+
+        // set incoming initial state
+        gsap.set(imgEl, {
+          x: incomingStartX,
+          y: 0,
+          scale: 0.72,
+          rotation: incomingRotationStart,
+          opacity: 0,
+        });
+
+        // text prepare
+        gsap.set([titleEl, shortEl, descEl], { y: 14, opacity: 0 });
+        renderInfo(index);
+
+        // timeline choreography
+        const tl = gsap.timeline({
+          defaults: { ease: "power2.inOut" },
+          onComplete: () => {
+            try {
+              outgoing.remove();
+            } catch (e) {}
+            isAnimating = false;
+            startIdle();
+          },
+        });
+
+        // hide old text quickly (desc -> small -> title)
+        tl.to(descEl, { y: -14, opacity: 0, duration: 0.14 }, 0);
+        tl.to(shortEl, { y: -12, opacity: 0, duration: 0.12 }, 0.02);
+        tl.to(titleEl, { y: -10, opacity: 0, duration: 0.12 }, 0.04);
+
+        // OUTGOING clone: quick move to first side (right for next, left for prev)
+        tl.to(
+          outgoing,
+          {
+            x: outgoingFirstMoveX,
+            duration: 0.18,
+            rotation: outgoingRotationStart,
+            scale: 1.02,
+            ease: "power3.out",
+          },
+          0
+        );
+
+        // then sweep it across to the opposite side off-screen while shrinking and fading
+        tl.to(
+          outgoing,
+          {
+            x: outgoingSweepX,
+            y: "-6%",
+            scale: 0.6,
+            opacity: 0,
+            rotation: outgoingRotationEnd,
+            duration: 0.34,
+            ease: "power3.in",
+          },
+          "+=0.06"
+        );
+
+        // INCOMING: move real image from start side into center while scaling up
+        tl.to(
+          imgEl,
+          {
+            x: "0%",
+            scale: 1,
+            rotation: 0,
+            opacity: 1,
+            duration: 0.44,
+            ease: "expo.out",
+          },
+          "-=0.18"
+        );
+
+        // text entry order: title -> small -> desc (fast)
+        tl.to(
+          titleEl,
+          { y: 0, opacity: 1, duration: 0.16, ease: "power3.out" },
+          "-=0.12"
+        );
+        tl.to(
+          shortEl,
+          { y: 0, opacity: 1, duration: 0.14, ease: "power3.out" },
+          "-=0.06"
+        );
+        tl.to(
+          descEl,
+          { y: 0, opacity: 1, duration: 0.16, ease: "power3.out" },
+          "+=0.02"
+        );
+      }
+
+      // controls (pass direction)
+      const prev = () => goTo(index - 1, "prev");
+      const next = () => goTo(index + 1, "next");
+      prevBtn.addEventListener("click", prev);
+      nextBtn.addEventListener("click", next);
+
+      // keyboard
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") prev();
+        if (e.key === "ArrowRight") next();
+      });
+
+      // swipe
+      let startX = null;
+      const threshold = 40;
+      imgEl.addEventListener(
+        "touchstart",
+        (e) => (startX = e.touches[0].clientX),
+        { passive: true }
+      );
+      imgEl.addEventListener(
+        "touchend",
+        (e) => {
+          if (startX === null) return;
+          const endX = e.changedTouches[0].clientX;
+          const dx = endX - startX;
+          if (dx > threshold) prev();
+          else if (dx < -threshold) next();
+          startX = null;
+        },
+        { passive: true }
+      );
+
+      // init
+      if (prefersReduced || typeof gsap === "undefined") {
+        index = 0;
+        imgEl.src = images[0];
+        if (page3) page3.style.background = bgGradients[0];
+        renderInfo(0);
+      } else {
+        gsap.set(imgEl, { opacity: 0, x: 0, scale: 1 });
+        gsap.set([titleEl, shortEl, descEl], { opacity: 0, y: 12 });
+        index = 0;
+        imgEl.src = images[0];
+        if (page3) page3.style.background = bgGradients[0];
+        renderInfo(0);
+        const intro = gsap.timeline();
+        intro.to(imgEl, { opacity: 1, duration: 0.5, ease: "power3.out" }, 0);
+        intro.to(titleEl, { y: 0, opacity: 1, duration: 0.18 }, "-=0.32");
+        intro.to(shortEl, { y: 0, opacity: 1, duration: 0.14 }, "-=0.12");
+        intro.to(descEl, { y: 0, opacity: 1, duration: 0.16 }, "+=0.03");
+        intro.call(startIdle, null, "+=0.12");
+      }
+    })();
+
+    (function () {
+      // ---------- CONFIG ----------
+      const images = [
+        "./assets/images/Fragrances/1.png",
+        "./assets/images/Fragrances/2.png",
+        "./assets/images/Fragrances/3.png",
+        "./assets/images/Fragrances/4.png",
+        "./assets/images/Fragrances/5.png",
+        "./assets/images/Fragrances/6.png",
+        "./assets/images/Fragrances/7.png",
+        "./assets/images/Fragrances/8.png",
+      ];
+
+      // matching radial gradients (one per image)
+      const bgGradients = [
+        "radial-gradient(circle, rgba(255,255,255,1) 30%, rgba(45,158,0,1) 100%)",
+        "radial-gradient(circle, rgba(255,255,255,1) 30%, rgba(200,100,0,1) 100%)",
+        "radial-gradient(circle, rgba(255,255,255,1) 30%, rgba(150,0,200,1) 100%)",
+        "radial-gradient(circle, rgba(255,255,255,1) 30%, rgba(0,120,255,1) 100%)",
+        "radial-gradient(circle, rgba(255,255,255,1) 30%, rgba(250,80,80,1) 100%)",
+        "radial-gradient(circle, rgba(255,255,255,1) 30%, rgba(0,180,140,1) 100%)",
+        "radial-gradient(circle, rgba(255,255,255,1) 30%, rgba(180,120,0,1) 100%)",
+        "radial-gradient(circle, rgba(255,255,255,1) 30%, rgba(60,80,200,1) 100%)",
+      ];
+
+      // ---------- ELEMENTS ----------
+      const section = document.getElementById("page3");
+      const overlay = document.getElementById("page3-bg-overlay");
+      const prevBtn = document.getElementById("viewerPrev");
+      const nextBtn = document.getElementById("viewerNext");
+      const caption = document.getElementById("viewerCaption");
+
+      const imgA = document.getElementById("viewerImgA");
+      const imgB = document.getElementById("viewerImgB");
+
+      // initial state
+      let index = 0;
+      let front = imgA; // currently visible image element
+      let back = imgB; // element we load next into
+      let isAnimating = false;
+
+      // preload images
+      images.forEach((src) => {
+        const i = new Image();
+        i.src = src;
+      });
+
+      // helper: set overlay background instantly (used to set initial overlay)
+      overlay.style.background = bgGradients[0];
+      overlay.style.opacity = 0;
+
+      // ensure both imgs have correct initial props
+      front.src = images[0];
+      front.style.opacity = 1;
+      front.style.transform = "translateY(0px) rotateX(0deg)";
+
+      back.style.opacity = 0;
+      back.style.transform = "translateY(0px) rotateX(0deg)";
+
+      // update caption
+      function setCaption(i) {
+        caption.textContent = `Image ${i + 1} of ${images.length}`;
+      }
+      setCaption(0);
+
+      // GSAP timeline for transition (image goes up and fades, next comes down)
+      function transitionTo(newIndex, direction = "next") {
+        if (isAnimating) return;
+        isAnimating = true;
+        const old = front;
+        const next = back;
+
+        // prepare next image
+        next.src = images[newIndex];
+        next.alt = "Gallery image " + (newIndex + 1);
+        next.style.opacity = 0;
+        next.style.transform =
+          direction === "next"
+            ? "translateY(24px) rotateX(6deg) scale(0.99)"
+            : "translateY(-24px) rotateX(-6deg) scale(0.99)";
+
+        // animate background: we use overlay as top layer to crossfade backgrounds
+        // set overlay to new gradient and fade it in, then fade out after swap
+        overlay.style.background = bgGradients[newIndex];
+
+        const tl = gsap.timeline({
+          defaults: { duration: 0.55, ease: "power2.inOut" },
+          onComplete: () => {
+            // swap front/back references
+            [front, back] = [back, front];
+            // hide the now back element to keep stack clean
+            back.style.opacity = 0;
+            back.style.transform = "translateY(0px) rotateX(0deg) scale(1)";
+            // update index and caption
+            index = newIndex;
+            setCaption(index);
+            isAnimating = false;
+          },
+        });
+
+        // 1) bring overlay up (fade-in) quickly to cover old bg
+        tl.to(overlay, { opacity: 1, duration: 0.28 }, 0);
+
+        // 2) animate old image up & fade out (giving 3D feel)
+        tl.to(
+          old,
+          {
+            y: direction === "next" ? -120 : 120,
+            rotationX: direction === "next" ? 12 : -12,
+            opacity: 0,
+            scale: 0.98,
+            transformOrigin: "center center",
+          },
+          0
+        );
+
+        // 3) animate next image from opposite side into view
+        tl.to(
+          next,
+          { y: 0, rotationX: 0, opacity: 1, scale: 1, clearProps: "transform" },
+          0.12
+        );
+
+        // 4) fade overlay back out after image is visible (reveals new bg beneath)
+        tl.to(overlay, { opacity: 0, duration: 0.4 }, 0.42);
+      }
+
+      // public control functions
+      function showNext() {
+        const newIndex = (index + 1) % images.length;
+        transitionTo(newIndex, "next");
+      }
+      function showPrev() {
+        const newIndex = (index - 1 + images.length) % images.length;
+        transitionTo(newIndex, "prev");
+      }
+
+      // button events
+      nextBtn.addEventListener("click", showNext);
+      prevBtn.addEventListener("click", showPrev);
+
+      // ---------- Small robustness patch for on-screen buttons ----------
+      // Paste this right after you define prevBtn and nextBtn (after: const prevBtn = ...; const nextBtn = ...;)
+
+      try {
+        // Ensure buttons behave like buttons (not form 'submit')
+        prevBtn.type = prevBtn.type || "button";
+        nextBtn.type = nextBtn.type || "button";
+
+        // Ensure clicks are accepted (in case overlay/pointer styling was interfering)
+        prevBtn.style.pointerEvents = "auto";
+        nextBtn.style.pointerEvents = "auto";
+
+        // Make sure they're visually above overlays (no styling change to layout, just z-index)
+        // Only set if not already higher — harmless if already set.
+        if (!prevBtn.style.zIndex) prevBtn.style.zIndex = 60;
+        if (!nextBtn.style.zIndex) nextBtn.style.zIndex = 60;
+
+        // Robust click handlers that call your existing navigation helpers.
+        // If you already added listeners earlier this will add another but it simply delegates to the same functions.
+        prevBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          try {
+            prev();
+          } catch (err) {
+            console.error("prev() missing or failed:", err);
+          }
+        });
+        nextBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          try {
+            next();
+          } catch (err) {
+            console.error("next() missing or failed:", err);
+          }
+        });
+
+        // Also add pointerdown for faster mobile response
+        prevBtn.addEventListener("pointerdown", (e) => e.preventDefault(), {
+          passive: true,
+        });
+        nextBtn.addEventListener("pointerdown", (e) => e.preventDefault(), {
+          passive: true,
+        });
+
+        // Helpful debug: warn if click is still blocked (keeps console quiet on success)
+        function testClickable(el, name) {
+          const rect = el.getBoundingClientRect();
+          const midX = rect.left + rect.width / 2,
+            midY = rect.top + rect.height / 2;
+          const hit = document.elementFromPoint(midX, midY);
+          if (hit && !el.contains(hit) && hit !== el) {
+            console.warn(`${name} might be covered by:`, hit);
+          }
+        }
+        // run quick check after a tick so layout stabilizes
+        setTimeout(() => {
+          try {
+            testClickable(prevBtn, "viewerPrev");
+            testClickable(nextBtn, "viewerNext");
+          } catch (e) {}
+        }, 300);
+      } catch (e) {
+        console.error("Button-fix patch failed: ", e);
+      }
+
+      // keyboard events
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") showNext();
+        if (e.key === "ArrowLeft") showPrev();
+      });
+
+      // touch swipe
+      (function () {
+        let startX = null;
+        const el = document.getElementById("viewer");
+        el.addEventListener(
+          "touchstart",
+          (e) => {
+            if (e.touches && e.touches[0]) startX = e.touches[0].clientX;
+          },
+          { passive: true }
+        );
+        el.addEventListener(
+          "touchend",
+          (e) => {
+            if (startX === null) return;
+            const endX = e.changedTouches[0].clientX;
+            const dx = endX - startX;
+            if (dx > 40) showPrev();
+            else if (dx < -40) showNext();
+            startX = null;
+          },
+          { passive: true }
+        );
+      })();
+
+      // init: ensure section has initial gradient under overlay
+      section.style.background = bgGradients[0];
+      // ensure overlay is transparent initially
+      overlay.style.opacity = 0;
+
+      // expose for debugging if needed
+      window._viewer = { showNext, showPrev, images, bgGradients };
+    })();
+    document.addEventListener("DOMContentLoaded", function () {
+      const aboutSection = document.querySelector(".about-section");
+
+      // Add scroll animation
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animated");
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      observer.observe(aboutSection);
+
+      // Stagger animation for point cards
+      const pointCards = document.querySelectorAll(".point-card");
+      pointCards.forEach((card, index) => {
+        card.style.animationDelay = `${0.3 + index * 0.1}s`;
+      });
+
+      // Highlight cards animation
+      const highlightCards = document.querySelectorAll(".highlight-card");
+      highlightCards.forEach((card, index) => {
+        card.style.animationDelay = `${0.5 + index * 0.1}s`;
+      });
+    });
+
+    // Scroll to contact function
+    function scrollToContact() {
+      const contactSection =
+        document.getElementById("contact") || document.querySelector("footer");
+      if (contactSection) {
+        contactSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      } else {
+        // Fallback to alert with better UX
+        const alertDiv = document.createElement("div");
+        alertDiv.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--gradient-1);
+        color: white;
+        padding: 16px 24px;
+        border-radius: 12px;
+        box-shadow: var(--shadow-lg);
+        z-index: 1000;
+        animation: slideIn 0.3s ease-out;
+      `;
+        alertDiv.innerHTML = "Contact section coming soon!";
+        document.body.appendChild(alertDiv);
+
+        setTimeout(() => {
+          alertDiv.style.animation = "slideOut 0.3s ease-out forwards";
+          setTimeout(() => alertDiv.remove(), 300);
+        }, 3000);
+      }
+    }
+
+    // Add CSS for animations
+    const style = document.createElement("style");
+    style.textContent = `
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes slideOut {
+      from {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+    }
+    
+    .about-section .point-card,
+    .about-section .highlight-card {
+      opacity: 0;
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+  `;
+    document.head.appendChild(style);
+  </script>
+</html>
