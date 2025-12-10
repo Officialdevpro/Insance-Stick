@@ -1,191 +1,488 @@
-<!-- WHY CHOOSE TEMPLE-FLOWER INCENSE? (Compact, design-friendly) -->
-<section id="why-choose" class="section-padding">
-  <div class="container">
-    <div class="section-title">
-      <h2>Why Choose Temple-Flower Incense?</h2>
-      <p class="muted">Spiritual value, circular sustainability, and community impact — presented concisely for easy reading.</p>
+<section id="page3" aria-label="Image viewer">
+  <div class="viewer-container">
+    <!-- Content overlay -->
+    <div class="content-overlay">
+      <div class="title-section">
+        <h1 id="flavorTitle" class="flavor-title">Jasmine</h1>
+        <div class="title-sub">
+          <span class="title-line">JASMINE</span>
+          <span class="title-line">Disease Frequency</span>
+        </div>
+      </div>
+
+      <div class="short-desc-section">
+        <p id="flavorShort" class="flavor-short">Fresh, floral jasmine aroma</p>
+      </div>
+
+      <div id="flavorDesc" class="flavor-desc">
+        <ul>
+          <li>Inspired by Jasmine garlands in Tamil temples</li>
+          <li>Perfect for festive and celebratory spiritual ambience</li>
+          <li>Popular during weddings and family gatherings</li>
+        </ul>
+      </div>
     </div>
 
-    <div class="why-grid">
-      <!-- Card 1 -->
-      <article class="why-card">
-        <h3>Honors Sacred Offerings</h3>
-        <ul>
-          <li>Extends the life & purpose of prasadam</li>
-          <li>Preserves the devotional intent of temple flowers</li>
-        </ul>
-        <button class="read-more" aria-expanded="false">Read more</button>
-        <div class="more">
-          <p>Converts offerings into incense so blessed flowers continue to serve spiritual practice rather than be discarded.</p>
-        </div>
-      </article>
-
-      <!-- Card 2 -->
-      <article class="why-card">
-        <h3>Reduces Environmental Burden</h3>
-        <ul>
-          <li>Diverts floral waste from landfills</li>
-          <li>Lower methane & pollution vs. rotting discharge</li>
-        </ul>
-        <button class="read-more" aria-expanded="false">Read more</button>
-        <div class="more">
-          <p>Even small collections of temple flowers prevent organic waste from producing methane—and become valuable raw material.</p>
-        </div>
-      </article>
-
-      <!-- Card 3 -->
-      <article class="why-card">
-        <h3>Supports Women’s Livelihoods</h3>
-        <ul>
-          <li>Local, dignified work for women artisans</li>
-          <li>Fair pay and skill-based employment</li>
-        </ul>
-        <button class="read-more" aria-expanded="false">Read more</button>
-        <div class="more">
-          <p>Production is women-led, building steady income and preserving traditional handcraft skills across Salem-region communities.</p>
-        </div>
-      </article>
-
-      <!-- Card 4 -->
-      <article class="why-card">
-        <h3>Carbon-Free & Biodegradable</h3>
-        <ul>
-          <li>No charcoal base — fully biodegradable</li>
-          <li>Lower carbon footprint than conventional sticks</li>
-        </ul>
-        <button class="read-more" aria-expanded="false">Read more</button>
-        <div class="more">
-          <p>Made without charcoal, our agarbathi uses natural binders and temple botanics for an eco-conscious burn.</p>
-        </div>
-      </article>
-
-      <!-- Card 5 -->
-      <article class="why-card">
-        <h3>Temple Partnerships</h3>
-        <ul>
-          <li>Direct temple sourcing and revenue sharing</li>
-          <li>Strengthens temple-community ties</li>
-        </ul>
-        <button class="read-more" aria-expanded="false">Read more</button>
-        <div class="more">
-          <p>Close collaboration with temples ensures respectful collection and a model that helps maintain local spiritual spaces.</p>
-        </div>
-      </article>
-
-      <!-- Card 6 -->
-      <article class="why-card">
-        <h3>Cultural & Spiritual Authenticity</h3>
-        <ul>
-          <li>Fragrances inspired by Dravidian temple botanicals</li>
-          <li>Traditional techniques + modern quality controls</li>
-        </ul>
-        <button class="read-more" aria-expanded="false">Read more</button>
-        <div class="more">
-          <p>We preserve traditional incense methods while meeting modern standards so the scent truly connects people with ritual roots.</p>
-        </div>
-      </article>
-    </div>
-
-    <div style="text-align:center; margin-top:1.4rem;">
-      <a href="#process" class="btn btn-primary">Learn about our process</a>
-      <a href="#contact" class="btn btn-secondary">Bulk & Temple Partnerships</a>
+    <!-- Center: Gallery viewer -->
+    <div class="gallery-container">
+      <button class="viewer-btn prev" aria-label="Previous image" id="viewerPrev">
+        &larr;
+      </button>
+      
+      <div class="viewer" id="viewer" role="region" aria-roledescription="image gallery" aria-label="Product gallery">
+        <img id="viewerImg" src="./assets/images/Fragrances/1.png" alt="Gallery image" />
+        <div id="viewerCaption" class="viewer-caption">Image 1 of 8</div>
+      </div>
+      
+      <button class="viewer-btn next" aria-label="Next image" id="viewerNext">
+        &rarr;
+      </button>
     </div>
   </div>
 </section>
 
-<!-- Compact CSS: add below your existing styles (keeps token names) -->
 <style>
-  .muted { color: var(--gray); max-width:720px; margin:0 auto 1.2rem; }
-  .why-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.4rem;
-    align-items:stretch;
-  }
-  .why-card {
-    background: var(--white);
-    border-radius: 12px;
-    padding: 1.2rem;
-    box-shadow: 0 8px 22px rgba(10,10,12,0.06);
-    transition: transform .28s ease, box-shadow .28s ease;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    min-height:170px;
-  }
-  .why-card h3 {
-    font-size:1.05rem;
-    color:var(--primary);
-    margin-bottom:.6rem;
-  }
-  .why-card ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    color: var(--gray);
-    font-size: .95rem;
-  }
-  .why-card ul li {
-    margin-bottom: .45rem;
-    position: relative;
-    padding-left: 18px;
-  }
-  .why-card ul li::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: var(--primary-light);
-    font-weight: 700;
-  }
-  .why-card .more {
-    margin-top: .8rem;
-    display: none;
-    color: var(--dark);
-    font-size: .95rem;
-  }
-  .why-card .read-more {
-    margin-top: .7rem;
-    background: transparent;
-    border: none;
-    color: var(--primary);
-    font-weight:600;
-    cursor:pointer;
-    text-align:left;
-    padding:0;
-  }
+  /* PAGE 3 container */
+ /* Page container */
+#page3 {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.8s ease;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .why-card:hover { transform: translateY(-6px); box-shadow: 0 18px 38px rgba(15,23,42,0.06); }
+/* Main container */
+.viewer-container {
+  width: 100%;
+  max-width: 1400px;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
 
-  /* Responsive */
-  @media (max-width: 980px) {
-    .why-grid { grid-template-columns: repeat(2, 1fr); }
+/* Content overlay - positioned absolutely over the entire container */
+.content-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  padding: clamp(20px, 4vw, 80px);
+  display: grid;
+  grid-template-areas: 
+    "title ."
+    ". ."
+    "short desc";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  gap: 20px;
+  pointer-events: none; /* Allow clicks to pass through to buttons */
+}
+
+/* Title section - top-left */
+.title-section {
+  grid-area: title;
+  color: white;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.flavor-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 900;
+  margin: 0 0 0.5rem 0;
+  line-height: 0.9;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.title-sub {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.title-line {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  opacity: 0.9;
+}
+
+/* Short description - bottom-left */
+.short-desc-section {
+  grid-area: short;
+  align-self: end;
+  pointer-events: none;
+}
+
+.flavor-short {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  color: white;
+  margin: 0;
+  font-weight: 500;
+  max-width: 300px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Long description - bottom-right */
+.flavor-desc {
+  grid-area: desc;
+  align-self: end;
+  justify-self: end;
+  pointer-events: none;
+}
+
+.flavor-desc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 400px;
+}
+
+.flavor-desc li {
+  color: white;
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  margin-bottom: 0.8rem;
+  padding-left: 1.5rem;
+  position: relative;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  line-height: 1.4;
+}
+
+.flavor-desc li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: white;
+  font-size: 1.5em;
+}
+
+/* Gallery container - centered */
+.gallery-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 2vw, 30px);
+  grid-row: 1;
+  grid-column: 1;
+  z-index: 1;
+}
+
+/* Main viewer */
+.viewer {
+  width: min(800px, 85vw);
+  height: min(500px, 70vh);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.viewer img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Buttons */
+.viewer-btn {
+  width: clamp(50px, 6vw, 70px);
+  height: clamp(50px, 6vw, 70px);
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+.viewer-btn:hover {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: scale(1.1);
+}
+
+/* Caption */
+.viewer-caption {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  backdrop-filter: blur(4px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .content-overlay {
+    padding: 40px;
+    gap: 15px;
   }
-  @media (max-width: 560px) {
-    .why-grid { grid-template-columns: 1fr; }
-    .why-card { min-height: auto; }
-    .why-card .read-more { text-align:left; }
+}
+
+@media (max-width: 768px) {
+  .content-overlay {
+    grid-template-areas: 
+      "title"
+      "short"
+      "desc";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    padding: 30px 20px;
+    gap: 25px;
   }
+  
+  .title-section {
+    text-align: center;
+  }
+  
+  .short-desc-section {
+    text-align: center;
+    align-self: center;
+  }
+  
+  .flavor-short {
+    max-width: 100%;
+  }
+  
+  .flavor-desc {
+    justify-self: center;
+    align-self: start;
+  }
+  
+  .flavor-desc ul {
+    max-width: 100%;
+  }
+  
+  .viewer {
+    width: 90vw;
+    height: min(400px, 60vh);
+  }
+  
+  .gallery-container {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  #page3 {
+    padding: 10px;
+  }
+  
+  .content-overlay {
+    padding: 20px 15px;
+    gap: 20px;
+  }
+  
+  .viewer {
+    height: min(350px, 50vh);
+    border-radius: 15px;
+  }
+  
+  .viewer-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+  }
+  
+  .flavor-desc li {
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+  }
+}
 </style>
 
-<!-- Tiny JS for "Read more" toggles (put this with your other scripts) -->
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('#why-choose .read-more').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const card = btn.closest('.why-card');
-        const more = card.querySelector('.more');
-        const expanded = btn.getAttribute('aria-expanded') === 'true';
-        if (!expanded) {
-          more.style.display = 'block';
-          btn.textContent = 'Show less';
-          btn.setAttribute('aria-expanded', 'true');
-        } else {
-          more.style.display = 'none';
-          btn.textContent = 'Read more';
-          btn.setAttribute('aria-expanded', 'false');
-        }
-      });
-    });
+(function () {
+  /* ---------- Data (use your existing arrays) ---------- */
+  const images = [
+    "./assets/images/Fragrances/1.png",
+    "./assets/images/Fragrances/2.png",
+    "./assets/images/Fragrances/3.png",
+    "./assets/images/Fragrances/4.png",
+    "./assets/images/Fragrances/5.png",
+    "./assets/images/Fragrances/6.png",
+    "./assets/images/Fragrances/7.png",
+    "./assets/images/Fragrances/8.png"
+  ];
+
+  const bgGradients = [
+    "radial-gradient(circle,rgba(255,255,255,1) 0%, rgba(8,150,0,1) 82%)",
+    "radial-gradient(circle,rgba(255, 255, 255, 1) 30%, rgba(255, 213, 0, 1) 82%)",
+    "radial-gradient(circle,rgba(255,255,255,1) 0%, rgba(83,0,191,1) 82%)",
+    "radial-gradient(circle,rgba(255,255,255,1) 20%, rgba(45,158,0,1) 82%)",
+    "radial-gradient(circle,rgba(255, 255, 255, 1) 30%, rgba(189, 0, 79, 1) 82%)",
+    "radial-gradient(circle,rgba(255,255,255,1) 30%, rgba(158,66,0,1) 100%)",
+    "radial-gradient(circle,rgba(255,255,255,1) 30%, rgba(158,124,0,1) 100%)",
+    "radial-gradient(circle,rgba(255,255,255,1) 30%, rgba(60,80,200,1) 100%)"
+  ];
+
+  const profiles = [
+    { title: "Jasmine", short: "Fresh, floral jasmine aroma", desc: "<ul><li>Inspired by jasmine garlands in Tamil temples</li><li>Perfect for festive and celebratory spiritual ambience</li><li>Popular during weddings and family gatherings</li></ul>" },
+    { title: "Champa", short: "Traditional temple floral scent", desc: "<ul><li>Iconic in South Indian shrine traditions</li><li>Reminiscent of ancient Tamil temples and pilgrimage centres</li><li>Perfect for family puja and festive occasions</li></ul>" },
+    { title: "Lavender", short: "Calming and soothing aromatic notes", desc: "<ul><li>Brings tranquility and relaxation to meditation practice</li><li>Excellent for yoga spaces, personal prayer rooms, and bedtime rituals</li><li>Blended from traditional South Indian herbal essences</li></ul>" },
+    { title: "Screw Pine", short: "Delicate, unique floral aroma", desc: "<ul><li>Inspired by screw pine flowers used in worship</li><li>Traditional and culturally rooted fragrance experience</li><li>Ideal for those seeking a regional temple aroma</li></ul>" },
+    { title: "Rose", short: "Soft, devotional floral fragrance", desc: "<ul><li>Reminiscent of rose garlands offered to goddesses in South Indian temples</li><li>Perfect for daily puja, meditation, and creating a soothing home ambience</li><li>Ideal for Durga Puja, Lakshmi Puja, and feminine spiritual spaces</li></ul>" },
+    { title: "Sandal", short: "Classic woody, sacred aroma", desc: "<ul><li>Highly revered in Hindu rituals and Vedic practices</li><li>Suited for homams, special poojas and ceremonial occasions</li><li>Enhances spiritual focus and inner clarity</li></ul>" },
+    { title: "Sacred Resin", short: "Resinous temple-style fragrance", desc: "<ul><li>Believed to have purifying and cleansing properties</li><li>Creates sacred ambience during rituals and ceremonies</li><li>Used in temple archana and purification practices</li></ul>" },
+    { title: "Javathu", short: "Rich, distinctive devotional fragrance", desc: "<ul><li>Represents the aromatic heritage of Tamil Nadu</li><li>Carries deep spiritual significance in customs</li><li>Perfect for connecting with ancestral and cultural roots</li></ul>" }
+  ];
+
+  /* ---------- elements ---------- */
+  const page3 = document.getElementById("page3");
+  const imgEl = document.getElementById("viewerImg");
+  const captionEl = document.getElementById("viewerCaption");
+  const prevBtn = document.getElementById("viewerPrev");
+  const nextBtn = document.getElementById("viewerNext");
+  const titleEl = document.getElementById("flavorTitle");
+  const shortEl = document.getElementById("flavorShort");
+  const descEl = document.getElementById("flavorDesc");
+  const viewer = document.getElementById("viewer");
+
+  let index = 0;
+  let autoplay = null;
+  const AUTOPLAY_MS = 2000;
+
+  // preload images (non-blocking)
+  images.forEach(src => { const i=new Image(); i.src=src; });
+
+  function norm(i) {
+    if (i < 0) return images.length - 1;
+    if (i >= images.length) return 0;
+    return i;
+  }
+
+  function render(index) {
+    // update image + alt + bg + caption
+    imgEl.src = images[index];
+    imgEl.alt = profiles[index]?.title ? `${profiles[index].title} product` : `Image ${index+1}`;
+    captionEl.textContent = `Image ${index+1} of ${images.length}`;
+    if (page3) page3.style.background = bgGradients[index] || page3.style.background;
+
+    // update text
+    const p = profiles[index] || {};
+    titleEl.textContent = p.title || "";
+    shortEl.textContent = p.short || "";
+    descEl.innerHTML = p.desc || "";
+  }
+
+  // simple crossfade (fallback without GSAP)
+  function goTo(n, direction = "next") {
+    if (typeof gsap === "undefined" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      index = norm(n);
+      render(index);
+      return;
+    }
+
+    // prefer your existing goTo animation (if defined) — else do quick fade
+    if (typeof window.goTo === "function") {
+      window.goTo(n, direction); // call existing animation function if present
+      index = norm(n);
+      return;
+    }
+
+    // fallback simple
+    index = norm(n);
+    imgEl.style.opacity = 0;
+    setTimeout(() => {
+      render(index);
+      imgEl.style.opacity = 1;
+    }, 220);
+  }
+
+  // controls
+  prevBtn.addEventListener("click", () => { goTo(index - 1, "prev"); restartAutoplay(); });
+  nextBtn.addEventListener("click", () => { goTo(index + 1, "next"); restartAutoplay(); });
+
+  // autoplay
+  function startAutoplay() {
+    stopAutoplay();
+    autoplay = setInterval(() => {
+      goTo(index + 1, "next");
+    }, AUTOPLAY_MS);
+  }
+  function stopAutoplay() { if (autoplay) { clearInterval(autoplay); autoplay = null; } }
+  function restartAutoplay() { stopAutoplay(); setTimeout(startAutoplay, 1200); }
+
+  // pause while hovering or focusing
+  [viewer, prevBtn, nextBtn].forEach(el => {
+    el.addEventListener("mouseenter", stopAutoplay);
+    el.addEventListener("mouseleave", startAutoplay);
+    el.addEventListener("focusin", stopAutoplay);
+    el.addEventListener("focusout", startAutoplay);
   });
+
+  // swipe support (simple)
+  let startX = null;
+  viewer.addEventListener("touchstart", e => { startX = e.touches[0].clientX; stopAutoplay(); }, { passive: true });
+  viewer.addEventListener("touchend", e => {
+    if (startX === null) return;
+    const dx = e.changedTouches[0].clientX - startX;
+    if (dx > 50) goTo(index - 1, "prev");
+    else if (dx < -50) goTo(index + 1, "next");
+    startX = null;
+    restartAutoplay();
+  }, { passive: true });
+
+  // keyboard
+  window.addEventListener("keydown", e => {
+    if (e.key === "ArrowLeft") { goTo(index - 1, "prev"); restartAutoplay(); }
+    if (e.key === "ArrowRight") { goTo(index + 1, "next"); restartAutoplay(); }
+  });
+
+  // IntersectionObserver: initialize content only when page3 visible (fixes your earlier issue)
+  let initialized = false;
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting && !initialized) {
+        initialized = true;
+        render(0); // initial render
+        // if you have a complex animation using GSAP, call its init here.
+        // If you want autoplay only after GSAP intro, call startAutoplay after intro completes.
+        startAutoplay();
+      }
+      if (!entry.isIntersecting && initialized) {
+        // optional: pause autoplay when page3 out of view
+        stopAutoplay();
+      }
+    }
+  }, { threshold: 0.25 });
+
+  if (page3) observer.observe(page3);
+
+  // expose render/goTo for external usage (your GSAP script uses window.goTo)
+  window.goTo = function (n, dir) { n = norm(n); index = n; render(index); };
+
+  // If user navigates directly (no IntersectionObserver support), ensure fallback init
+  setTimeout(() => {
+    if (!initialized) {
+      initialized = true;
+      render(0);
+      startAutoplay();
+    }
+  }, 800);
+})();
 </script>

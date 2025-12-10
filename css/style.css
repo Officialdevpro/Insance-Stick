@@ -1,17 +1,1084 @@
-/* --- STYLE.CSS --- */
+:root {
+  --header-height: 70px;
+  --max-width: 1200px;
+  --bg-gradient-start: #ffffff;
+  --bg-gradient-end: #f7f7f8;
+  --accent: #ffffff; /* blue-600 */
+  --muted: #3d3d3d; /* gray-500 */
+  --header-z: 50;
+}
+/* Hide scrollbar for Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* Hide scrollbar for Firefox */
+html,
+body {
+  scrollbar-width: none;
+}
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  background: var(--light);
-  color: var(--dark);
-  line-height: 1.6;
-  
+  -ms-overflow-style: none;
 }
 
+body {
+  /* keep other body properties but remove background-image so it's not global */
+  background-image: none !important;
+  background-color: #f7f7f7; /* keep your fallback */
+  scrollbar-width: none;
+}
+
+/* Full-screen behavior for each section (so each is a 'page') */
+main > section {
+  min-height: 100vh; /* occupy full viewport */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+/* First section (home) - use your image path */
+main > section:nth-of-type(1) {
+  background-image: url("../assets/images/images/home.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed; /* optional parallax-like feel */
+  color: #fff; /* text on image should be light */
+  position: relative;
+}
+
+/* optional overlay for better contrast on first section */
+main > section:nth-of-type(1)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.32); /* dark overlay — adjust opacity if needed */
+  pointer-events: none;
+  z-index: 1;
+}
+main > section:nth-of-type(1) > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Third section — plain blue full page */
+main > section:nth-of-type(3) {
+  background: #2563eb; /* blue */
+  color: #fff;
+}
+
+html {
+  scroll-padding-top: -80px; /* Matches your --header-height */
+}
+
+/* Also ensure all sections account for header */
+main > section {
+  padding-top: -80px; /* Add space at the top of each section */
+}
+
+/* Fourth section — plain orange full page */
+
+/* Fifth section — plain green full page */
+
+/* Optional: make headings scale nicely on hero */
+main > section h1,
+main > section h2,
+main > section p {
+  margin: 0;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  main > section:nth-of-type(1) {
+    background-attachment: scroll;
+  }
+}
+
+/* Alternative: hero section with a semi-transparent overlay for better text contrast */
+.home-hero {
+  position: relative;
+  min-height: 100vh; /* or a fixed height like 560px */
+  background-image: url("./assets/images/images/home.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: scroll; /* use 'fixed' if you want parallax effect */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff; /* text color over image */
+}
+
+/* overlay layer */
+.home-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0; */
+  background: rgba(
+    0,
+    0,
+    0,
+    0.35
+  ); /* adjust alpha and color for stronger/weaker overlay */
+  pointer-events: none;
+}
+
+/* content inside hero (keeps above overlay) */
+.home-hero .hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+  text-align: center;
+  max-width: 1100px;
+}
+
+/* Accessibility: respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  body,
+  .home-hero {
+    background-attachment: scroll;
+  }
+}
+
+/* Reset-ish */
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial;
+  color: #111827;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Header */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--header-z);
+  backdrop-filter: blur(0px);
+
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
+
+/* Container */
 .container {
   max-width: var(--max-width);
-  margin: auto;
+  margin: 0 auto;
+  padding: 0 16px;
 }
 
+/* nav row */
+.nav-row {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
+/* logo */
+.logo-wrap {
+  display: flex;
+  align-items: center;
+}
+.logo {
+  height: 100px;
+  width: auto;
+  border-radius: 10px;
+  transition: transform 0.25s ease;
+}
+.logo:hover {
+  transform: scale(1.05);
+}
 
+/* Desktop nav */
+.desktop-nav {
+  display: none;
+  align-items: center;
+  gap: 18px;
+}
+
+/* link style */
+.nav-link {
+  color: #dedede;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+  overflow: visible;
+}
+
+/* underline effect using a small absolute bar (span child) */
+.nav-link .underline {
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 0%;
+  background: var(--accent);
+  transition: width 0.28s cubic-bezier(0.2, 0.9, 0.2, 1);
+  border-radius: 2px;
+}
+.nav-link:hover {
+  color: var(--accent);
+  background: #873901;
+  transform: translateY(0);
+}
+.nav-link:hover .underline {
+  width: 100%;
+}
+
+/* Icon button for mobile (we'll use label+checkbox) */
+.icon-button {
+  background: transparent;
+  border: none;
+  padding: 8px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #374151; /* gray-700 */
+  transition: color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+}
+.icon-button:hover {
+  color: var(--accent);
+  background: rgba(37, 99, 235, 0.06);
+  transform: translateY(0);
+}
+
+/* Mobile menu -- hidden by default */
+.mobile-menu {
+  padding: 12px 16px 18px;
+  animation: fadeIn 0.22s ease both;
+  display: none;
+  z-index: 2 !important;
+}
+
+/* mobile link styles */
+.mobile-links .mobile-link {
+  display: block;
+  text-decoration: none;
+  color: #374151;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 16px;
+  margin-bottom: 8px;
+  transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
+}
+.mobile-links .mobile-link:hover {
+  color: var(--accent);
+  background: rgba(37, 99, 235, 0.06);
+  transform: translateX(8px);
+}
+
+/* small screens: show mobile button, hide desktop nav */
+@media (max-width: 767px) {
+  .desktop-nav {
+    display: none;
+  }
+  .mobile-button-wrap {
+    display: block;
+  }
+}
+
+/* medium and up: show desktop nav, hide mobile button/menu */
+@media (min-width: 768px) {
+  .desktop-nav {
+    display: flex;
+  }
+  .mobile-button-wrap {
+    display: none;
+  }
+  .mobile-menu {
+    display: none !important;
+  }
+}
+
+/* --- Checkbox toggle logic --- */
+/* hide the checkbox visually but keep it accessible */
+.menu-checkbox {
+  position: absolute;
+  opacity: 0;
+
+  width: 0;
+  height: 0;
+}
+
+/* when checkbox is checked, show the mobile menu */
+.menu-checkbox:checked ~ .mobile-menu {
+  display: block;
+}
+
+/* show/hide icons inside the label depending on checkbox state */
+.menu-label .icon-open {
+  display: inline;
+}
+.menu-label .icon-close {
+  display: none;
+}
+.menu-checkbox:checked + .menu-label .icon-open {
+  display: none;
+}
+.menu-checkbox:checked + .menu-label .icon-close {
+  display: inline;
+}
+
+/* style the label like the icon-button */
+.menu-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 999px;
+  cursor: pointer;
+  color: #374151;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+.menu-label:hover {
+  color: var(--accent);
+  background: rgba(37, 99, 235, 0.06);
+}
+
+/* menu slide/fade effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* small accessibility helpers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* small enhancement: focus visible */
+a:focus,
+.menu-label:focus {
+  outline: 3px solid rgba(37, 99, 235, 0.12);
+  outline-offset: 3px;
+}
+/* --- Split layout styles for second page --- */
+.split-section {
+  /* keep full-page behavior */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+  color: var(--ui-text);
+  background-color: #f8f9fa;
+
+  background-image: linear-gradient(to bottom right, #fdfcfb, #f9f5eb);
+}
+
+/* inner grid */
+.split-inner {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+ 
+  align-items: center;
+}
+
+/* LEFT column */
+.split-left .content {
+  color: #111827;
+  padding: 20px 10px;
+}
+.split-left h2 {
+  font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+  margin: 0 0 2rem;
+  color: #8b4513 !important;
+}
+.split-left .lead {
+  font-size: 1.05rem;
+  color: var(--ui-text-light);
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+}
+
+/* counters */
+.counters {
+  display: flex;
+  gap: 18px;
+  margin: 18px 0;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: end;
+}
+.counter {
+  min-width: 90px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 12px 14px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
+
+.counters {
+  display: flex;
+  gap: 18px;
+  margin: 18px 0;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: flex-end; /* keeps your original alignment */
+}
+
+/* card */
+.counter {
+  min-width: 90px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
+  padding: 16px 18px;
+  border-radius: var(--card-radius);
+  text-align: center;
+  box-shadow: var(--shadow);
+  position: relative;
+  transform: translateY(0);
+  transition: transform 0.28s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.28s;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px); /* for Safari */
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
+
+/* subtle floating animation */
+.counter.float {
+  animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* decorative gradient edge */
+.counter::before {
+  content: "";
+  position: absolute;
+  left: -40%;
+  top: -60%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    closest-side,
+    rgba(212, 175, 55, 0.08),
+    transparent 35%
+  );
+  transform: rotate(12deg);
+  pointer-events: none;
+}
+
+/* hover interaction */
+.counter:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 18px 40px #8b4513d2;
+}
+
+/* number */
+.counter .num {
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: #8b4513;
+  letter-spacing: 0.6px;
+  margin-bottom: 4px;
+  display: block;
+  position: relative;
+  z-index: 2;
+}
+
+/* colored accent under number */
+.counter .num::after {
+  content: "";
+  display: block;
+  height: 6px;
+  width: 36px;
+  margin: 8px auto 0;
+  border-radius: 6px;
+  background: linear-gradient(
+    90deg,
+    rgba(212, 175, 55, 0.95),
+    rgba(255, 255, 255, 0.08)
+  );
+  opacity: 0.9;
+}
+
+/* label */
+.counter .label {
+  font-size: 0.78rem;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-top: 6px;
+}
+
+/* small-screen tweak */
+@media (max-width: 520px) {
+  .counters {
+    justify-content: center;
+  }
+  .counter {
+    min-width: 84px;
+    padding: 12px 10px;
+  }
+  .counter .num {
+    font-size: 1.05rem;
+  }
+}
+
+/* buttons */
+
+/* RIGHT column - modern clipped image */
+.split-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 420px;
+}
+
+/* IMAGE WRAPPER — rectangular, full-fit image, responsive */
+.image-wrap {
+  width: 100%; /* keep half-width in the two-column layout */
+  max-width: 520px;
+  /* preserves intended shape; remove if you prefer natural image height */
+  overflow: hidden;
+  border-radius: 20px; /* rounded corners */
+  transform: translateY(0);
+  transition: transform 360ms cubic-bezier(0.2, 0.9, 0.2, 1), box-shadow 360ms;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+  position: relative;
+  background: #eee; /* fallback while image loads */
+}
+
+/* Image fills wrapper perfectly, cropped as needed */
+.image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fill and crop as needed */
+  display: block;
+  transform: scale(1);
+  transition: transform 520ms cubic-bezier(0.2, 0.9, 0.2, 1);
+  will-change: transform;
+  border-radius: inherit; /* matches wrapper corners */
+}
+
+/* Hover: subtle lift + smooth zoom (desktop only) */
+.image-wrap:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 70px rgba(15, 23, 42, 0.18);
+}
+.image-wrap:hover img {
+  transform: scale(1.06); /* zoom only */
+}
+
+/* Mobile: stack and avoid hover effects */
+@media (max-width: 767px) {
+  .image-wrap {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 16 / 9; /* more natural on narrow screens */
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  }
+  .image-wrap:hover {
+    transform: none;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  }
+  .image-wrap:hover img {
+    transform: none;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .image-wrap,
+  .image-wrap img {
+    transition: none;
+    transform: none !important;
+  }
+}
+
+/* ensure left column is the positioning context for shapes */
+.split-left {
+  position: relative; /* add this so .shape absolute positions are relative to left column */
+}
+
+/* base shape (shared) */
+.shape {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(28px);
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 0; /* behind text */
+  transition: transform 1200ms ease, opacity 900ms ease;
+}
+
+/* Left-side blobs (positioned relative to .split-left) */
+.shape-1 {
+  width: 160px;
+  height: 160px;
+  left: -40px; /* moved to the left side */
+  top: -100px;
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.9),
+    rgba(139, 92, 246, 0.7)
+  );
+  transform: rotate(-18deg);
+  z-index: 1;
+}
+
+.shape-2 {
+  width: 220px;
+  height: 220px;
+  left: -80px; /* moved to the left side */
+  bottom: -100px;
+  background: linear-gradient(
+    135deg,
+    rgba(16, 185, 129, 0.9),
+    rgba(34, 197, 94, 0.7)
+  );
+  transform: rotate(6deg);
+  z-index: 1;
+}
+
+/* subtle float animation */
+@keyframes shapeFloat {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.56;
+  }
+  50% {
+    transform: translateY(-8px) scale(1.02);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.56;
+  }
+}
+.shape-1 {
+  animation: shapeFloat 9000ms ease-in-out infinite;
+  animation-delay: 0ms;
+}
+.shape-2 {
+  animation: shapeFloat 8200ms ease-in-out infinite;
+  animation-delay: 300ms;
+}
+
+/* scale slightly when user hovers the image area for a bit of life */
+.image-wrap:hover ~ .shape,
+.image-wrap:hover + .shape,
+.image-wrap:hover .shape,
+.split-left:hover .shape {
+  transform: scale(1.04);
+  opacity: 0.78;
+}
+
+/* hide shapes on small screens */
+@media (max-width: 767px) {
+  .shape {
+    display: none;
+  }
+}
+
+/* respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .shape {
+    animation: none;
+    transition: none;
+  }
+}
+
+.site-header {
+  transition: opacity 0.4s ease;
+}
+/* small screens: stack columns */
+@media (max-width: 767px) {
+  .split-inner {
+    grid-template-columns: 1fr;
+  
+    padding: 0 12px;
+  }
+  .split-right {
+    order: -1;
+  } /* show image above content on mobile (change if you prefer) */
+  .image-wrap {
+    max-width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 18px;
+  }
+  .shape-1,
+  .shape-2 {
+    display: none;
+  }
+  .counters {
+    justify-content: center;
+  }
+  .actions {
+    justify-content: center;
+  }
+}
+
+/* HOME SECTION STYLES */
+/* Image viewer (section 3) */
+/* Page container */
+#page3 {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.8s ease;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Main container */
+.viewer-container {
+  width: 100%;
+  max-width: 1400px;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+/* Content overlay - positioned absolutely over the entire container */
+.content-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  padding: clamp(20px, 4vw, 80px);
+  display: grid;
+  grid-template-areas: 
+    "title ."
+    ". ."
+    "short desc";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  gap: 20px;
+  pointer-events: none; /* Allow clicks to pass through to buttons */
+}
+
+/* Title section - top-left */
+.title-section {
+  grid-area: title;
+  color: white;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.flavor-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 900;
+  margin: 0 0 0.5rem 0;
+  line-height: 0.9;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.title-sub {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.title-line {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  opacity: 0.9;
+}
+
+/* Short description - bottom-left */
+.short-desc-section {
+  grid-area: short;
+  align-self: end;
+  pointer-events: none;
+}
+
+.flavor-short {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  color: white;
+  margin: 0;
+  font-weight: 500;
+  max-width: 300px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Long description - bottom-right */
+.flavor-desc {
+  grid-area: desc;
+  align-self: end;
+  justify-self: end;
+  pointer-events: none;
+}
+
+.flavor-desc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 400px;
+}
+
+.flavor-desc li {
+  color: white;
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  margin-bottom: 0.8rem;
+  padding-left: 1.5rem;
+  position: relative;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  line-height: 1.4;
+}
+
+.flavor-desc li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: white;
+  font-size: 1.5em;
+}
+
+/* Gallery container - centered */
+.gallery-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 2vw, 30px);
+  grid-row: 1;
+  grid-column: 1;
+  z-index: 1;
+}
+
+/* Main viewer */
+.viewer {
+  width: min(800px, 85vw);
+  height: min(500px, 70vh);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.viewer img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Buttons */
+.viewer-btn {
+  width: clamp(50px, 6vw, 70px);
+  height: clamp(50px, 6vw, 70px);
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+.viewer-btn:hover {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: scale(1.1);
+}
+
+/* Caption */
+.viewer-caption {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  backdrop-filter: blur(4px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .content-overlay {
+    padding: 40px;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-overlay {
+    grid-template-areas: 
+      "title"
+      "short"
+      "desc";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    padding: 30px 20px;
+    gap: 25px;
+  }
+  
+  .title-section {
+    text-align: center;
+  }
+  
+  .short-desc-section {
+    text-align: center;
+    align-self: center;
+  }
+  
+  .flavor-short {
+    max-width: 100%;
+  }
+  
+  .flavor-desc {
+    justify-self: center;
+    align-self: start;
+  }
+  
+  .flavor-desc ul {
+    max-width: 100%;
+  }
+  
+  .viewer {
+    width: 90vw;
+    height: min(400px, 60vh);
+  }
+  
+  .gallery-container {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  #page3 {
+    padding: 10px;
+  }
+  
+  .content-overlay {
+    padding: 20px 15px;
+    gap: 20px;
+  }
+  
+  .viewer {
+    height: min(350px, 50vh);
+    border-radius: 15px;
+  }
+  
+  .viewer-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+  }
+  
+  .flavor-desc li {
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+  }
+}
+/* SECTION STYLING LIKE YOUR REFERENCE */
+.history-section {
+  height: 50vh; /* 50% of the screen height */
+  width: 100%;
+  background: #ffffff; /* dark maroon similar to reference */
+  display: flex;
+  align-items: center; /* vertically center */
+  justify-content: space-evenly;
+  flex-direction: column; /* horizontally center */
+  padding: 10px 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* CONTAINER */
+.history-content {
+  max-width: 950px; /* same wide block as reference */
+}
+
+/* TITLE */
+.history-title {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 26px;
+}
+
+/* DESCRIPTION TEXT */
+.history-text {
+  font-size: clamp(1rem, 1.4vw, 1.3rem);
+  color: #e6d6d6;
+  line-height: 1.7;
+  font-weight: 300;
+}
+#page3 {
+  position: relative;
+}
+.alata-regular {
+  font-family: "Alata", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}

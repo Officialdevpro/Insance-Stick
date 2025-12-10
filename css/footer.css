@@ -13,7 +13,11 @@ body {
 /* ---------- FOOTER ---------- */
 
 .modern-footer {
-  background: linear-gradient(to right, var(--ui-primary), var(--ui-primary-light));
+  background: linear-gradient(
+    to right,
+    var(--ui-primary),
+    var(--ui-primary-light)
+  );
   color: #bdbdbd;
   padding: 70px 20px 40px;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.6);
@@ -54,7 +58,6 @@ body {
 /* ---------- ABOUT SECTION ---------- */
 .footer-col.about {
   width: 50%;
-  
 }
 
 /* ---------- LINKS ---------- */
@@ -145,7 +148,6 @@ body {
 
   .footer-col {
     text-align: center;
-    
   }
 
   .footer-col h3::after {
@@ -153,10 +155,8 @@ body {
     transform: translateX(-50%);
   }
   .footer-col.about {
-  width: 100%;
-  
-}
-
+    width: 100%;
+  }
 }
 /* Section Starts Here */
 /* =========================================
@@ -194,12 +194,10 @@ body {
 }
 
 .story-section::before {
-  background: #9b5cff;
   top: -60px;
   left: -40px;
 }
 .story-section::after {
-  background: #4dd5ff;
   bottom: -60px;
   right: -40px;
 }
@@ -936,11 +934,6 @@ body {
 }
 
 @media (max-width: 768px) {
-  .company-header {
-    flex-direction: column;
-    text-align: center;
-  }
-
   .badge-row {
     justify-content: center;
   }
