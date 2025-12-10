@@ -1,177 +1,1668 @@
-<!-- ===== ABOUT ARUDHRA CREATIONS — Enhanced Split Layout ===== -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-<section id="about-arudhra" class="ac-section" aria-labelledby="ac-heading">
-  <div class="ac-container">
-    <!-- LEFT: Logo + Story -->
-    <div class="ac-left">
-      <div class="ac-left-top">
-        <img src="path/to/logo.png" alt="Arudhra Creations logo" class="ac-logo" />
-        <div class="ac-title-wrap">
-          <h2 id="ac-heading">Arudhra Creations Private Limited</h2>
-          <p class="ac-sub">Women-led · Temple-inspired</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salem's 'Shri' Divine Fragrance | Temple-Blessed Carbon-Free Agarbathi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        /* CSS Reset & Base Styles */
+        :root {
+            --primary: #8b4513;
+            --primary-dark: #5d2906;
+            --primary-light: #a85e2a;
+            --secondary: #2e7d32;
+            --secondary-light: #4caf50;
+            --accent: #ff9800;
+            --light: #f9f5f0;
+            --dark: #2c1810;
+            --gray: #6b7280;
+            --gray-light: #f3f4f6;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --border-radius: 8px;
+            --container-width: 1200px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .section-padding {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--gray);
+        }
+        
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            padding: 5px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+        }
+        
+        .logo-text span {
+            color: var(--accent);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-menu li a {
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-menu li a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-menu li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            left: 0;
+            bottom: -5px;
+            transition: var(--transition);
+        }
+        
+        .nav-menu li a:hover::after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding-top: 10rem;
+            padding-bottom: 5rem;
+            background: linear-gradient(rgba(249, 245, 240, 0.9), rgba(249, 245, 240, 0.9)), url('https://images.unsplash.com/photo-1586769852043-1c2cde59ff2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+        }
+        
+        .hero-content h1 span {
+            color: var(--accent);
+        }
+        
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--gray);
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .hero-image {
+            position: relative;
+            text-align: center;
+        }
+        
+        .device-mockup {
+            position: relative;
+            display: inline-block;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transform: perspective(1000px) rotateY(-10deg);
+            transition: var(--transition);
+        }
+        
+        .device-mockup:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+        
+        .device-mockup img {
+            border-radius: 15px;
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+        }
+        
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+        }
+        
+        /* Timeline Section */
+        .timeline-section {
+            background-color: var(--gray-light);
+        }
+        
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--primary-light);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+            width: 50%;
+            padding-right: 3rem;
+        }
+        
+        .timeline-item:nth-child(even) {
+            margin-left: auto;
+            padding-right: 0;
+            padding-left: 3rem;
+        }
+        
+        .timeline-content {
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .timeline-content h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            top: 20px;
+            right: -10px;
+            z-index: 10;
+        }
+        
+        .timeline-item:nth-child(even)::before {
+            right: auto;
+            left: -10px;
+        }
+        
+        .timeline-step {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--white);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        /* Gallery Section */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .image-display {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 400px;
+        }
+        
+        .image-display img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .image-thumbnails {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .thumbnail.active {
+            opacity: 1;
+            border-color: var(--primary);
+        }
+        
+        .thumbnail:hover {
+            opacity: 1;
+        }
+        
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Testimonial Carousel */
+        .testimonial-section {
+            background-color: var(--gray-light);
+        }
+        
+        .carousel-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 2.5rem;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 0.2rem;
+        }
+        
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+        
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--gray);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .carousel-dot.active {
+            background-color: var(--primary);
+            transform: scale(1.2);
+        }
+        
+        /* Pricing/CTA Section */
+        .pricing-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .pricing-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .pricing-card.featured {
+            border: 2px solid var(--accent);
+            transform: scale(1.05);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .pricing-header {
+            margin-bottom: 2rem;
+        }
+        
+        .pricing-name {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .pricing-price span {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .pricing-features li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .pricing-features i {
+            color: var(--secondary);
+        }
+        
+        /* Contact Form */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        
+        .contact-info {
+            padding-right: 2rem;
+        }
+        
+        .contact-details {
+            margin-top: 2rem;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-detail i {
+            font-size: 1.2rem;
+            color: var(--primary);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(139, 69, 19, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .contact-form {
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+        
+        .form-control.error {
+            border-color: #e74c3c;
+        }
+        
+        .success-message {
+            background-color: #2ecc71;
+            color: white;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-top: 1.5rem;
+            text-align: center;
+            display: none;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-logo span {
+            color: var(--accent);
+        }
+        
+        .footer-about p {
+            color: #ccc;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-heading {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Breakpoints */
+        @media screen and (max-width: 1024px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-container {
+                gap: 2rem;
+            }
+            
+            .contact-container {
+                gap: 3rem;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                flex-direction: column;
+                background-color: var(--white);
+                width: 80%;
+                max-width: 300px;
+                text-align: center;
+                padding: 2rem;
+                border-radius: var(--border-radius);
+                box-shadow: var(--shadow);
+                transition: var(--transition);
+                z-index: 100;
+            }
+            
+            .nav-menu.active {
+                right: 20px;
+            }
+            
+            .nav-menu li {
+                margin-bottom: 1.5rem;
+            }
+            
+            .hero {
+                padding-top: 8rem;
+            }
+            
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-btns {
+                justify-content: center;
+            }
+            
+            .device-mockup {
+                margin-top: 2rem;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 0;
+            }
+            
+            .timeline-item:nth-child(even) {
+                margin-left: 0;
+                padding-left: 70px;
+            }
+            
+            .timeline-item::before {
+                left: 20px;
+                right: auto;
+            }
+            
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                padding-right: 0;
+            }
+            
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+            
+            .pricing-card.featured:hover {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .section-padding {
+                padding: 3rem 0;
+            }
+            
+            .feature-card {
+                padding: 1.5rem;
+            }
+            
+            .pricing-card {
+                padding: 1.5rem;
+            }
+            
+            .contact-form {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-feather-alt"></i>
+                </div>
+                <div class="logo-text">Shri<span>Divine</span></div>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
         </div>
-      </div>
+    </header>
 
-      <p class="ac-lead">
-        Every day, temples across South India receive beautiful flowers offered with devotion. Instead of becoming waste, Arudhra Creations gives these blessed blooms a respectful second life — transforming them into premium, carbon-free agarbathi sticks that bring the temple’s fragrance into homes and sacred spaces.
-      </p>
-
-      <div class="ac-meta">
-        <span class="meta-pill"><i class="fa-solid fa-certificate" aria-hidden="true"></i> Registered: <strong>U20238TZ2025PTC035616</strong></span>
-        <span class="meta-pill"><i class="fa-solid fa-map-pin" aria-hidden="true"></i> Salem, Tamil Nadu</span>
-      </div>
-
-      <ul class="ac-why">
-        <li><i class="fa-solid fa-seedling" aria-hidden="true"></i> <strong>Eco-first:</strong> No charcoal base • Biodegradable composition.</li>
-        <li><i class="fa-solid fa-hands-holding-child" aria-hidden="true"></i> <strong>Women-led:</strong> Providing dignified livelihoods to artisans in and around Salem.</li>
-        <li><i class="fa-solid fa-eye" aria-hidden="true"></i> <strong>Respectful sourcing:</strong> Collected directly from partner temples before disposal.</li>
-      </ul>
-    </div>
-
-    <!-- RIGHT: Feature cards -->
-    <aside class="ac-right" aria-labelledby="ac-features-heading">
-      <h3 id="ac-features-heading" class="sr-only">Key highlights</h3>
-
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fa-solid fa-venus"></i></div>
-        <div class="feature-body">
-          <h4>Women-Led Innovation</h4>
-          <p>Managed by a dedicated women's team skilled in flower processing, fragrance blending and traditional rolling techniques.</p>
-          <ul class="small-bullets">
-            <li>Training & fair wages</li>
-            <li>Handcraft + semi-mechanised QC</li>
-          </ul>
+    <!-- Hero Section -->
+    <section class="hero section-padding" id="home">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>Salem's <span>'Shri'</span> Divine Fragrance</h1>
+                <p class="subtitle">Temple-blessed flowers reborn as carbon-free, hand-crafted agarbathi.</p>
+                <p>From South Indian temples to your home altar — carry the divine fragrance back into your space, every day.</p>
+                <div class="hero-btns">
+                    <a href="#pricing" class="btn btn-primary">Explore Our Fragrances</a>
+                    <a href="#contact" class="btn btn-secondary">Enquire for Orders</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="device-mockup">
+                    <img src="https://images.unsplash.com/photo-1595703013566-db085ae93c04?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Shri Divine Fragrance Incense Sticks" loading="lazy">
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <div class="feature-card">
-        <div class="feature-icon accent"><i class="fa-solid fa-city"></i></div>
-        <div class="feature-body">
-          <h4>Salem-Rooted & Temple-Focused</h4>
-          <p>Registered in Salem; we partner closely with temples across the district and neighboring regions to collect sacred flowers respectfully.</p>
+    <!-- About/Features Section -->
+    <section class="section-padding" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Arudhra Creations</h2>
+                <p>Women-led, temple-inspired enterprise transforming temple-blessed flowers into premium, carbon-free agarbathi sticks.</p>
+            </div>
+            
+            <div id="features" class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <h3>Women-Led Innovation</h3>
+                    <p>Managed by a dedicated women's team with expertise in flower processing, fragrance blending, and hand-rolling techniques.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-temple"></i>
+                    </div>
+                    <h3>Salem-Rooted, Temple-Focused</h3>
+                    <p>Work closely with temples in Salem District to collect flowers before they are discarded, preventing sacred waste.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Carbon-Free & Eco-Friendly</h3>
+                    <p>No charcoal base; eco-friendly, biodegradable composition. Reduces smoke intensity and particulate emissions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Gentle on Senses</h3>
+                    <p>Specifically formulated to avoid eye irritation or burning sensation. Ideal for families with children and sensitive individuals.</p>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <div class="feature-card">
-        <div class="feature-icon"><i class="fa-solid fa-heart"></i></div>
-        <div class="feature-body">
-          <h4>Purpose-Driven Model</h4>
-          <p>We prevent sacred flowers from ending in landfills, extending their spiritual life through careful, transparent processing.</p>
-          <div class="feature-cta">
-            <button class="btn-ghost" onclick="scrollToContact && scrollToContact()">Contact for Partnership</button>
-          </div>
+    <!-- Process Timeline -->
+    <section class="timeline-section section-padding" id="process">
+        <div class="container">
+            <div class="section-title">
+                <h2>The Sacred Journey</h2>
+                <p>From temple blessing to fragrant stick — our four-step transformation process</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-step">1</div>
+                        <h3>Offered at South Indian Temples</h3>
+                        <p>Devotees and priests offer fresh, fragrant flowers at temples during daily archana, festivals, and special occasions.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-step">2</div>
+                        <h3>Respectfully Collected</h3>
+                        <p>Before flowers are discarded, our team collects them directly from temple partnerships with reverence and care.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-step">3</div>
+                        <h3>Gently Dried & Hand-Processed</h3>
+                        <p>Flowers are carefully dried under controlled conditions to preserve their natural fragrance compounds.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-step">4</div>
+                        <h3>Rolled into 'Shri' Agarbathi</h3>
+                        <p>Each stick is hand-rolled by skilled artisans to approximately 9 inches in length, providing 45 minutes of continuous fragrance.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </aside>
-  </div>
+    </section>
 
-  <!-- Decorative floral svg -->
-  <svg class="ac-decor" viewBox="0 0 220 220" aria-hidden="true">
-    <defs>
-      <linearGradient id="AGrad" x1="0" x2="1"><stop offset="0" stop-color="#f5c14a"/><stop offset="1" stop-color="#7a0f0f"/></linearGradient>
-    </defs>
-    <path d="M110 12 C140 22,180 36,170 78 C160 120,120 110,100 140 C80 170,40 150,28 118 C14 84,36 60,62 38 C88 16,110 12,110 12Z" fill="url(#AGrad)" opacity="0.06"/>
-  </svg>
-</section>
+    <!-- Gallery Section -->
+    <section class="section-padding" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Divine Fragrances</h2>
+                <p>Eight fragrances, one sacred purpose — each reflecting the ambience of traditional South Indian temples</p>
+            </div>
+            
+            <div class="gallery-container">
+                <div class="gallery-images">
+                    <div class="image-display">
+                        <img id="main-image" src="https://images.unsplash.com/photo-1595703013566-db085ae93c04?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Rose Fragrance Incense" loading="lazy">
+                    </div>
+                    <div class="image-thumbnails">
+                        <div class="thumbnail active" data-image="https://images.unsplash.com/photo-1595703013566-db085ae93c04?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-name="Rose">
+                            <img src="https://images.unsplash.com/photo-1595703013566-db085ae93c04?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Rose" loading="lazy">
+                        </div>
+                        <div class="thumbnail" data-image="https://images.unsplash.com/photo-1517191439906-286a6e373c7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-name="Lavender">
+                            <img src="https://images.unsplash.com/photo-1517191439906-286a6e373c7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Lavender" loading="lazy">
+                        </div>
+                        <div class="thumbnail" data-image="https://images.unsplash.com/photo-1596473322682-2f7f4d2c2064?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-name="Champa">
+                            <img src="https://images.unsplash.com/photo-1596473322682-2f7f4d2c2064?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Champa" loading="lazy">
+                        </div>
+                        <div class="thumbnail" data-image="https://images.unsplash.com/photo-1586769852043-1c2cde59ff2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-name="Sandalwood">
+                            <img src="https://images.unsplash.com/photo-1586769852043-1c2cde59ff2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Sandalwood" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-content">
+                    <h3 id="fragrance-name">Rose</h3>
+                    <p>Soft, devotional floral fragrance reminiscent of rose garlands offered to goddesses in South Indian temples.</p>
+                    <p>Perfect for daily puja, meditation, and creating a soothing home ambience. Also ideal for Durga Puja, Lakshmi Puja, and feminine spiritual spaces.</p>
+                    <div class="fragrance-details">
+                        <h4>Fragrance Notes:</h4>
+                        <ul>
+                            <li>Floral, Devotional</li>
+                            <li>Soft & Soothing</li>
+                            <li>Traditional Temple Scent</li>
+                        </ul>
+                    </div>
+                    <a href="#pricing" class="btn btn-primary" style="margin-top: 1.5rem;">Shop Rose Fragrance</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<style>
-  :root{
-    --maxw:1200px;
-    --accent:#7a0f0f;
-    --accent-2:#f5c14a;
-    --muted:#5f6368;
-    --card:#fff;
-    --glass:rgba(255,255,255,0.7);
-    --radius:14px;
-    --shadow: 0 12px 30px rgba(10,10,10,0.06);
-    --ease: cubic-bezier(.2,.9,.2,1);
-    font-synthesis: none;
-  }
+    <!-- Testimonials -->
+    <section class="testimonial-section section-padding" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Devotee Experiences</h2>
+                <p>What our customers say about the spiritual experience of 'Shri' Divine Fragrance</p>
+            </div>
+            
+            <div class="carousel-container">
+                <div class="carousel-track" id="carousel-track">
+                    <div class="testimonial-slide">
+                        <div class="testimonial-content">
+                            "The fragrance instantly transported me to the sanctum of a South Indian temple. The quality is exceptional, and knowing it's made from temple flowers adds a spiritual dimension to my daily meditation."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Priya Sharma" loading="lazy">
+                            </div>
+                            <div class="author-info">
+                                <h4>Priya Sharma</h4>
+                                <p>Meditation Practitioner, Chennai</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-content">
+                            "As someone sensitive to smoke, I've struggled to find incense that doesn't irritate. 'Shri' is gentle, fragrant, and burns cleanly. The 45-minute duration is perfect for my evening prayers."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Rajesh Iyer" loading="lazy">
+                            </div>
+                            <div class="author-info">
+                                <h4>Rajesh Iyer</h4>
+                                <p>Yoga Teacher, Bangalore</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-content">
+                            "We've been using 'Shri' for our temple's daily archana. The purity, fragrance, and spiritual significance align perfectly with our temple's values. The women empowerment aspect is truly commendable."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Dr. Venkatesh" loading="lazy">
+                            </div>
+                            <div class="author-info">
+                                <h4>Dr. Venkatesh</h4>
+                                <p>Temple Committee Member, Salem</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-nav" id="carousel-nav">
+                    <div class="carousel-dot active" data-slide="0"></div>
+                    <div class="carousel-dot" data-slide="1"></div>
+                    <div class="carousel-dot" data-slide="2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  /* Section base */
-  .ac-section{
-    padding:48px 20px;
-    background:linear-gradient(180deg,#fffaf6,#fff);
-    position:relative;
-    overflow:hidden;
-  }
-  .ac-container{
-    max-width:var(--maxw);
-    margin:0 auto;
-    display:grid;
-    grid-template-columns: 1fr 420px;
-    gap:28px;
-    align-items:start;
-  }
+    <!-- Pricing/CTA Section -->
+    <section class="section-padding" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Divine Fragrance Collections</h2>
+                <p>Choose from our eight temple-inspired fragrances, each crafted with sacred temple flowers</p>
+            </div>
+            
+            <div class="pricing-container">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Single Fragrance Pack</h3>
+                        <div class="pricing-price">₹299 <span>/ pack of 12 sticks</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Choose any one fragrance</li>
+                        <li><i class="fas fa-check"></i> 12 premium incense sticks</li>
+                        <li><i class="fas fa-check"></i> 45-minute burn time each</li>
+                        <li><i class="fas fa-check"></i> Eco-friendly packaging</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Order Now</a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="pricing-header">
+                        <div class="badge">Most Popular</div>
+                        <h3 class="pricing-name">Divine Sampler Set</h3>
+                        <div class="pricing-price">₹799 <span>/ 8 fragrances</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> All 8 temple fragrances</li>
+                        <li><i class="fas fa-check"></i> 24 sticks total (3 each)</li>
+                        <li><i class="fas fa-check"></i> Gift-ready premium box</li>
+                        <li><i class="fas fa-check"></i> Fragrance guide included</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Order Now</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Temple Supply Pack</h3>
+                        <div class="pricing-price">Custom <span>/ bulk pricing</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Customized for temples</li>
+                        <li><i class="fas fa-check"></i> 500+ sticks minimum</li>
+                        <li><i class="fas fa-check"></i> Custom fragrance blending</li>
+                        <li><i class="fas fa-check"></i> Direct temple partnerships</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Enquire Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  /* LEFT */
-  .ac-left{padding:22px;border-radius:16px;background:linear-gradient(180deg,#fff,#fffef8);box-shadow:var(--shadow);border:1px solid rgba(122,15,15,0.03)}
-  .ac-left-top{display:flex;gap:16px;align-items:center}
-  .ac-logo{width:84px;height:84px;object-fit:contain;border-radius:10px;padding:8px;background:linear-gradient(180deg,#fff,#fffef8);box-shadow:0 10px 22px rgba(122,15,15,0.06)}
-  .ac-title-wrap h2{margin:0;font-family:"Playfair Display", serif;font-size:28px;color:var(--accent);letter-spacing:0.2px}
-  .ac-sub{margin:6px 0 0;color:var(--muted);font-weight:600}
+    <!-- Contact Form -->
+    <section class="section-padding" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Connect With Us</h2>
+                <p>Get in touch for orders, partnerships, or custom gifting solutions</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Arudhra Creations Private Limited</h3>
+                    <p>Women-led, temple-flower based agarbathi manufacturing and gifting enterprise based in Salem, Tamil Nadu.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Address</h4>
+                                <p>Salem, Tamil Nadu, India</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone / WhatsApp</h4>
+                                <p>+91 98765 43210</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>contact@shridivinefragrance.in</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="business-hours">
+                        <h4>Business Hours</h4>
+                        <p>Monday to Friday: 9 AM to 6 PM IST</p>
+                        <p>Response within 24 business hours</p>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" class="form-control" required>
+                            <div class="error-message" id="name-error">Please enter your name</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Mobile Number *</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                            <div class="error-message" id="phone-error">Please enter a valid phone number</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" class="form-control" required>
+                            <div class="error-message" id="email-error">Please enter a valid email address</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="city">City/Region</label>
+                            <input type="text" id="city" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="purpose">Purpose of Enquiry *</label>
+                            <select id="purpose" class="form-control" required>
+                                <option value="">Select an option</option>
+                                <option value="bulk">Bulk Order Inquiry</option>
+                                <option value="retail">Retail / B2B Inquiry</option>
+                                <option value="temple">Temple Supply Partnership</option>
+                                <option value="gift">Return Gift Customization</option>
+                                <option value="corporate">Corporate Gifting</option>
+                                <option value="wholesale">Wholesale / Distributor Interest</option>
+                                <option value="event">Event-Specific Inquiry</option>
+                                <option value="product">Product Customization</option>
+                                <option value="general">General Enquiry</option>
+                            </select>
+                            <div class="error-message" id="purpose-error">Please select a purpose</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message (Optional)</label>
+                            <textarea id="message" class="form-control" rows="4"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                        
+                        <div class="success-message" id="success-message">
+                            Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  .ac-lead{margin-top:16px;color:#2e2e2e;line-height:1.68;font-size:16px}
-  .ac-meta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
-  .meta-pill{display:inline-flex;gap:8px;align-items:center;background:linear-gradient(180deg,rgba(122,15,15,0.04), rgba(245,193,74,0.02));padding:8px 12px;border-radius:999px;color:var(--accent);font-weight:600;border:1px solid rgba(122,15,15,0.04)}
-  .meta-pill i{font-size:14px}
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">Shri<span>Divine</span></div>
+                    <p>Transforming temple-blessed flowers into premium, carbon-free incense sticks that bring the spiritual essence of South Indian temples into your daily life.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links-container">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">Our Story</a></li>
+                        <li><a href="#process">Shri Agarbathi</a></li>
+                        <li><a href="#gallery">Fragrances</a></li>
+                        <li><a href="#pricing">Gifting Solutions</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links-container">
+                    <h4 class="footer-heading">Business Info</h4>
+                    <ul class="footer-links">
+                        <li><a href="#contact">Bulk Orders</a></li>
+                        <li><a href="#contact">Temple Supply</a></li>
+                        <li><a href="#contact">Corporate Gifting</a></li>
+                        <li><a href="#contact">Return Gifts</a></li>
+                        <li><a href="#contact">Wholesale Partnership</a></li>
+                        <li><a href="#contact">Custom Fragrances</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Arudhra Creations Private Limited, Salem. All rights reserved.</p>
+                <p>Company Registration: U20238TZ2025PTC035616</p>
+            </div>
+        </div>
+    </footer>
 
-  .ac-why{margin-top:18px;padding:0;list-style:none}
-  .ac-why li{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-top:1px dashed rgba(0,0,0,0.03);color:var(--muted)}
-  .ac-why li:first-of-type{border-top:0}
-  .ac-why i{width:36px;height:36px;display:grid;place-items:center;border-radius:8px;background:linear-gradient(180deg,#fff,#fffef8);color:var(--accent);box-shadow:0 8px 18px rgba(10,10,10,0.03)}
-
-  /* RIGHT (features) */
-  .ac-right{display:flex;flex-direction:column;gap:14px;padding:12px}
-  .feature-card{display:flex;gap:14px;align-items:flex-start;padding:16px;background:linear-gradient(180deg,#fff,#fffef8);border-radius:12px;border-left:6px solid rgba(122,15,15,0.06);box-shadow:0 8px 20px rgba(8,8,8,0.03);transition:transform .36s var(--ease),box-shadow .36s var(--ease)}
-  .feature-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(10,10,10,0.08)}
-  .feature-icon{width:56px;height:56px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(180deg,#fff,#fffef7);font-size:20px;color:var(--accent);box-shadow:0 8px 18px rgba(8,8,8,0.04);flex-shrink:0}
-  .feature-icon.accent{background:linear-gradient(135deg,var(--accent),#9f3a3a);color:var(--accent-2);font-size:20px}
-  .feature-body h4{margin:0;color:var(--accent);font-size:18px}
-  .feature-body p{margin:8px 0 0;color:var(--muted);line-height:1.48}
-  .small-bullets{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:14px}
-
-  .feature-cta{margin-top:10px}
-  .btn-ghost{background:transparent;border:1px solid rgba(122,15,15,0.08);padding:8px 12px;border-radius:10px;color:var(--accent);font-weight:700;cursor:pointer;transition:all .2s var(--ease)}
-  .btn-ghost:hover{background:linear-gradient(90deg,rgba(122,15,15,0.06),rgba(245,193,74,0.02))}
-
-  /* Decorative SVG */
-  .ac-decor{position:absolute;right:-40px;top:-34px;width:360px;height:360px;pointer-events:none;transform:rotate(8deg)}
-
-  /* Accessibility helpers */
-  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-
-  /* Responsive */
-  @media (max-width:980px){
-    .ac-container{grid-template-columns:1fr; gap:18px}
-    .ac-right{order:2}
-    .ac-decor{display:none}
-    .ac-logo{width:68px;height:68px}
-  }
-
-  /* Entrance reveal */
-  #about-arudhra{opacity:0;transform:translateY(10px);transition:all .8s var(--ease)}
-  #about-arudhra.show{opacity:1;transform:none}
-</style>
-
-<script>
-  // Reveal section on scroll
-  (function(){
-    const sec = document.getElementById('about-arudhra');
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){ sec.classList.add('show'); io.disconnect(); }
-      });
-    }, {threshold:0.16});
-    io.observe(sec);
-
-    // Optional helper for CTA button (if you have contact section id)
-    window.scrollToContact = function(){
-      const el = document.getElementById('contact') || document.getElementById('contact-us') || null;
-      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
-      else alert('Contact section not found — replace scrollToContact() implementation with your contact link.');
-    }
-  })();
-</script>
+    <script>
+        // DOM Elements
+        const header = document.getElementById('header');
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const carouselTrack = document.getElementById('carousel-track');
+        const carouselNav = document.getElementById('carousel-nav');
+        const carouselDots = document.querySelectorAll('.carousel-dot');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        const mainImage = document.getElementById('main-image');
+        const fragranceName = document.getElementById('fragrance-name');
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('success-message');
+        
+        // Sticky header on scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile hamburger menu toggle
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Image gallery functionality
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', () => {
+                // Update main image
+                const newImage = thumbnail.getAttribute('data-image');
+                const newName = thumbnail.getAttribute('data-name');
+                
+                mainImage.src = newImage;
+                mainImage.alt = `${newName} Fragrance Incense`;
+                fragranceName.textContent = newName;
+                
+                // Update active thumbnail
+                thumbnails.forEach(thumb => thumb.classList.remove('active'));
+                thumbnail.classList.add('active');
+            });
+        });
+        
+        // Testimonial carousel
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const totalSlides = slides.length;
+        
+        // Initialize carousel
+        function initCarousel() {
+            carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Update dots
+            carouselDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+        
+        // Carousel navigation with dots
+        carouselDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                currentSlide = parseInt(dot.getAttribute('data-slide'));
+                initCarousel();
+            });
+        });
+        
+        // Auto-advance carousel
+        function autoAdvanceCarousel() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            initCarousel();
+        }
+        
+        // Start auto-advance
+        let carouselInterval = setInterval(autoAdvanceCarousel, 5000);
+        
+        // Pause auto-advance on hover
+        carouselTrack.addEventListener('mouseenter', () => {
+            clearInterval(carouselInterval);
+        });
+        
+        carouselTrack.addEventListener('mouseleave', () => {
+            carouselInterval = setInterval(autoAdvanceCarousel, 5000);
+        });
+        
+        // Form validation and submission
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Reset previous errors
+            document.querySelectorAll('.error-message').forEach(error => {
+                error.style.display = 'none';
+            });
+            
+            document.querySelectorAll('.form-control').forEach(input => {
+                input.classList.remove('error');
+            });
+            
+            // Validate form fields
+            let isValid = true;
+            
+            // Name validation
+            const name = document.getElementById('name');
+            if (!name.value.trim()) {
+                document.getElementById('name-error').style.display = 'block';
+                name.classList.add('error');
+                isValid = false;
+            }
+            
+            // Phone validation
+            const phone = document.getElementById('phone');
+            const phoneRegex = /^[0-9]{10}$/;
+            if (!phoneRegex.test(phone.value.trim())) {
+                document.getElementById('phone-error').style.display = 'block';
+                phone.classList.add('error');
+                isValid = false;
+            }
+            
+            // Email validation
+            const email = document.getElementById('email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email.value.trim())) {
+                document.getElementById('email-error').style.display = 'block';
+                email.classList.add('error');
+                isValid = false;
+            }
+            
+            // Purpose validation
+            const purpose = document.getElementById('purpose');
+            if (!purpose.value) {
+                document.getElementById('purpose-error').style.display = 'block';
+                purpose.classList.add('error');
+                isValid = false;
+            }
+            
+            // If form is valid, show success message
+            if (isValid) {
+                successMessage.style.display = 'block';
+                contactForm.reset();
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
+            }
+        });
+        
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Animate elements on scroll
+        const animateOnScroll = () => {
+            // Hero section animation
+            gsap.from('.hero-content', {
+                duration: 1,
+                y: 50,
+                opacity: 0,
+                ease: 'power3.out'
+            });
+            
+            gsap.from('.device-mockup', {
+                duration: 1,
+                y: 50,
+                opacity: 0,
+                delay: 0.3,
+                ease: 'power3.out'
+            });
+            
+            // Feature cards animation
+            gsap.from('.feature-card', {
+                scrollTrigger: {
+                    trigger: '#features',
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                },
+                duration: 0.8,
+                y: 30,
+                opacity: 0,
+                stagger: 0.2,
+                ease: 'power3.out'
+            });
+            
+            // Timeline animation
+            gsap.from('.timeline-item', {
+                scrollTrigger: {
+                    trigger: '#process',
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                },
+                duration: 0.8,
+                x: -30,
+                opacity: 0,
+                stagger: 0.3,
+                ease: 'power3.out'
+            });
+            
+            // Gallery animation
+            gsap.from('.gallery-container', {
+                scrollTrigger: {
+                    trigger: '#gallery',
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                },
+                duration: 1,
+                y: 30,
+                opacity: 0,
+                ease: 'power3.out'
+            });
+            
+            // Testimonial animation
+            gsap.from('.carousel-container', {
+                scrollTrigger: {
+                    trigger: '#testimonials',
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                },
+                duration: 1,
+                y: 30,
+                opacity: 0,
+                ease: 'power3.out'
+            });
+            
+            // Pricing cards animation
+            gsap.from('.pricing-card', {
+                scrollTrigger: {
+                    trigger: '#pricing',
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                },
+                duration: 0.8,
+                y: 30,
+                opacity: 0,
+                stagger: 0.2,
+                ease: 'power3.out'
+            });
+            
+            // Contact form animation
+            gsap.from('.contact-container', {
+                scrollTrigger: {
+                    trigger: '#contact',
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                },
+                duration: 1,
+                y: 30,
+                opacity: 0,
+                ease: 'power3.out'
+            });
+        };
+        
+        // Initialize animations when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            animateOnScroll();
+            initCarousel();
+        });
+        
+        // Lazy loading images
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            img.classList.add('loaded');
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+                
+                lazyImages.forEach(img => imageObserver.observe(img));
+            }
+        });
+    </script>
+</body>
+</html>

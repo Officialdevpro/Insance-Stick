@@ -13,7 +13,7 @@ body {
 /* ---------- FOOTER ---------- */
 
 .modern-footer {
-  background: #1d1f23;
+  background: linear-gradient(to right, var(--ui-primary), var(--ui-primary-light));
   color: #bdbdbd;
   padding: 70px 20px 40px;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.6);
@@ -28,7 +28,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 /* ---------- HEADINGS ---------- */
@@ -53,7 +53,8 @@ body {
 
 /* ---------- ABOUT SECTION ---------- */
 .footer-col.about {
-  flex: 1 1 280px;
+  width: 50%;
+  
 }
 
 /* ---------- LINKS ---------- */
@@ -144,12 +145,18 @@ body {
 
   .footer-col {
     text-align: center;
+    
   }
 
   .footer-col h3::after {
     left: 50%;
     transform: translateX(-50%);
   }
+  .footer-col.about {
+  width: 100%;
+  
+}
+
 }
 /* Section Starts Here */
 /* =========================================
@@ -361,7 +368,7 @@ body {
 .summary {
   margin-top: 55px;
   font-size: 18px;
-      color: var(--ui-text-light);
+  color: var(--ui-text-light);
 
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(14px);
@@ -399,15 +406,15 @@ body {
 /* ====================================================== */
 
 :root {
-  --primary: #5a189a;
-  --secondary: #9d4edd;
+  --primary: #8a6d3b;
+  --secondary: #8a6d3b;
   --light: #ffe5ec;
   --dark: #10002b;
   --text: #2d3748;
   --text-light: #718096;
   --white: #ffffff;
   --card-bg: rgba(255, 255, 255, 0.92);
-  --gradient-1: linear-gradient(135deg, #5a189a 0%, #9d4edd 100%);
+  --gradient-1: #d4af37;
   --gradient-2: linear-gradient(135deg, #ff6d00 0%, #ff9e00 100%);
   --gradient-3: linear-gradient(135deg, #00b4d8 0%, #90e0ef 100%);
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -419,7 +426,9 @@ body {
 
 /* Base Section */
 .about-section {
-  background: linear-gradient(135deg, #f8f9ff 0%, #fff0f5 100%);
+  color: var(--ui-text);
+  background-color: #f8f9fa;
+  background-image: linear-gradient(to bottom right, #fdfcfb, #f9f5eb);
   padding: 20px 20px;
   position: relative;
   overflow: hidden;

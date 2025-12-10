@@ -1,0 +1,191 @@
+<!-- WHY CHOOSE TEMPLE-FLOWER INCENSE? (Compact, design-friendly) -->
+<section id="why-choose" class="section-padding">
+  <div class="container">
+    <div class="section-title">
+      <h2>Why Choose Temple-Flower Incense?</h2>
+      <p class="muted">Spiritual value, circular sustainability, and community impact — presented concisely for easy reading.</p>
+    </div>
+
+    <div class="why-grid">
+      <!-- Card 1 -->
+      <article class="why-card">
+        <h3>Honors Sacred Offerings</h3>
+        <ul>
+          <li>Extends the life & purpose of prasadam</li>
+          <li>Preserves the devotional intent of temple flowers</li>
+        </ul>
+        <button class="read-more" aria-expanded="false">Read more</button>
+        <div class="more">
+          <p>Converts offerings into incense so blessed flowers continue to serve spiritual practice rather than be discarded.</p>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="why-card">
+        <h3>Reduces Environmental Burden</h3>
+        <ul>
+          <li>Diverts floral waste from landfills</li>
+          <li>Lower methane & pollution vs. rotting discharge</li>
+        </ul>
+        <button class="read-more" aria-expanded="false">Read more</button>
+        <div class="more">
+          <p>Even small collections of temple flowers prevent organic waste from producing methane—and become valuable raw material.</p>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="why-card">
+        <h3>Supports Women’s Livelihoods</h3>
+        <ul>
+          <li>Local, dignified work for women artisans</li>
+          <li>Fair pay and skill-based employment</li>
+        </ul>
+        <button class="read-more" aria-expanded="false">Read more</button>
+        <div class="more">
+          <p>Production is women-led, building steady income and preserving traditional handcraft skills across Salem-region communities.</p>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="why-card">
+        <h3>Carbon-Free & Biodegradable</h3>
+        <ul>
+          <li>No charcoal base — fully biodegradable</li>
+          <li>Lower carbon footprint than conventional sticks</li>
+        </ul>
+        <button class="read-more" aria-expanded="false">Read more</button>
+        <div class="more">
+          <p>Made without charcoal, our agarbathi uses natural binders and temple botanics for an eco-conscious burn.</p>
+        </div>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="why-card">
+        <h3>Temple Partnerships</h3>
+        <ul>
+          <li>Direct temple sourcing and revenue sharing</li>
+          <li>Strengthens temple-community ties</li>
+        </ul>
+        <button class="read-more" aria-expanded="false">Read more</button>
+        <div class="more">
+          <p>Close collaboration with temples ensures respectful collection and a model that helps maintain local spiritual spaces.</p>
+        </div>
+      </article>
+
+      <!-- Card 6 -->
+      <article class="why-card">
+        <h3>Cultural & Spiritual Authenticity</h3>
+        <ul>
+          <li>Fragrances inspired by Dravidian temple botanicals</li>
+          <li>Traditional techniques + modern quality controls</li>
+        </ul>
+        <button class="read-more" aria-expanded="false">Read more</button>
+        <div class="more">
+          <p>We preserve traditional incense methods while meeting modern standards so the scent truly connects people with ritual roots.</p>
+        </div>
+      </article>
+    </div>
+
+    <div style="text-align:center; margin-top:1.4rem;">
+      <a href="#process" class="btn btn-primary">Learn about our process</a>
+      <a href="#contact" class="btn btn-secondary">Bulk & Temple Partnerships</a>
+    </div>
+  </div>
+</section>
+
+<!-- Compact CSS: add below your existing styles (keeps token names) -->
+<style>
+  .muted { color: var(--gray); max-width:720px; margin:0 auto 1.2rem; }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.4rem;
+    align-items:stretch;
+  }
+  .why-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 1.2rem;
+    box-shadow: 0 8px 22px rgba(10,10,12,0.06);
+    transition: transform .28s ease, box-shadow .28s ease;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    min-height:170px;
+  }
+  .why-card h3 {
+    font-size:1.05rem;
+    color:var(--primary);
+    margin-bottom:.6rem;
+  }
+  .why-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: var(--gray);
+    font-size: .95rem;
+  }
+  .why-card ul li {
+    margin-bottom: .45rem;
+    position: relative;
+    padding-left: 18px;
+  }
+  .why-card ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--primary-light);
+    font-weight: 700;
+  }
+  .why-card .more {
+    margin-top: .8rem;
+    display: none;
+    color: var(--dark);
+    font-size: .95rem;
+  }
+  .why-card .read-more {
+    margin-top: .7rem;
+    background: transparent;
+    border: none;
+    color: var(--primary);
+    font-weight:600;
+    cursor:pointer;
+    text-align:left;
+    padding:0;
+  }
+
+  .why-card:hover { transform: translateY(-6px); box-shadow: 0 18px 38px rgba(15,23,42,0.06); }
+
+  /* Responsive */
+  @media (max-width: 980px) {
+    .why-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .why-grid { grid-template-columns: 1fr; }
+    .why-card { min-height: auto; }
+    .why-card .read-more { text-align:left; }
+  }
+</style>
+
+<!-- Tiny JS for "Read more" toggles (put this with your other scripts) -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('#why-choose .read-more').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.why-card');
+        const more = card.querySelector('.more');
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        if (!expanded) {
+          more.style.display = 'block';
+          btn.textContent = 'Show less';
+          btn.setAttribute('aria-expanded', 'true');
+        } else {
+          more.style.display = 'none';
+          btn.textContent = 'Read more';
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  });
+</script>
