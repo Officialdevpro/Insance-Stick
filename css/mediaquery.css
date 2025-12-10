@@ -58,16 +58,16 @@
   .content-overlay .title-section,
   .content-overlay .short-desc-section {
     position: absolute;
-    top: -150px;
+    top: -170px;
     width: 100%;
     text-align: center;
   }
   .content-overlay .short-desc-section {
-    top: -190px;
+    top: -240px;
   }
   .content-overlay .flavor-desc {
     position: absolute;
-    bottom: -140px;
+    bottom: -160px;
     width: 100%;
     text-align: justify;
   }
@@ -79,7 +79,7 @@
     width: 100%;
   }
   .main-content {
-    padding: 25px;
+    padding: 10px;
   }
   .mission-statement,
   .point-card {
@@ -113,6 +113,16 @@
   }
   .info-section {
     padding: 15px;
+  }
+  .form-section {
+    padding: 20px;
+  }
+  .section-subtitle {
+    color: #ababab;
+  }
+  .viewer {
+    height: min(400px, 50vh);
+    border-radius: 15px;
   }
 }
 

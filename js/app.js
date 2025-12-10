@@ -464,9 +464,8 @@ observer.observe(firstSection);
 
   // Start auto-slide
   function startAutoSlide() {
-    return
     if (autoSlideInterval) clearInterval(autoSlideInterval);
-    autoSlideInterval = setInterval(autoSlide, 10000); // Every 2 seconds
+    autoSlideInterval = setInterval(autoSlide, 3000); // Every 2 seconds
     isAutoSliding = true;
   }
 
