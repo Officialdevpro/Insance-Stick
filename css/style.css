@@ -170,9 +170,15 @@ body {
   left: 0;
   right: 0;
   z-index: var(--header-z);
-  backdrop-filter: blur(0px);
+  backdrop-filter: blur(6px);
 
   box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+
+  background: rgba(255, 255, 255, 0);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.9px);
+  -webkit-backdrop-filter: blur(5.9px);
 }
 
 /* Container */
@@ -214,12 +220,12 @@ body {
 
 /* link style */
 .nav-link {
-  color: #dedede;
+  color: #000000;
   text-decoration: none;
   padding: 8px 14px;
   border-radius: 999px;
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 600;
   position: relative;
   transition: color 0.25s ease, background 0.25s ease, transform 0.25s ease;
   overflow: visible;
@@ -411,7 +417,7 @@ a:focus,
   max-width: 1200px;
   display: grid;
   grid-template-columns: 1fr 1fr;
- 
+
   align-items: center;
 }
 
@@ -744,7 +750,7 @@ a:focus,
 @media (max-width: 767px) {
   .split-inner {
     grid-template-columns: 1fr;
-  
+
     padding: 0 12px;
   }
   .split-right {
@@ -805,7 +811,7 @@ a:focus,
   z-index: 5;
   padding: clamp(20px, 4vw, 80px);
   display: grid;
-  grid-template-areas: 
+  grid-template-areas:
     "title ."
     ". ."
     "short desc";
@@ -971,7 +977,7 @@ a:focus,
 
 @media (max-width: 768px) {
   .content-overlay {
-    grid-template-areas: 
+    grid-template-areas:
       "title"
       "short"
       "desc";
@@ -980,34 +986,34 @@ a:focus,
     padding: 30px 20px;
     gap: 25px;
   }
-  
+
   .title-section {
     text-align: center;
   }
-  
+
   .short-desc-section {
     text-align: center;
     align-self: center;
   }
-  
+
   .flavor-short {
     max-width: 100%;
   }
-  
+
   .flavor-desc {
     justify-self: center;
     align-self: start;
   }
-  
+
   .flavor-desc ul {
     max-width: 100%;
   }
-  
+
   .viewer {
     width: 90vw;
     height: min(400px, 60vh);
   }
-  
+
   .gallery-container {
     gap: 10px;
   }
@@ -1017,23 +1023,23 @@ a:focus,
   #page3 {
     padding: 10px;
   }
-  
+
   .content-overlay {
     padding: 20px 15px;
     gap: 20px;
   }
-  
+
   .viewer {
     height: min(350px, 50vh);
     border-radius: 15px;
   }
-  
+
   .viewer-btn {
     width: 45px;
     height: 45px;
     font-size: 1.2rem;
   }
-  
+
   .flavor-desc li {
     font-size: 0.9rem;
     margin-bottom: 0.6rem;
