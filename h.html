@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Impact | Shri Divine Fragrance</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8B4513;
+            --primary-light: #A65C2E;
+            --primary-dark: #5D2A0C;
+            --secondary: #2E8B57;
+            --secondary-light: #3CB371;
+            --accent: #DAA520;
+            --accent-light: #F4C542;
+            --light: #F8F5F0;
+            --dark: #2C1810;
+            --gray: #8A7E72;
+            --light-gray: #EFEAE3;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(139, 69, 19, 0.08);
+            --shadow-hover: 0 20px 40px rgba(139, 69, 19, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #F8F5F0 0%, #EFEAE3 100%);
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+
+        .container-- {
+           
+            width: 100%;
+            background: var(--white);
+            border-radius: 30px;
+            padding: 60px 15px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--light-gray);
+        }
+
+        /* Decorative Elements */
+        .decorative-floral {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            opacity: 0.03;
+            z-index: 1;
+        }
+
+        .decorative-floral i {
+            font-size: 300px;
+            color: var(--primary);
+        }
+
+        .floating-petal {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: var(--primary-light);
+            border-radius: 50% 50% 0 50%;
+            opacity: 0.1;
+            animation: float 15s infinite linear;
+        }
+
+        .floating-petal:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+            background: var(--primary);
+        }
+
+        .floating-petal:nth-child(2) {
+            top: 60%;
+            left: 5%;
+            animation-delay: 3s;
+            background: var(--secondary);
+        }
+
+        .floating-petal:nth-child(3) {
+            top: 40%;
+            right: 8%;
+            animation-delay: 6s;
+            background: var(--accent);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-20px) translateX(10px) rotate(90deg);
+            }
+            50% {
+                transform: translateY(-40px) translateX(-10px) rotate(180deg);
+            }
+            75% {
+                transform: translateY(-20px) translateX(10px) rotate(270deg);
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+            }
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 2.2rem;
+            color: var(--accent);
+        }
+
+        .title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Stats Section - New Design */
+        .stats-section {
+            position: relative;
+            z-index: 2;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        /* Stat Item 1 - Circular Design */
+        .stat-item {
+            position: relative;
+            perspective: 1000px;
+            height: 280px;
+        }
+
+        .stat-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        .stat-item:hover .stat-card {
+            transform: rotateY(180deg);
+        }
+
+        .stat-front, .stat-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            overflow: hidden;
+        }
+
+        .stat-front {
+            background: var(--white);
+            border: 2px solid var(--light-gray);
+            box-shadow: var(--shadow);
+        }
+
+        .stat-back {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            transform: rotateY(180deg);
+            text-align: center;
+        }
+
+        /* Stat Item 1 - Women-Led */
+        .stat-item:nth-child(1) .stat-front {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.05), rgba(218, 165, 32, 0.05));
+            border-top: 8px solid var(--primary);
+        }
+
+        .stat-item:nth-child(1) .stat-back {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        }
+
+        /* Stat Item 2 - Charcoal Content */
+        .stat-item:nth-child(2) .stat-front {
+            background: linear-gradient(135deg, rgba(46, 139, 87, 0.05), rgba(139, 69, 19, 0.05));
+            border-top: 8px solid var(--secondary);
+        }
+
+        .stat-item:nth-child(2) .stat-back {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+        }
+
+        /* Stat Item 3 - Fragrance Duration */
+        .stat-item:nth-child(3) .stat-front {
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.05), rgba(139, 69, 19, 0.05));
+            border-top: 8px solid var(--accent);
+        }
+
+        .stat-item:nth-child(3) .stat-back {
+            background: linear-gradient(135deg, var(--accent), #e6b800);
+        }
+
+        /* Stat Item 4 - Divine Fragrances */
+        .stat-item:nth-child(4) .stat-front {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.05), rgba(46, 139, 87, 0.05));
+            border-top: 8px solid var(--primary-light);
+        }
+
+        .stat-item:nth-child(4) .stat-back {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+        }
+
+        /* Stat Front Content */
+        .stat-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            font-size: 2.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item:nth-child(1) .stat-icon {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            color: white;
+            box-shadow: 0 10px 20px rgba(139, 69, 19, 0.2);
+        }
+
+        .stat-item:nth-child(2) .stat-icon {
+            background: linear-gradient(135deg, var(--secondary-light), var(--secondary));
+            color: white;
+            box-shadow: 0 10px 20px rgba(46, 139, 87, 0.2);
+        }
+
+        .stat-item:nth-child(3) .stat-icon {
+            background: linear-gradient(135deg, var(--accent-light), var(--accent));
+            color: white;
+            box-shadow: 0 10px 20px rgba(218, 165, 32, 0.2);
+        }
+
+        .stat-item:nth-child(4) .stat-icon {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+            color: white;
+            box-shadow: 0 10px 20px rgba(139, 69, 19, 0.2);
+        }
+
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            line-height: 1;
+            position: relative;
+        }
+
+        .stat-item:nth-child(1) .stat-number {
+            color: var(--primary);
+        }
+
+        .stat-item:nth-child(2) .stat-number {
+            color: var(--secondary);
+        }
+
+        .stat-item:nth-child(3) .stat-number {
+            color: var(--accent);
+        }
+
+        .stat-item:nth-child(4) .stat-number {
+            color: var(--primary-dark);
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--dark);
+        }
+
+        .hover-hint {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.8rem;
+            color: var(--gray);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .stat-item:hover .hover-hint {
+            opacity: 1;
+        }
+
+        /* Stat Back Content */
+        .stat-back-content {
+            padding: 20px;
+            
+        }
+
+        .stat-back-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .stat-back-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .stat-back-description {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+
+        /* Animated Background Elements */
+        .stat-orb {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.05;
+            z-index: 1;
+        }
+
+        .stat-item:nth-child(1) .stat-orb {
+            width: 150px;
+            height: 150px;
+            background: var(--primary);
+            top: -30px;
+            right: -30px;
+        }
+
+        .stat-item:nth-child(2) .stat-orb {
+            width: 120px;
+            height: 120px;
+            background: var(--secondary);
+            bottom: -20px;
+            left: -20px;
+        }
+
+        .stat-item:nth-child(3) .stat-orb {
+            width: 100px;
+            height: 100px;
+            background: var(--accent);
+            top: -20px;
+            left: -20px;
+        }
+
+        .stat-item:nth-child(4) .stat-orb {
+            width: 130px;
+            height: 130px;
+            background: var(--primary-light);
+            bottom: -25px;
+            right: -25px;
+        }
+
+        /* Connection Lines */
+        .connection-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .connection-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, var(--primary-light), transparent);
+            height: 2px;
+            opacity: 0.1;
+        }
+
+        .line-1 {
+            top: 50%;
+            left: 0;
+            width: 100%;
+            transform: translateY(-50%);
+        }
+
+        .line-2 {
+            top: 0;
+            left: 50%;
+            height: 100%;
+            width: 2px;
+            transform: translateX(-50%);
+            background: linear-gradient(180deg, transparent, var(--secondary-light), transparent);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 60px;
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--light-gray);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1100px) {
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container-- {
+                padding: 40px 20px;
+            }
+            
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .stat-item {
+                height: 250px;
+            }
+            
+            .stat-number {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .title {
+                font-size: 2rem;
+            }
+            
+            .logo {
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .stat-item {
+                height: 230px;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .stat-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container--">
+        <!-- Decorative Elements -->
+        <div class="decorative-floral">
+            <i class="fas fa-feather-alt"></i>
+        </div>
+        
+        <div class="floating-petal"></div>
+        <div class="floating-petal"></div>
+        <div class="floating-petal"></div>
+        
+        <!-- Connection Lines -->
+        <div class="connection-lines">
+            <div class="connection-line line-1"></div>
+            <div class="connection-line line-2"></div>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            
+            <h1 class="title">Our Impact in Numbers</h1>
+            <p class="subtitle">Discover the measurable impact of our women-led, temple-inspired agarbathi initiative through these key metrics</p>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <div class="stats-container">
+                <!-- Stat 1 - Women-Led -->
+                <div class="stat-item">
+                    <div class="stat-orb"></div>
+                    <div class="stat-card">
+                        <div class="stat-front">
+                            <div class="stat-icon">
+                                <i class="fas fa-female"></i>
+                            </div>
+                            <div class="stat-number" data-target="100">0%</div>
+                            <div class="stat-label">Women-Led</div>
+                            <div class="hover-hint">Hover to learn more</div>
+                        </div>
+                        <div class="stat-back">
+                            <div class="stat-back-content">
+                                <div class="stat-back-icon">
+                                    <i class="fas fa-hands-helping"></i>
+                                </div>
+                                <h3 class="stat-back-title">100% Women-Led</h3>
+                                <p class="stat-back-description">Our entire production and management is led by women artisans, providing meaningful livelihoods and empowerment opportunities.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stat 2 - Charcoal Content -->
+                <div class="stat-item">
+                    <div class="stat-orb"></div>
+                    <div class="stat-card">
+                        <div class="stat-front">
+                            <div class="stat-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="stat-number" data-target="0">0%</div>
+                            <div class="stat-label">Charcoal Content</div>
+                            <div class="hover-hint">Hover to learn more</div>
+                        </div>
+                        <div class="stat-back">
+                            <div class="stat-back-content">
+                                <div class="stat-back-icon">
+                                    <i class="fas fa-wind"></i>
+                                </div>
+                                <h3 class="stat-back-title">0% Charcoal</h3>
+                                <p class="stat-back-description">Our incense contains zero charcoal, making it cleaner burning and more environmentally friendly than traditional agarbathi.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stat 3 - Fragrance Duration -->
+                <div class="stat-item">
+                    <div class="stat-orb"></div>
+                    <div class="stat-card">
+                        <div class="stat-front">
+                            <div class="stat-icon">
+                                <i class="fas fa-hourglass-half"></i>
+                            </div>
+                            <div class="stat-number" data-target="45">0 min</div>
+                            <div class="stat-label">Fragrance Duration</div>
+                            <div class="hover-hint">Hover to learn more</div>
+                        </div>
+                        <div class="stat-back">
+                            <div class="stat-back-content">
+                                <div class="stat-back-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <h3 class="stat-back-title">45 Minute Fragrance</h3>
+                                <p class="stat-back-description">Each premium stick provides 45 minutes of continuous, gentle fragrance - perfect for meditation and spiritual practices.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stat 4 - Divine Fragrances -->
+                <div class="stat-item">
+                    <div class="stat-orb"></div>
+                    <div class="stat-card">
+                        <div class="stat-front">
+                            <div class="stat-icon">
+                                <i class="fas fa-spa"></i>
+                            </div>
+                            <div class="stat-number" data-target="8">0</div>
+                            <div class="stat-label">Divine Fragrances</div>
+                            <div class="hover-hint">Hover to learn more</div>
+                        </div>
+                        <div class="stat-back">
+                            <div class="stat-back-content">
+                                <div class="stat-back-icon">
+                                    <i class="fas fa-pray"></i>
+                                </div>
+                                <h3 class="stat-back-title">8 Sacred Scents</h3>
+                                <p class="stat-back-description">We offer 8 unique temple-inspired fragrances, each representing different South Indian temple traditions and floral offerings.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2023 Shri Divine Fragrance. All rights reserved. | Transforming temple flowers into divine fragrance</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animated number counting
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const statNumber = entry.target;
+                        const target = parseInt(statNumber.getAttribute('data-target'));
+                        
+                        // Animate the number
+                        let startValue = 0;
+                        const duration = 2000;
+                        const increment = target / (duration / 16);
+                        
+                        const timer = setInterval(() => {
+                            startValue += increment;
+                            if (startValue >= target) {
+                                if (target === 45) {
+                                    statNumber.textContent = target + " min";
+                                } else if (target === 8) {
+                                    statNumber.textContent = target;
+                                } else {
+                                    statNumber.textContent = target + "%";
+                                }
+                                clearInterval(timer);
+                                
+                                // Add celebration effect for 100%
+                                if (target === 100) {
+                                    celebrateNumber(statNumber);
+                                }
+                            } else {
+                                if (target === 45) {
+                                    statNumber.textContent = Math.floor(startValue) + " min";
+                                } else if (target === 8) {
+                                    statNumber.textContent = Math.floor(startValue);
+                                } else {
+                                    statNumber.textContent = Math.floor(startValue) + "%";
+                                }
+                            }
+                        }, 16);
+                        
+                        observer.unobserve(statNumber);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            // Observe each stat number
+            statNumbers.forEach(number => {
+                observer.observe(number);
+            });
+            
+            // Celebration effect for 100%
+            function celebrateNumber(element) {
+                // Add a pulsing animation
+                element.style.animation = 'pulse 2s infinite';
+                
+                // Create celebration particles
+                for (let i = 0; i < 15; i++) {
+                    createParticle(element);
+                }
+                
+                // Add keyframes for pulse animation
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes pulse {
+                        0% { transform: scale(1); }
+                        50% { transform: scale(1.1); }
+                        100% { transform: scale(1); }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            // Create celebration particles
+            function createParticle(parentElement) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: absolute;
+                    width: 8px;
+                    height: 8px;
+                    background: var(--accent);
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: 10;
+                `;
+                
+                // Position at the center of the parent element
+                const rect = parentElement.getBoundingClientRect();
+                particle.style.left = (rect.left + rect.width / 2) + 'px';
+                particle.style.top = (rect.top + rect.height / 2) + 'px';
+                
+                document.body.appendChild(particle);
+                
+                // Animate particle
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = 2 + Math.random() * 2;
+                const vx = Math.cos(angle) * velocity;
+                const vy = Math.sin(angle) * velocity;
+                
+                let opacity = 1;
+                let size = 8;
+                
+                const animateParticle = () => {
+                    particle.style.left = parseFloat(particle.style.left) + vx + 'px';
+                    particle.style.top = parseFloat(particle.style.top) + vy + 'px';
+                    opacity -= 0.02;
+                    size -= 0.1;
+                    
+                    particle.style.opacity = opacity;
+                    particle.style.width = size + 'px';
+                    particle.style.height = size + 'px';
+                    
+                    if (opacity > 0 && size > 0) {
+                        requestAnimationFrame(animateParticle);
+                    } else {
+                        particle.remove();
+                    }
+                };
+                
+                requestAnimationFrame(animateParticle);
+            }
+            
+            // Add click event to flip cards manually (for mobile)
+            const statCards = document.querySelectorAll('.stat-card');
+            statCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        this.classList.toggle('flipped');
+                        this.style.transform = this.classList.contains('flipped') 
+                            ? 'rotateY(180deg)' 
+                            : 'rotateY(0deg)';
+                    }
+                });
+            });
+            
+            // Add touch events for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            statCards.forEach(card => {
+                card.addEventListener('touchstart', function(e) {
+                    touchStartX = e.changedTouches[0].screenX;
+                });
+                
+                card.addEventListener('touchend', function(e) {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe(this);
+                });
+            });
+            
+            function handleSwipe(card) {
+                const swipeThreshold = 50;
+                
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    // Swipe left - flip card
+                    card.classList.add('flipped');
+                    card.style.transform = 'rotateY(180deg)';
+                } else if (touchEndX > touchStartX + swipeThreshold) {
+                    // Swipe right - unflip card
+                    card.classList.remove('flipped');
+                    card.style.transform = 'rotateY(0deg)';
+                }
+            }
+            
+            // Add floating animation to orbs
+            const statOrbs = document.querySelectorAll('.stat-orb');
+            statOrbs.forEach((orb, index) => {
+                orb.style.animation = `floatOrb ${8 + index * 2}s infinite ease-in-out`;
+                orb.style.animationDelay = `${index * 1}s`;
+            });
+            
+            // Add keyframes for orb floating
+            const orbStyle = document.createElement('style');
+            orbStyle.textContent = `
+                @keyframes floatOrb {
+                    0%, 100% { transform: translateY(0) rotate(0deg); }
+                    33% { transform: translateY(-10px) rotate(120deg); }
+                    66% { transform: translateY(5px) rotate(240deg); }
+                }
+            `;
+            document.head.appendChild(orbStyle);
+            
+            // Add glow effect on hover for stat cards
+            statCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.boxShadow = '0 25px 50px rgba(139, 69, 19, 0.2)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.boxShadow = 'var(--shadow)';
+                });
+            });
+            
+            // Add subtle animation to icons on hover
+            const statIcons = document.querySelectorAll('.stat-icon');
+            statIcons.forEach(icon => {
+                icon.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.1) rotate(10deg)';
+                    this.style.transition = 'transform 0.3s ease';
+                });
+                
+                icon.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1) rotate(0deg)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

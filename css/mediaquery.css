@@ -2,6 +2,157 @@
    📱 Mobile First Base Styles
    Default styles go here
 --------------------------------*/
+@media (min-width: 992px) and (max-width: 1199px) {
+  /* small laptop styles */
+  .btn2{
+    padding: 12px 20px;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 991px) {
+  /* tablet portrait styles */
+  .content-overlay {
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+  }
+  /* .viewer-container{
+    position: relative;
+  } */
+  .content-overlay .title-section h1 {
+    color: white !important;
+  }
+  .content-overlay .title-section,
+  .content-overlay .short-desc-section {
+    position: absolute;
+    top: -100px;
+    width: 100%;
+    left: -30px;
+    text-align: center;
+  }
+  .content-overlay .short-desc-section {
+    top: 70px;
+  }
+  .content-overlay .flavor-desc {
+    position: absolute;
+    bottom: -160px;
+    width: 100%;
+    text-align: justify;
+  }
+  .mobile-links {
+    text-align: center;
+  }
+  .mobile-menu {
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.3px);
+    -webkit-backdrop-filter: blur(6.3px);
+    border: 1px solid rgba(255, 255, 255, 0.43);
+  }
+  .mobile-links,
+  .mobile-link {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .split-section {
+    padding: 10px;
+  }
+  .split-inner {
+    display: flex;
+    gap: 1rem;
+  }
+  .text-box,
+  .image-box {
+    flex: 1;
+  }
+  .split-left .content {
+    width: 100%;
+  }
+  .split-left .content {
+    text-align: center !important;
+    font-size: clamp(2rem, 3.2vw, 2.6rem);
+  }
+  .shape-1 {
+    top: -550px;
+  }
+  .gallery-container {
+    width: 95%;
+  }
+  .viewer {
+    width: min(800px, 85vw);
+    height: min(500px, 70vh);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0);
+    background: transparent;
+    backdrop-filter: blur(0px);
+  }
+  .content-overlay {
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+  }
+  /* .viewer-container{
+    position: relative;
+  } */
+  .content-overlay .title-section h1 {
+    color: white !important;
+  }
+  .content-overlay .title-section,
+  .content-overlay .short-desc-section {
+    position: absolute;
+    top: -70px;
+    width: 100%;
+    text-align: center;
+  }
+  .content-overlay .short-desc-section {
+    top: -110px;
+  }
+  .content-overlay .flavor-desc {
+    position: absolute;
+    bottom: -160px;
+    width: 100%;
+    text-align: justify;
+  }
+  .gallery-container button {
+    display: none;
+  }
+  .content-overlay .title-section {
+    top: -90px;
+  }
+  .content-overlay .short-desc-section {
+    top: -420px;
+  }
+ 
+  .content-overlay .flavor-desc {
+    bottom: -100px;
+   
+    width: 207% !important;
+  }
+
+  /* tablet and mobile: stack and reverse */
+  @media (max-width: 991px) {
+    .split-inner {
+      flex-direction: column-reverse; /* image first, text below */
+      padding: 35px 5px;
+    }
+  }
+
+  .split-right {
+    min-height: 300px;
+  }
+  .hero-btns .btn2 {
+    padding: 12px 19px;
+  }
+}
+
 @media (max-width: 767px) {
   .split-inner {
     /* background-color: yellowgreen; */
@@ -282,16 +433,11 @@
 /* ------------------------------
    📱 Tablet Portrait (768px–991px)
 --------------------------------*/
-@media (min-width: 768px) and (max-width: 991px) {
-  /* tablet portrait styles */
-}
 
 /* ------------------------------
    💻 Tablet Landscape / Small Laptop (992px–1199px)
 --------------------------------*/
-@media (min-width: 992px) and (max-width: 1199px) {
-  /* small laptop styles */
-}
+
 
 /* ------------------------------
    🖥️ Desktop Regular (1200px–1399px)

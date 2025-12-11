@@ -1,488 +1,861 @@
-<section id="page3" aria-label="Image viewer">
-  <div class="viewer-container">
-    <!-- Content overlay -->
-    <div class="content-overlay">
-      <div class="title-section">
-        <h1 id="flavorTitle" class="flavor-title">Jasmine</h1>
-        <div class="title-sub">
-          <span class="title-line">JASMINE</span>
-          <span class="title-line">Disease Frequency</span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story | Salem's 'Shri' Divine Fragrance</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8B4513;
+            --primary-light: #a85c2a;
+            --secondary: #2E8B57;
+            --accent: #DAA520;
+            --light: #F5F5DC;
+            --dark: #2C1810;
+            --gray: #6D6D6D;
+            --light-gray: #f9f7f4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.8;
+            color: var(--dark);
+            background-color: var(--light-gray);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .logo-icon {
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .story-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            margin-bottom: 60px;
+        }
+
+        .story-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .story-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 80px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .section-header p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            height: 400px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .highlight-box {
+            background-color: white;
+            border-left: 4px solid var(--secondary);
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box p {
+            font-style: italic;
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        /* Journey Section */
+        .journey-container {
+            position: relative;
+        }
+
+        .journey-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .journey-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background-color: var(--primary);
+            opacity: 0.3;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-start;
+            padding-right: calc(50% + 30px);
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-end;
+            padding-left: calc(50% + 30px);
+        }
+
+        .timeline-content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            position: relative;
+            border-top: 4px solid var(--secondary);
+        }
+
+        .timeline-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-number {
+            right: -20px;
+            left: auto;
+        }
+
+        .timeline-item:nth-child(even) .timeline-number {
+            left: -20px;
+        }
+
+        .timeline-content h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        /* What Makes Us Special */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .feature-content {
+            padding: 25px;
+        }
+
+        .feature-content h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        /* Mission & Vision */
+        .mission-vision {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .mission-card, .vision-card {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-card::before, .vision-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+        }
+
+        .mission-card::before {
+            background-color: var(--secondary);
+        }
+
+        .vision-card::before {
+            background-color: var(--accent);
+        }
+
+        .mission-card i, .vision-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .mission-card h3, .vision-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        /* Founder/Team Section */
+        .team-section {
+            background-color: white;
+            padding: 60px 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .team-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .team-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .team-content p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .team-stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-about p {
+            opacity: 0.8;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .footer-links h3, .footer-contact h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-contact p {
+            margin-bottom: 15px;
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contact i {
+            color: var(--accent);
+            width: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .story-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                z-index: 100;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .story-hero {
+                padding: 70px 20px;
+            }
+            
+            .story-hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .journey-timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                padding-left: 70px !important;
+                padding-right: 0 !important;
+                justify-content: flex-start !important;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-number,
+            .timeline-item:nth-child(even) .timeline-number {
+                left: 10px;
+                right: auto;
+            }
+            
+            .mission-vision {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .story-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-stats {
+                gap: 20px;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+   
+
+   
+
+    <main class="container">
+       
+
+        <!-- What Makes Us Special -->
+        <section id="special">
+            <div class="section-header">
+                <h2>What Makes 'Shri' Special</h2>
+                <p>Premium Quality, Sacred Origins</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas place-of-worship"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Temple-Flower Based</h3>
+                        <p>Made exclusively from flowers blessed and offered at South Indian temples. Each stick carries the spiritual energy of temple offerings into your home.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Carbon-Free & Non-Charcoal</h3>
+                        <p>Crafted without charcoal, reducing smoke intensity and particulate emissions for a cleaner, gentler burning experience.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Long-Lasting Aroma</h3>
+                        <p>Approximately 9 inches per stick, providing consistent, pleasant fragrance for approximately 45 minutes under normal burning conditions.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Gentle on Senses</h3>
+                        <p>Specifically formulated to avoid common incense-related complaints. No eye irritation, allergic cough, or respiratory discomfort.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Ideal Room Coverage</h3>
+                        <p>Two sticks are generally sufficient to fragrance a room of approximately 500 sq. ft. Provides even, consistent fragrance distribution.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Eco-Friendly & Sustainable</h3>
+                        <p>Made from waste flowers that would otherwise be discarded. Biodegradable composition with zero landfill impact.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       
+
+        <!-- Team & Impact -->
+        <section class="team-section">
+            <div class="team-content">
+                <h3>Women-Led Innovation</h3>
+                <p>Arudhra Creations is managed by a dedicated women's team with expertise in flower processing, fragrance blending, and hand-rolling techniques. We provide dignified, meaningful livelihoods to women artisans across Salem and surrounding regions.</p>
+                
+                <div class="team-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Women-Led</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">0%</div>
+                        <div class="stat-label">Charcoal Content</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">45 min</div>
+                        <div class="stat-label">Fragrance Duration</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Divine Fragrances</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <!-- <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Salem's 'Shri' Divine Fragrance</div>
+                    <p>Transforming temple-blessed flowers into premium, carbon-free incense sticks that bring the spiritual essence of South Indian temples into your daily life.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="our-story.html">Our Story</a></li>
+                        <li><a href="fragrances.html">Fragrances</a></li>
+                        <li><a href="gifting.html">Gifting Solutions</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Salem, Tamil Nadu, India</p>
+                    <p><i class="fas fa-phone"></i> +91 XXXXX XXXXX</p>
+                    <p><i class="fas fa-envelope"></i> contact@shridivinefragrance.in</p>
+                    <p><i class="fas fa-building"></i> Company Registration: U20238TZ2025PTC035616</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© Arudhra Creations Private Limited, Salem. All rights reserved.</p>
+            </div>
         </div>
-      </div>
+    </footer> -->
 
-      <div class="short-desc-section">
-        <p id="flavorShort" class="flavor-short">Fresh, floral jasmine aroma</p>
-      </div>
-
-      <div id="flavorDesc" class="flavor-desc">
-        <ul>
-          <li>Inspired by Jasmine garlands in Tamil temples</li>
-          <li>Perfect for festive and celebratory spiritual ambience</li>
-          <li>Popular during weddings and family gatherings</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Center: Gallery viewer -->
-    <div class="gallery-container">
-      <button class="viewer-btn prev" aria-label="Previous image" id="viewerPrev">
-        &larr;
-      </button>
-      
-      <div class="viewer" id="viewer" role="region" aria-roledescription="image gallery" aria-label="Product gallery">
-        <img id="viewerImg" src="./assets/images/Fragrances/1.png" alt="Gallery image" />
-        <div id="viewerCaption" class="viewer-caption">Image 1 of 8</div>
-      </div>
-      
-      <button class="viewer-btn next" aria-label="Next image" id="viewerNext">
-        &rarr;
-      </button>
-    </div>
-  </div>
-</section>
-
-<style>
-  /* PAGE 3 container */
- /* Page container */
-#page3 {
-  min-height: 100vh;
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  transition: background 0.8s ease;
-  padding: 20px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Main container */
-.viewer-container {
-  width: 100%;
-  max-width: 1400px;
-  height: 100%;
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-}
-
-/* Content overlay - positioned absolutely over the entire container */
-.content-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 5;
-  padding: clamp(20px, 4vw, 80px);
-  display: grid;
-  grid-template-areas: 
-    "title ."
-    ". ."
-    "short desc";
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto 1fr auto;
-  gap: 20px;
-  pointer-events: none; /* Allow clicks to pass through to buttons */
-}
-
-/* Title section - top-left */
-.title-section {
-  grid-area: title;
-  color: white;
-  text-transform: uppercase;
-  pointer-events: none;
-}
-
-.flavor-title {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 900;
-  margin: 0 0 0.5rem 0;
-  line-height: 0.9;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.title-sub {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.title-line {
-  font-size: clamp(1rem, 2vw, 1.5rem);
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  opacity: 0.9;
-}
-
-/* Short description - bottom-left */
-.short-desc-section {
-  grid-area: short;
-  align-self: end;
-  pointer-events: none;
-}
-
-.flavor-short {
-  font-size: clamp(1rem, 1.5vw, 1.25rem);
-  color: white;
-  margin: 0;
-  font-weight: 500;
-  max-width: 300px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-/* Long description - bottom-right */
-.flavor-desc {
-  grid-area: desc;
-  align-self: end;
-  justify-self: end;
-  pointer-events: none;
-}
-
-.flavor-desc ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  max-width: 400px;
-}
-
-.flavor-desc li {
-  color: white;
-  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
-  margin-bottom: 0.8rem;
-  padding-left: 1.5rem;
-  position: relative;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-  line-height: 1.4;
-}
-
-.flavor-desc li:before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: white;
-  font-size: 1.5em;
-}
-
-/* Gallery container - centered */
-.gallery-container {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(10px, 2vw, 30px);
-  grid-row: 1;
-  grid-column: 1;
-  z-index: 1;
-}
-
-/* Main viewer */
-.viewer {
-  width: min(800px, 85vw);
-  height: min(500px, 70vh);
-  border-radius: 20px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-}
-
-.viewer img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-
-/* Buttons */
-.viewer-btn {
-  width: clamp(50px, 6vw, 70px);
-  height: clamp(50px, 6vw, 70px);
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  background: rgba(0, 0, 0, 0.2);
-  color: white;
-  font-size: clamp(1.2rem, 2vw, 1.5rem);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  pointer-events: auto;
-  z-index: 10;
-}
-
-.viewer-btn:hover {
-  background: rgba(0, 0, 0, 0.4);
-  border-color: rgba(255, 255, 255, 0.6);
-  transform: scale(1.1);
-}
-
-/* Caption */
-.viewer-caption {
-  position: absolute;
-  right: 15px;
-  bottom: 15px;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  padding: 8px 15px;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  backdrop-filter: blur(4px);
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .content-overlay {
-    padding: 40px;
-    gap: 15px;
-  }
-}
-
-@media (max-width: 768px) {
-  .content-overlay {
-    grid-template-areas: 
-      "title"
-      "short"
-      "desc";
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
-    padding: 30px 20px;
-    gap: 25px;
-  }
-  
-  .title-section {
-    text-align: center;
-  }
-  
-  .short-desc-section {
-    text-align: center;
-    align-self: center;
-  }
-  
-  .flavor-short {
-    max-width: 100%;
-  }
-  
-  .flavor-desc {
-    justify-self: center;
-    align-self: start;
-  }
-  
-  .flavor-desc ul {
-    max-width: 100%;
-  }
-  
-  .viewer {
-    width: 90vw;
-    height: min(400px, 60vh);
-  }
-  
-  .gallery-container {
-    gap: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  #page3 {
-    padding: 10px;
-  }
-  
-  .content-overlay {
-    padding: 20px 15px;
-    gap: 20px;
-  }
-  
-  .viewer {
-    height: min(350px, 50vh);
-    border-radius: 15px;
-  }
-  
-  .viewer-btn {
-    width: 45px;
-    height: 45px;
-    font-size: 1.2rem;
-  }
-  
-  .flavor-desc li {
-    font-size: 0.9rem;
-    margin-bottom: 0.6rem;
-  }
-}
-</style>
-
-<script>
-(function () {
-  /* ---------- Data (use your existing arrays) ---------- */
-  const images = [
-    "./assets/images/Fragrances/1.png",
-    "./assets/images/Fragrances/2.png",
-    "./assets/images/Fragrances/3.png",
-    "./assets/images/Fragrances/4.png",
-    "./assets/images/Fragrances/5.png",
-    "./assets/images/Fragrances/6.png",
-    "./assets/images/Fragrances/7.png",
-    "./assets/images/Fragrances/8.png"
-  ];
-
-  const bgGradients = [
-    "radial-gradient(circle,rgba(255,255,255,1) 0%, rgba(8,150,0,1) 82%)",
-    "radial-gradient(circle,rgba(255, 255, 255, 1) 30%, rgba(255, 213, 0, 1) 82%)",
-    "radial-gradient(circle,rgba(255,255,255,1) 0%, rgba(83,0,191,1) 82%)",
-    "radial-gradient(circle,rgba(255,255,255,1) 20%, rgba(45,158,0,1) 82%)",
-    "radial-gradient(circle,rgba(255, 255, 255, 1) 30%, rgba(189, 0, 79, 1) 82%)",
-    "radial-gradient(circle,rgba(255,255,255,1) 30%, rgba(158,66,0,1) 100%)",
-    "radial-gradient(circle,rgba(255,255,255,1) 30%, rgba(158,124,0,1) 100%)",
-    "radial-gradient(circle,rgba(255,255,255,1) 30%, rgba(60,80,200,1) 100%)"
-  ];
-
-  const profiles = [
-    { title: "Jasmine", short: "Fresh, floral jasmine aroma", desc: "<ul><li>Inspired by jasmine garlands in Tamil temples</li><li>Perfect for festive and celebratory spiritual ambience</li><li>Popular during weddings and family gatherings</li></ul>" },
-    { title: "Champa", short: "Traditional temple floral scent", desc: "<ul><li>Iconic in South Indian shrine traditions</li><li>Reminiscent of ancient Tamil temples and pilgrimage centres</li><li>Perfect for family puja and festive occasions</li></ul>" },
-    { title: "Lavender", short: "Calming and soothing aromatic notes", desc: "<ul><li>Brings tranquility and relaxation to meditation practice</li><li>Excellent for yoga spaces, personal prayer rooms, and bedtime rituals</li><li>Blended from traditional South Indian herbal essences</li></ul>" },
-    { title: "Screw Pine", short: "Delicate, unique floral aroma", desc: "<ul><li>Inspired by screw pine flowers used in worship</li><li>Traditional and culturally rooted fragrance experience</li><li>Ideal for those seeking a regional temple aroma</li></ul>" },
-    { title: "Rose", short: "Soft, devotional floral fragrance", desc: "<ul><li>Reminiscent of rose garlands offered to goddesses in South Indian temples</li><li>Perfect for daily puja, meditation, and creating a soothing home ambience</li><li>Ideal for Durga Puja, Lakshmi Puja, and feminine spiritual spaces</li></ul>" },
-    { title: "Sandal", short: "Classic woody, sacred aroma", desc: "<ul><li>Highly revered in Hindu rituals and Vedic practices</li><li>Suited for homams, special poojas and ceremonial occasions</li><li>Enhances spiritual focus and inner clarity</li></ul>" },
-    { title: "Sacred Resin", short: "Resinous temple-style fragrance", desc: "<ul><li>Believed to have purifying and cleansing properties</li><li>Creates sacred ambience during rituals and ceremonies</li><li>Used in temple archana and purification practices</li></ul>" },
-    { title: "Javathu", short: "Rich, distinctive devotional fragrance", desc: "<ul><li>Represents the aromatic heritage of Tamil Nadu</li><li>Carries deep spiritual significance in customs</li><li>Perfect for connecting with ancestral and cultural roots</li></ul>" }
-  ];
-
-  /* ---------- elements ---------- */
-  const page3 = document.getElementById("page3");
-  const imgEl = document.getElementById("viewerImg");
-  const captionEl = document.getElementById("viewerCaption");
-  const prevBtn = document.getElementById("viewerPrev");
-  const nextBtn = document.getElementById("viewerNext");
-  const titleEl = document.getElementById("flavorTitle");
-  const shortEl = document.getElementById("flavorShort");
-  const descEl = document.getElementById("flavorDesc");
-  const viewer = document.getElementById("viewer");
-
-  let index = 0;
-  let autoplay = null;
-  const AUTOPLAY_MS = 2000;
-
-  // preload images (non-blocking)
-  images.forEach(src => { const i=new Image(); i.src=src; });
-
-  function norm(i) {
-    if (i < 0) return images.length - 1;
-    if (i >= images.length) return 0;
-    return i;
-  }
-
-  function render(index) {
-    // update image + alt + bg + caption
-    imgEl.src = images[index];
-    imgEl.alt = profiles[index]?.title ? `${profiles[index].title} product` : `Image ${index+1}`;
-    captionEl.textContent = `Image ${index+1} of ${images.length}`;
-    if (page3) page3.style.background = bgGradients[index] || page3.style.background;
-
-    // update text
-    const p = profiles[index] || {};
-    titleEl.textContent = p.title || "";
-    shortEl.textContent = p.short || "";
-    descEl.innerHTML = p.desc || "";
-  }
-
-  // simple crossfade (fallback without GSAP)
-  function goTo(n, direction = "next") {
-    if (typeof gsap === "undefined" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      index = norm(n);
-      render(index);
-      return;
-    }
-
-    // prefer your existing goTo animation (if defined) — else do quick fade
-    if (typeof window.goTo === "function") {
-      window.goTo(n, direction); // call existing animation function if present
-      index = norm(n);
-      return;
-    }
-
-    // fallback simple
-    index = norm(n);
-    imgEl.style.opacity = 0;
-    setTimeout(() => {
-      render(index);
-      imgEl.style.opacity = 1;
-    }, 220);
-  }
-
-  // controls
-  prevBtn.addEventListener("click", () => { goTo(index - 1, "prev"); restartAutoplay(); });
-  nextBtn.addEventListener("click", () => { goTo(index + 1, "next"); restartAutoplay(); });
-
-  // autoplay
-  function startAutoplay() {
-    stopAutoplay();
-    autoplay = setInterval(() => {
-      goTo(index + 1, "next");
-    }, AUTOPLAY_MS);
-  }
-  function stopAutoplay() { if (autoplay) { clearInterval(autoplay); autoplay = null; } }
-  function restartAutoplay() { stopAutoplay(); setTimeout(startAutoplay, 1200); }
-
-  // pause while hovering or focusing
-  [viewer, prevBtn, nextBtn].forEach(el => {
-    el.addEventListener("mouseenter", stopAutoplay);
-    el.addEventListener("mouseleave", startAutoplay);
-    el.addEventListener("focusin", stopAutoplay);
-    el.addEventListener("focusout", startAutoplay);
-  });
-
-  // swipe support (simple)
-  let startX = null;
-  viewer.addEventListener("touchstart", e => { startX = e.touches[0].clientX; stopAutoplay(); }, { passive: true });
-  viewer.addEventListener("touchend", e => {
-    if (startX === null) return;
-    const dx = e.changedTouches[0].clientX - startX;
-    if (dx > 50) goTo(index - 1, "prev");
-    else if (dx < -50) goTo(index + 1, "next");
-    startX = null;
-    restartAutoplay();
-  }, { passive: true });
-
-  // keyboard
-  window.addEventListener("keydown", e => {
-    if (e.key === "ArrowLeft") { goTo(index - 1, "prev"); restartAutoplay(); }
-    if (e.key === "ArrowRight") { goTo(index + 1, "next"); restartAutoplay(); }
-  });
-
-  // IntersectionObserver: initialize content only when page3 visible (fixes your earlier issue)
-  let initialized = false;
-  const observer = new IntersectionObserver((entries) => {
-    for (const entry of entries) {
-      if (entry.isIntersecting && !initialized) {
-        initialized = true;
-        render(0); // initial render
-        // if you have a complex animation using GSAP, call its init here.
-        // If you want autoplay only after GSAP intro, call startAutoplay after intro completes.
-        startAutoplay();
-      }
-      if (!entry.isIntersecting && initialized) {
-        // optional: pause autoplay when page3 out of view
-        stopAutoplay();
-      }
-    }
-  }, { threshold: 0.25 });
-
-  if (page3) observer.observe(page3);
-
-  // expose render/goTo for external usage (your GSAP script uses window.goTo)
-  window.goTo = function (n, dir) { n = norm(n); index = n; render(index); };
-
-  // If user navigates directly (no IntersectionObserver support), ensure fallback init
-  setTimeout(() => {
-    if (!initialized) {
-      initialized = true;
-      render(0);
-      startAutoplay();
-    }
-  }, 800);
-})();
-</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                navMenu.classList.toggle('show');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (navMenu.classList.contains('show')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+            // Close mobile menu when clicking on a link
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (navMenu.classList.contains('show')) {
+                        navMenu.classList.remove('show');
+                        const icon = mobileMenuBtn.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            });
+            
+            // Add scroll animations
+            const sections = document.querySelectorAll('section');
+            
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Initialize animations for sections
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(section);
+            });
+            
+            // Animate feature cards on scroll
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

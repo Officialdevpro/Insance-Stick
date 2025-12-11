@@ -13,12 +13,13 @@ body {
 /* ---------- FOOTER ---------- */
 
 .modern-footer {
-  background: linear-gradient(
+  /* background: linear-gradient(
     to right,
     var(--ui-primary),
     var(--ui-primary-light)
-  );
-  color: #bdbdbd;
+  ); */
+  background-color: #7f0403;
+  color: #d9d9d9;
   padding: 70px 20px 40px;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.6);
 }
@@ -227,7 +228,7 @@ body {
 
 .section-subtitle {
   font-size: 20px;
-  color: #7d4dff;
+  color: #949496;
   margin-bottom: 60px;
   font-weight: 500;
   letter-spacing: 0.5px;
@@ -275,7 +276,7 @@ body {
   height: 6px;
   top: 0;
   left: -10%;
-  background: var(--ui-accent);
+  background: #ffc406;
   background-size: 200% auto;
   animation: moveBar 3s linear infinite;
 }
@@ -307,7 +308,8 @@ body {
   transform: translateY(-14px) scale(1.03);
   box-shadow: 0 22px 60px rgba(100, 80, 200, 0.22),
     inset 0 1px 12px rgba(255, 255, 255, 0.7);
-  border-color: var(--ui-primary);
+  border-color: #7f0403;
+    
 }
 
 .story-card:hover::after {
@@ -556,7 +558,8 @@ body {
 .attractive {
   font-family: "Playfair Display", serif;
   font-size: 2.8rem;
-  color: var(--ui-secondary);
+
+  color: #7f0403;
   margin-bottom: 15px;
   position: relative;
   display: inline-block;
@@ -962,7 +965,7 @@ body {
 :root {
   --ui-primary: #8a6d3b;
   --ui-primary-light: #a57c48;
-  --ui-secondary: #3c2f2f;
+  --ui-secondary: #7f0403;
   --ui-accent: #d4af37;
   --ui-light: #f9f5eb;
   --ui-gray: #eaeaea;
@@ -1084,8 +1087,11 @@ body {
 }
 
 .info-list li i {
-  color: var(--ui-primary);
+  color: #7f0403;
   margin-top: 3px;
+}
+.form-group label i{
+  color: #7f0403;
 }
 
 .business-hours {
@@ -1130,7 +1136,7 @@ label {
   display: block;
   margin-bottom: 8px;
   font-weight: 500;
-  color: var(--ui-secondary);
+  color: var(--ui-text-light);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1159,7 +1165,7 @@ input:focus,
 select:focus,
 textarea:focus {
   outline: none;
-  border-color: var(--ui-primary-light);
+  border-color: #7f0403;
   box-shadow: 0 0 0 3px rgba(138, 109, 59, 0.2);
 }
 
@@ -1179,11 +1185,12 @@ input.error {
 }
 
 .submit-btn {
-  background: linear-gradient(
+  /* background: linear-gradient(
     to right,
     var(--ui-primary),
     var(--ui-primary-light)
-  );
+  ); */
+  background-color: #7f0403 !important;
   color: white;
   border: none;
   padding: 16px 30px;
