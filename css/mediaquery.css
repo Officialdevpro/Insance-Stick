@@ -11,36 +11,7 @@
 
 @media (min-width: 767px) and (max-width: 991px) {
   /* tablet portrait styles */
-  .content-overlay {
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-  }
-  /* .viewer-container{
-    position: relative;
-  } */
-  .content-overlay .title-section h1 {
-    color: white !important;
-  }
-  .content-overlay .title-section,
-  .content-overlay .short-desc-section {
-    position: absolute;
-    top: -100px;
-    width: 100%;
-    left: -30px;
-    text-align: center;
-  }
-  .content-overlay .short-desc-section {
-    top: 70px;
-  }
-  .content-overlay .flavor-desc {
-    position: absolute;
-    bottom: -160px;
-    width: 100%;
-    text-align: justify;
-  }
+ 
   .mobile-links {
     text-align: center;
   }
@@ -79,63 +50,19 @@
   .shape-1 {
     top: -550px;
   }
-  .gallery-container {
-    width: 95%;
+  #page3{
+    flex-direction: column;
   }
-  .viewer {
-    width: min(800px, 85vw);
-    height: min(500px, 70vh);
-    border-radius: 20px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0);
-    background: transparent;
-    backdrop-filter: blur(0px);
+  .viewer-container{
+    width: 100%;
   }
-  .content-overlay {
-    top: 0;
-    left: 0;
+  .fragrance-details{
+    width: 90%;
+  }
+  
 
-    width: 100%;
-    height: 100%;
-  }
-  /* .viewer-container{
-    position: relative;
-  } */
-  .content-overlay .title-section h1 {
-    color: white !important;
-  }
-  .content-overlay .title-section,
-  .content-overlay .short-desc-section {
-    position: absolute;
-    top: -70px;
-    width: 100%;
-    text-align: center;
-  }
-  .content-overlay .short-desc-section {
-    top: -110px;
-  }
-  .content-overlay .flavor-desc {
-    position: absolute;
-    bottom: -160px;
-    width: 100%;
-    text-align: justify;
-  }
-  .gallery-container button {
-    display: none;
-  }
-  .content-overlay .title-section {
-    top: -90px;
-  }
-  .content-overlay .short-desc-section {
-    top: -420px;
-  }
- 
-  .content-overlay .flavor-desc {
-    bottom: -100px;
-   
-    width: 207% !important;
-  }
+
+
 
   /* tablet and mobile: stack and reverse */
   @media (max-width: 991px) {
@@ -156,6 +83,15 @@
 @media (max-width: 767px) {
   .split-inner {
     /* background-color: yellowgreen; */
+  }
+    #page3{
+    flex-direction: column;
+  }
+  .viewer-container{
+    width: 100%;
+  }
+  .fragrance-details{
+    width: 100%;
   }
   .mobile-links {
     text-align: center;
@@ -191,47 +127,9 @@
     text-align: center;
     font-size: clamp(2rem, 3.2vw, 2.6rem);
   }
-  .content-overlay {
-    top: 0;
-    left: 0;
 
-    width: 100%;
-    height: 100%;
-  }
-  /* .viewer-container{
-    position: relative;
-  } */
-  .content-overlay .title-section h1 {
-    color: white !important;
-  }
-  .content-overlay .title-section,
-  .content-overlay .short-desc-section {
-    position: absolute;
-    top: -170px;
-    width: 100%;
-    text-align: center;
-  }
-  .content-overlay .short-desc-section {
-    top: -215px;
-  }
-  .content-overlay .flavor-desc {
-    position: absolute;
-    bottom: -160px;
-    width: 100%;
-    text-align: justify;
-  }
-  .gallery-container button {
-    display: none;
-  }
-  .content-overlay .title-section {
-    top: -140px;
-  }
-  .content-overlay .short-desc-section {
-    top: -200px;
-  }
-  .content-overlay .flavor-desc {
-    bottom: -140px;
-  }
+
+  
   .about-section {
     padding: 20px 10px;
   }
@@ -289,35 +187,8 @@
   .viewer-btn {
     display: none;
   }
-  .content-overlay {
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-  }
-  /* .viewer-container{
-    position: relative;
-  } */
-  .content-overlay .title-section h1 {
-    color: white !important;
-  }
-  .content-overlay .title-section,
-  .content-overlay .short-desc-section {
-    position: absolute;
-    top: -170px;
-    width: 100%;
-    text-align: center;
-  }
-  .content-overlay .short-desc-section {
-    top: -215px;
-  }
-  .content-overlay .flavor-desc {
-    position: absolute;
-    bottom: -160px;
-    width: 100%;
-    text-align: justify;
-  }
+  
+  
   .company-header {
     flex-direction: column;
     text-align: center;
@@ -367,10 +238,7 @@
   .section-subtitle {
     color: #ababab;
   }
-  .viewer {
-    height: min(400px, 50vh);
-    border-radius: 15px;
-  }
+ 
   .mobile-links {
     text-align: center;
   }
@@ -402,9 +270,7 @@
   .split-left .lead {
     text-align: justify;
   }
-  .content-overlay .short-desc-section {
-    top: -210px !important;
-  }
+ 
   .main-content {
     padding: 20px !important;
   }

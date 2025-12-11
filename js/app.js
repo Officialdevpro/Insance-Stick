@@ -233,7 +233,7 @@ observer.observe(firstSection);
   const captionEl = document.getElementById("viewerCaption");
   const prevBtn = document.getElementById("viewerPrev");
   const nextBtn = document.getElementById("viewerNext");
-  const page3 = document.getElementById("page3");
+  const page3 = document.getElementById("viewer");
   const titleEl = document.getElementById("flavorTitle");
   const shortEl = document.getElementById("flavorShort");
   const descEl = document.getElementById("flavorDesc");
@@ -262,6 +262,7 @@ observer.observe(firstSection);
     shortEl.textContent = p.short || "";
     descEl.innerHTML = p.desc || "";
   }
+
 
   const prefersReduced = window.matchMedia(
     "(prefers-reduced-motion: reduce)"

@@ -136,27 +136,25 @@
     </header>
 
     <!-- Page filler so header overlay is visible -->
-     <style>
-      #home{
-   display: flex;
+    <style>
+      #home {
+        display: flex;
         justify-content: center;
         align-items: start;
         width: 100%;
-        height: 100%;
+        height: 100vh;
         position: relative;
       }
-     
-      .hero-content{
-        
+
+      .hero-content {
         display: flex;
         justify-content: center;
         align-items: start;
         width: 100%;
         height: 100%;
         margin-top: 107px;
-        
       }
-     </style>
+    </style>
     <main>
       <section id="home">
         <div class="hero-content">
@@ -255,12 +253,25 @@
           </div>
         </div>
       </section>
-
+      <style>
+        .viewer {
+          position: relative;
+          overflow: visible;
+        }
+        .viewer img {
+          position: absolute;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          left: 0;
+        }
+      </style>
       <!-- THIRD PAGE: single centered image with prev/next -->
       <section id="page3" aria-label="Image viewer">
-        <div class="viewer-container">
+        <div class="viewer-container" id="page-three">
           <!-- Content overlay -->
-          <div class="content-overlay">
+        
+          <!-- <div class="content-overlay">
             <div class="title-section">
               <h1 id="flavorTitle" class="flavor-title attractive">Jasmine</h1>
             </div>
@@ -278,7 +289,7 @@
                 <li>Popular during weddings and family gatherings</li>
               </ul>
             </div>
-          </div>
+          </div> -->
 
           <!-- Center: Gallery viewer -->
           <div class="gallery-container">
@@ -320,6 +331,53 @@
             </button>
           </div>
         </div>
+        <div class="fragrance-details">
+  <div class="fd-advanced">
+    <!-- decorative SVG flourish -->
+    <svg class="fd-flourish" viewBox="0 0 200 60" aria-hidden="true">
+      <defs>
+        <linearGradient id="g1" x1="0" x2="1">
+          <stop offset="0" stop-color="#f6e7b4"/>
+          <stop offset="1" stop-color="#b8860b"/>
+        </linearGradient>
+      </defs>
+      <path d="M2 40 C40 -10, 160 -10, 198 40" fill="none" stroke="url(#g1)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+    </svg>
+
+    <div class="fd-left-deco"></div>
+
+    <header class="fd-head">
+      <h1 id="flavorTitle" class="flavor-title">Jasmine</h1>
+      <div class="fd-meta">
+        <span class="meta-chip">Temple • Floral</span>
+        
+      </div>
+    </header>
+
+    <p id="flavorShort" class="flavor-short">Fresh, floral jasmine aroma</p>
+
+    <div id="flavorDesc" class="flavor-desc">
+      <ul>
+        <li>Inspired by jasmine garlands in Tamil temples</li>
+        <li>Perfect for festive and spiritual gatherings</li>
+        <li>Gentle, long-lasting ceremonial warmth</li>
+      </ul>
+    </div>
+
+    <div class="fd-actions">
+      <div class="fd-price">From <span class="price">₹</span></div>
+      <button class="btn-glow" aria-label="Shop Jasmine">
+        <span class="btn-inner">Shop Now<svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </button>
+    </div>
+
+    <!-- floating dust particles (pure CSS) -->
+    <div class="fd-particles" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+</div>
+
       </section>
 
       <section class="about-section" id="about">
