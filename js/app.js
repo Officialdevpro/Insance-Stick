@@ -179,7 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const images = [
       "./assets/images/Fragrances/1.png",
       "./assets/images/Fragrances/2.png",
-      "./ChatGPT Image Dec 8, 2025, 09_52_25 PM.png",
+      "./assets/images/Fragrances/3.png",
       "./assets/images/Fragrances/4.png",
       "./assets/images/Fragrances/5.png",
       "./assets/images/Fragrances/6.png",
