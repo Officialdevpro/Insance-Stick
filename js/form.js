@@ -1,124 +1,130 @@
- document.addEventListener("DOMContentLoaded", function () {
-        const form = document.getElementById("inquiryForm");
-        const fullNameInput = document.getElementById("fullName");
-        const mobileInput = document.getElementById("mobile");
-        const emailInput = document.getElementById("email");
-        const purposeSelect = document.getElementById("purpose");
-        const responseMessage = document.getElementById("responseMessage");
+// --- form.js (cleaned, behavior preserved) ---
+document.addEventListener("DOMContentLoaded", () => {
+  // Cache DOM references and guard existence
+  const form = document.getElementById("inquiryForm");
+  if (!form) return;
 
-        // Real-time validation for full name
-        fullNameInput.addEventListener("input", function () {
-          validateField(this, validateName);
-        });
+  const fullNameInput = document.getElementById("fullName");
+  const mobileInput = document.getElementById("mobile");
+  const emailInput = document.getElementById("email");
+  const purposeSelect = document.getElementById("purpose");
+  const responseMessage = document.getElementById("responseMessage");
+  const cityInput = document.getElementById("city");
+  const messageInput = document.getElementById("message");
 
-        // Real-time validation for mobile
-        mobileInput.addEventListener("input", function () {
-          validateField(this, validateMobile);
-        });
+  // Small safety helpers
+  const getErrorEl = (field) => document.getElementById(`${field?.id}Error`);
+  const show = (el) => {
+    if (el) el.style.display = "block";
+  };
+  const hide = (el) => {
+    if (el) el.style.display = "none";
+  };
 
-        // Real-time validation for email
-        emailInput.addEventListener("input", function () {
-          validateField(this, validateEmail);
-        });
+  // Validation functions (kept same logic)
+  const validateName = (field) => field && field.value.trim().length >= 2;
+  const validateMobile = (field) => {
+    if (!field) return false;
+    const mobileRegex = /^\d{10}$/;
+    return mobileRegex.test(field.value.trim());
+  };
+  const validateEmail = (field) => {
+    if (!field) return false;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(field.value.trim());
+  };
+  const validatePurpose = (field) => field && field.value !== "";
 
-        // Real-time validation for purpose
-        purposeSelect.addEventListener("change", function () {
-          validateField(this, validatePurpose);
-        });
+  // Unified field validator & UI update
+  function validateField(field, validator) {
+    if (!field) return false;
+    const isValid = Boolean(validator(field));
+    const errorEl = getErrorEl(field);
 
-        // Form submission
-        form.addEventListener("submit", function (e) {
-          e.preventDefault();
+    field.classList.toggle("valid", isValid);
+    field.classList.toggle("error", !isValid);
 
-          // Validate all fields
-          const isNameValid = validateField(fullNameInput, validateName);
-          const isMobileValid = validateField(mobileInput, validateMobile);
-          const isEmailValid = validateField(emailInput, validateEmail);
-          const isPurposeValid = validateField(purposeSelect, validatePurpose);
+    if (isValid) hide(errorEl);
+    else show(errorEl);
 
-          if (isNameValid && isMobileValid && isEmailValid && isPurposeValid) {
-            // Show success message
-            showResponseMessage(
-              "Thank you for your inquiry! We will respond within 24 business hours.",
-              "success"
-            );
+    return isValid;
+  }
 
-            // In a real application, you would send the form data to a server here
-            console.log("Form submitted with data:", {
-              fullName: fullNameInput.value,
-              mobile: mobileInput.value,
-              email: emailInput.value,
-              city: document.getElementById("city").value,
-              purpose: purposeSelect.value,
-              message: document.getElementById("message").value,
-            });
+  // Show response message (success/error)
+  function showResponseMessage(message, type) {
+    if (!responseMessage) return;
+    responseMessage.textContent = message;
+    responseMessage.className = `response-message ${type}`;
+    responseMessage.style.display = "block";
+    responseMessage.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
 
-            // Reset form after 3 seconds
-            setTimeout(() => {
-              form.reset();
-              responseMessage.style.display = "none";
-            }, 5000);
-          } else {
-            showResponseMessage(
-              "Please correct the errors in the form before submitting.",
-              "error"
-            );
-          }
-        });
+  // Attach realtime validation if inputs exist
+  if (fullNameInput)
+    fullNameInput.addEventListener("input", () =>
+      validateField(fullNameInput, validateName)
+    );
+  if (mobileInput)
+    mobileInput.addEventListener("input", () =>
+      validateField(mobileInput, validateMobile)
+    );
+  if (emailInput)
+    emailInput.addEventListener("input", () =>
+      validateField(emailInput, validateEmail)
+    );
+  if (purposeSelect)
+    purposeSelect.addEventListener("change", () =>
+      validateField(purposeSelect, validatePurpose)
+    );
 
-        // Validation functions
-        function validateName(field) {
-          return field.value.trim().length >= 2;
-        }
+  // Submit handler
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-        function validateMobile(field) {
-          const mobileRegex = /^\d{10}$/;
-          return mobileRegex.test(field.value.trim());
-        }
+    const isNameValid = validateField(fullNameInput, validateName);
+    const isMobileValid = validateField(mobileInput, validateMobile);
+    const isEmailValid = validateField(emailInput, validateEmail);
+    const isPurposeValid = validateField(purposeSelect, validatePurpose);
 
-        function validateEmail(field) {
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          return emailRegex.test(field.value.trim());
-        }
+    if (isNameValid && isMobileValid && isEmailValid && isPurposeValid) {
+      showResponseMessage(
+        "Thank you for your inquiry! We will respond within 24 business hours.",
+        "success"
+      );
 
-        function validatePurpose(field) {
-          return field.value !== "";
-        }
-
-        // Field validation and UI update
-        function validateField(field, validationFn) {
-          const errorElement = document.getElementById(`${field.id}Error`);
-          const isValid = validationFn(field);
-
-          if (isValid) {
-            field.classList.remove("error");
-            field.classList.add("valid");
-            errorElement.style.display = "none";
-          } else {
-            field.classList.remove("valid");
-            field.classList.add("error");
-            errorElement.style.display = "block";
-          }
-
-          return isValid;
-        }
-
-        // Show response message
-        function showResponseMessage(message, type) {
-          responseMessage.textContent = message;
-          responseMessage.className = `response-message ${type}`;
-          responseMessage.style.display = "block";
-
-          // Scroll to the response message
-          responseMessage.scrollIntoView({
-            behavior: "smooth",
-            block: "nearest",
-          });
-        }
-
-        // Initialize tooltips for optional fields
-        const optionalLabels = document.querySelectorAll(".optional");
-        optionalLabels.forEach((label) => {
-          label.title = "This field is optional";
-        });
+      // Log form data (unchanged)
+      console.log("Form submitted with data:", {
+        fullName: fullNameInput?.value || "",
+        mobile: mobileInput?.value || "",
+        email: emailInput?.value || "",
+        city: cityInput?.value || "",
+        purpose: purposeSelect?.value || "",
+        message: messageInput?.value || "",
       });
+
+      // Reset after delay (kept 5s visible then hidden)
+      setTimeout(() => {
+        form.reset();
+        if (responseMessage) responseMessage.style.display = "none";
+
+        // remove validation classes
+        [fullNameInput, mobileInput, emailInput, purposeSelect].forEach((f) => {
+          if (!f) return;
+          f.classList.remove("valid", "error");
+          const err = getErrorEl(f);
+          if (err) hide(err);
+        });
+      }, 5000);
+    } else {
+      showResponseMessage(
+        "Please correct the errors in the form before submitting.",
+        "error"
+      );
+    }
+  });
+
+  // Mark optional labels with tooltip (kept)
+  document.querySelectorAll(".optional").forEach((label) => {
+    if (label && !label.title) label.title = "This field is optional";
+  });
+});
