@@ -219,7 +219,7 @@ body {
 
 /* link style */
 .nav-link {
-  color: #000000;
+  color: #7f0403;
   text-decoration: none;
   padding: 8px 14px;
   border-radius: 999px;
@@ -671,7 +671,7 @@ a:focus,
   width: 160px;
   height: 160px;
   left: -84px;
-  top: -75px;
+  top: -50px;
   mix-blend-mode: multiply;
   background-image: url("../assets/images/images/floral.png"); /* your image path */
   background-size: cover; /* makes image fill the shape */
@@ -858,7 +858,7 @@ a:focus,
   color: white;
   margin: 0;
   font-weight: 500;
-  max-width: 300px;
+ 
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
@@ -1497,4 +1497,164 @@ a:focus,
   font-family: "Alata", sans-serif;
   font-weight: 400;
   font-style: normal;
+}
+
+
+            :root{
+  --bg: #fff;
+  --card-bg: #fff;
+  --card-radius: 16px;
+  --card-padding: 20px;
+  --shadow-sm: 0 6px 18px rgba(20,20,40,0.06);
+  --shadow-md: 0 20px 40px rgba(20,20,40,0.12);
+  --accent: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);
+  --text: #111827;
+  --muted: #6b7280;
+  --card-img-height: 200px;        /* desktop: tweak this */
+  --card-img-height-tablet: 200px; /* tablet */
+  --card-img-height-mobile: auto; /* mobile */
+  --transition: 400ms cubic-bezier(.2,.9,.3,1);
+}
+
+/* GRID - responsive and equal-width */
+.key-points{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin: 40px 0;
+  align-items: stretch; /* make cards equal height */
+}
+
+/* CARD */
+.point-card{
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  padding: var(--card-padding);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(15, 23, 42, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition);
+  will-change: transform;
+  position: relative;
+}
+
+/* subtle float animation on load */
+@keyframes floatIn {
+  from { opacity: 0; transform: translateY(12px) scale(.995); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.point-card {
+  animation: floatIn 520ms var(--transition) both;
+}
+
+/* HOVER / FOCUS states */
+.point-card:hover,
+.point-card:focus-within{
+  transform: translateY(-10px) rotate(-0.35deg) scale(1.01);
+  box-shadow: var(--shadow-md);
+  z-index: 5;
+}
+
+/* IMAGE WRAPPER - fixed height so all images match */
+.point-icon{
+  width: 100%;
+  height: var(--card-img-height);
+  border-radius: 12px;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(255,255,255,0.02));
+  box-shadow: inset 0 -20px 50px rgba(0,0,0,0.03);
+}
+
+/* image styles: fill, crop evenly */
+.point-icon img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* crop to same shape */
+  object-position: center;
+  display: block;
+  transition: transform 500ms cubic-bezier(.2,.9,.3,1);
+}
+
+/* decorative gradient overlays per card (keeps your classes) */
+.point-icon.eco::after,
+.point-icon.women::after,
+.point-icon.temple::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: overlay;
+  opacity: 0.12;
+  transition: opacity var(--transition);
+  pointer-events: none;
+  border-radius: 12px;
+}
+
+/* custom overlay tints */
+.point-icon.eco::after { background: linear-gradient(135deg, rgba(41, 128, 185, 0.18), rgba(16, 185, 129, 0.08)); }
+.point-icon.women::after { background: linear-gradient(135deg, rgba(124,58,237,0.18), rgba(236,72,153,0.08)); }
+.point-icon.temple::after { background: linear-gradient(135deg, rgba(245,158,11,0.18), rgba(234,88,12,0.08)); }
+
+/* hover image zoom */
+.point-card:hover .point-icon img,
+.point-card:focus-within .point-icon img{
+  transform: scale(1.06) translateY(-4px);
+}
+
+/* content */
+.point-content h3{
+  font-size: 1.05rem;
+  line-height: 1.25;
+  margin: 0 0 8px;
+  color: var(--text);
+  font-weight: 700;
+}
+.point-content p{
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* small accent line under heading */
+.point-content h3::after{
+  content: "";
+  display: block;
+  width: 48px;
+  height: 4px;
+  border-radius: 4px;
+  margin-top: 10px;
+  background: #7f0403;
+  opacity: 0.9;
+}
+
+/* focus outline for keyboard users */
+.point-card:focus-within{
+  outline: 3px solid rgba(99,102,241,0.12);
+  outline-offset: 6px;
+}
+
+/* RESPONSIVE tweaks */
+@media (max-width: 992px){
+  :root { --card-img-height: var(--card-img-height-tablet); }
+}
+@media (max-width: 560px){
+  :root { --card-img-height: var(--card-img-height-mobile); }
+  .key-points { gap: 16px; margin: 24px 0; }
+  .point-card { padding: 16px; }
+  .point-content h3{ font-size: 1rem; }
+  .point-content p{ font-size: 0.92rem; }
+}
+
+/* prefers-reduced-motion for accessibility */
+@media (prefers-reduced-motion: reduce){
+  .point-card,
+  .point-card * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
