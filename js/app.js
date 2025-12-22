@@ -176,11 +176,12 @@ document.addEventListener("DOMContentLoaded", () => {
     headerObs.observe(firstSection);
   })();
 
+
   // ---------- Gallery / viewer (large self-contained IIFE) ----------
   (function initGallery() {
     const images = [
       "./assets/images/Fragrances/jasmine.png",
-      "./assets/images/Fragrances/2.png",
+      "./assets/images/Fragrances/jasmine.png",
       "./assets/images/Fragrances/3.png",
       "./assets/images/Fragrances/4.png",
       "./assets/images/Fragrances/5.png",
@@ -188,7 +189,22 @@ document.addEventListener("DOMContentLoaded", () => {
       "./assets/images/Fragrances/sambrani.png",
       "./assets/images/Fragrances/8.png",
     ];
+function createOutgoingClone(src) {
+  const clone = imgEl.cloneNode(true);
+  clone.src = src;
+  clone.style.position = "absolute";
+  clone.style.top = "0";
+  clone.style.left = "0";
+  clone.style.width = "100%";
+  clone.style.height = "100%";
+  clone.style.objectFit = "cover";
+  clone.style.zIndex = "1";
+  clone.style.transition =
+    "transform 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.6s ease";
 
+  viewer.appendChild(clone);
+  return clone;
+}
     // const bgGradients = [
     //   "radial-gradient(circle,rgba(255,255,255,1) 0%, rgba(8,150,0,1) 82%)",
     //   "radial-gradient(circle,rgba(255, 255, 255, 1) 30%, rgba(255, 213, 0, 1) 82%)",
@@ -301,76 +317,55 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Simple smooth slide animation
-    async function goTo(newIndex, direction = "next") {
-      if (isAnimating) return;
-      isAnimating = true;
+  async function goTo(newIndex, direction = "next") {
+  if (isAnimating) return;
+  isAnimating = true;
 
-      newIndex = norm(newIndex);
-      const isNext = direction === "next";
+  newIndex = norm(newIndex);
+  const isNext = direction === "next";
 
-      // Set initial transform for slide effect
-      imgEl.style.opacity = "0.7";
-      imgEl.style.transform = isNext
-        ? "translateX(20px) scale(0.98)"
-        : "translateX(-20px) scale(0.98)";
+  const oldSrc = imgEl.src;
 
-      // Fade out text
-      if (titleEl) titleEl.style.opacity = "0";
-      if (shortEl) shortEl.style.opacity = "0";
-      if (descEl) descEl.style.opacity = "0";
+  // create outgoing image
+  const outgoing = createOutgoingClone(oldSrc);
 
-      // Update background gradient
-      // if (page3) page3.style.background = bgGradients[newIndex];
+  // prepare incoming image
+  imgEl.style.transition = "none";
+  imgEl.style.opacity = "1";
+  imgEl.style.transform = isNext
+    ? "translateX(100%) scale(1.08)"
+    : "translateX(-100%) scale(1.08)";
 
-      // Wait for fade out
-      await new Promise((resolve) => setTimeout(resolve, 200));
+  // update content
+  index = newIndex;
+  imgEl.src = images[index];
+  imgEl.alt = "Gallery image " + (index + 1);
+  captionEl.textContent = `Image ${index + 1} of ${images.length}`;
+  renderInfo(index);
 
-      // Update content
-      index = newIndex;
-      imgEl.src = images[index];
-      imgEl.alt = "Gallery image " + (index + 1);
-      captionEl.textContent = `Image ${index + 1} of ${images.length}`;
-      renderInfo(index);
+  // force reflow
+  imgEl.offsetHeight;
 
-      // Prepare for fade in with opposite direction
-      imgEl.style.transform = isNext
-        ? "translateX(-20px) scale(0.98)"
-        : "translateX(20px) scale(0.98)";
+  // animate both
+  imgEl.style.transition =
+    "transform 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.6s ease";
+  outgoing.style.transform = isNext
+    ? "translateX(-100%)"
+    : "translateX(100%)";
 
-      // Wait a tiny bit for image to start loading
-      await new Promise((resolve) => setTimeout(resolve, 50));
+  imgEl.style.transform = "translateX(0) scale(1)";
 
-      // Animate in
-      imgEl.style.opacity = "1";
-      imgEl.style.transform = "translateX(0) scale(1)";
+  // zoom-out after fit
+  setTimeout(() => {
+    imgEl.style.transform = "translateX(0) scale(1)";
+  }, 350);
 
-      // Fade in text with slight delay
-      setTimeout(() => {
-        if (titleEl) {
-          titleEl.style.opacity = "1";
-          titleEl.style.transform = "translateY(0)";
-        }
-      }, 100);
-
-      setTimeout(() => {
-        if (shortEl) {
-          shortEl.style.opacity = "1";
-          shortEl.style.transform = "translateY(0)";
-        }
-      }, 200);
-
-      setTimeout(() => {
-        if (descEl) {
-          descEl.style.opacity = "1";
-          descEl.style.transform = "translateY(0)";
-        }
-      }, 300);
-
-      // Reset animation state
-      setTimeout(() => {
-        isAnimating = false;
-      }, 600);
-    }
+  // cleanup
+  setTimeout(() => {
+    outgoing.remove();
+    isAnimating = false;
+  }, 650);
+}
 
     // auto-slide logic
     function autoSlide() {
