@@ -82,6 +82,12 @@
 }
 
 @media (max-width: 767px) {
+   .nav-row{
+    height: 50px;
+  }
+  .logo{
+    height: 60px;
+  }
   .split-inner {
     /* background-color: yellowgreen; */
   }
@@ -149,6 +155,12 @@
    📱 Small Mobile (up to 480px)
 --------------------------------*/
 @media (max-width: 480px) {
+   .nav-row{
+    height: 50px;
+  }
+  .logo{
+    height: 60px;
+  }
   .key-points {
         grid-template-columns: 1fr;
     }
@@ -266,6 +278,12 @@
 }
 
 @media (max-width: 360px) {
+  .nav-row{
+    height: 50px;
+  }
+  .logo{
+    height: 60px;
+  }
   .key-points {
         grid-template-columns: 1fr;
     }
