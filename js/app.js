@@ -478,8 +478,8 @@ function createOutgoingClone(src) {
       captionEl.textContent = `Image 1 of ${images.length}`;
 
       // Set initial styles for smooth entrance
-      imgEl.style.opacity = "0";
-      imgEl.style.transform = "translateY(20px) scale(0.95)";
+      // imgEl.style.opacity = "0";
+      // imgEl.style.transform = "translateY(20px) scale(0.95)";
 
       // if (page3) {
       //   page3.style.background = bgGradients[0];
