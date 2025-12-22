@@ -1,5 +1,5 @@
 :root {
-  --header-height: 70px;
+  --header-height: 60px;
   --max-width: 1200px;
   --bg-gradient-start: #ffffff;
   --bg-gradient-end: #f7f7f8;
@@ -49,7 +49,8 @@ main > section:nth-of-type(1) {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  background-attachment: fixed; /* optional parallax-like feel */
+  /* background-attachment: fixed; */
+   /* optional parallax-like feel */
   color: #fff; /* text on image should be light */
   position: relative;
 }
@@ -169,12 +170,14 @@ body {
   left: 0;
   right: 0;
   z-index: var(--header-z);
-  backdrop-filter: blur(6px);
+  /* backdrop-filter: blur(6px); */
 
   box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
 
-  background: rgba(255, 255, 255, 0);
-  border-radius: 16px;
+ background-color: #f8f9fa;
+
+  background-image: linear-gradient(to bottom right, #fdfcfb, #f9f5eb);
+  /* border-radius: 16px; */
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5.9px);
   -webkit-backdrop-filter: blur(5.9px);
@@ -201,7 +204,7 @@ body {
   align-items: center;
 }
 .logo {
-  height: 100px;
+  height: 80px;
   width: auto;
   border-radius: 10px;
   transition: transform 0.25s ease;
@@ -221,9 +224,9 @@ body {
 .nav-link {
   color: #7f0403;
   text-decoration: none;
-  padding: 8px 14px;
+  padding: 6px 14px;
   border-radius: 999px;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 600;
   position: relative;
   transition: color 0.25s ease, background 0.25s ease, transform 0.25s ease;
@@ -237,7 +240,7 @@ body {
   bottom: -4px;
   height: 2px;
   width: 0%;
-  background: var(--accent);
+  background: black;
   transition: width 0.28s cubic-bezier(0.2, 0.9, 0.2, 1);
   border-radius: 2px;
 }
@@ -247,8 +250,17 @@ body {
   transform: translateY(0);
 }
 .nav-link:hover .underline {
-  width: 100%;
+  width: 0%;
 }
+
+
+/* Active nav link (current section) */
+.nav-link.active {
+  background-color: #ffc406;
+  color: #7f0403;
+}
+
+
 
 /* Icon button for mobile (we'll use label+checkbox) */
 .icon-button {
@@ -913,13 +925,18 @@ a:focus,
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
+  overflow: hidden;
 }
 
 .viewer img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
+  object-position: center;
 }
 
 /* Buttons */
@@ -1698,3 +1715,6 @@ a:focus,
     transition: none !important;
   }
 }
+
+
+

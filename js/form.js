@@ -128,3 +128,54 @@ document.addEventListener("DOMContentLoaded", () => {
     if (label && !label.title) label.title = "This field is optional";
   });
 });
+
+
+const sections = document.querySelectorAll("main > section");
+const navLinks = document.querySelectorAll(".nav-link");
+const mobileLinks = document.querySelectorAll(".mobile-link");
+
+// map section id → nav href
+const sectionToNavMap = {
+  home: "home",
+  products: "products",
+  "products-more": "products", // page 3 also highlights Products
+  about: "about",
+  ourstory: "ourstory",
+  contact: "contact",
+};
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      const sectionId = entry.target.id;
+      const navId = sectionToNavMap[sectionId];
+      if (!navId) return;
+
+      // desktop
+      navLinks.forEach((link) => {
+        link.classList.toggle(
+          "active",
+          link.getAttribute("href") === `#${navId}`
+        );
+      });
+
+      // mobile
+      mobileLinks.forEach((link) => {
+        link.classList.toggle(
+          "active",
+          link.getAttribute("href") === `#${navId}`
+        );
+      });
+    });
+  },
+  {
+    root: null,
+    rootMargin: "-45% 0px -45% 0px",
+    threshold: 0,
+  }
+);
+
+// observe
+sections.forEach((section) => observer.observe(section));

@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const log = (...args) => console.log(...args);
   log("Project Loaded Successfully!");
 
+  
+
   const clickBtn = document.getElementById("clickBtn");
   if (clickBtn) {
     clickBtn.addEventListener("click", () => alert("Button Clicked!"));
@@ -164,8 +166,8 @@ document.addEventListener("DOMContentLoaded", () => {
             header.style.opacity = "1";
             header.style.pointerEvents = "auto";
           } else {
-            header.style.opacity = "0";
-            header.style.pointerEvents = "none";
+            header.style.opacity = "1";
+            // header.style.pointerEvents = "none";
           }
         });
       },
@@ -177,26 +179,26 @@ document.addEventListener("DOMContentLoaded", () => {
   // ---------- Gallery / viewer (large self-contained IIFE) ----------
   (function initGallery() {
     const images = [
-      "./assets/images/Fragrances/1.png",
+      "./assets/images/Fragrances/jasmine.png",
       "./assets/images/Fragrances/2.png",
       "./assets/images/Fragrances/3.png",
       "./assets/images/Fragrances/4.png",
       "./assets/images/Fragrances/5.png",
       "./assets/images/Fragrances/6.png",
-      "./assets/images/Fragrances/7.png",
+      "./assets/images/Fragrances/sambrani.png",
       "./assets/images/Fragrances/8.png",
     ];
 
-    const bgGradients = [
-      "radial-gradient(circle,rgba(255,255,255,1) 0%, rgba(8,150,0,1) 82%)",
-      "radial-gradient(circle,rgba(255, 255, 255, 1) 30%, rgba(255, 213, 0, 1) 82%)",
-      "radial-gradient(circle,rgba(255,255,255,1) 0%, rgba(83,0,191,1) 82%)",
-      "radial-gradient(circle,rgba(255,255,255,1) 20%, rgba(45,158,0,1) 82%)",
-      "radial-gradient(circle,rgba(255, 255, 255, 1) 30%, rgba(189, 0, 79, 1) 82%)",
-      "radial-gradient(circle,rgba(255,255,255,1) 30%, rgba(158,66,0,1) 100%)",
-      "radial-gradient(circle,rgba(255,255,255,1) 30%, rgba(158,124,0,1) 100%)",
-      "radial-gradient(circle,rgba(255,255,255,1) 30%, rgba(60,80,200,1) 100%)",
-    ];
+    // const bgGradients = [
+    //   "radial-gradient(circle,rgba(255,255,255,1) 0%, rgba(8,150,0,1) 82%)",
+    //   "radial-gradient(circle,rgba(255, 255, 255, 1) 30%, rgba(255, 213, 0, 1) 82%)",
+    //   "radial-gradient(circle,rgba(255,255,255,1) 0%, rgba(83,0,191,1) 82%)",
+    //   "radial-gradient(circle,rgba(255,255,255,1) 20%, rgba(45,158,0,1) 82%)",
+    //   "radial-gradient(circle,rgba(255, 255, 255, 1) 30%, rgba(189, 0, 79, 1) 82%)",
+    //   "radial-gradient(circle,rgba(255,255,255,1) 30%, rgba(158,66,0,1) 100%)",
+    //   "radial-gradient(circle,rgba(255,255,255,1) 30%, rgba(158,124,0,1) 100%)",
+    //   "radial-gradient(circle,rgba(255,255,255,1) 30%, rgba(60,80,200,1) 100%)",
+    // ];
 
     const profiles = [
       {
@@ -237,7 +239,7 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         title: "Javathu",
         short: "Rich, distinctive devotional fragrance",
-        desc: `A rich devotional aroma reflecting Tamil Nadu’s aromatic heritage. Deep and traditional, it helps you connect with cultural roots and adds a meaningful spiritual touch.`,
+        desc: `A rich devotional aroma reflecting Tamil Nadu's aromatic heritage. Deep and traditional, it helps you connect with cultural roots and adds a meaningful spiritual touch.`,
       },
     ];
 
@@ -247,7 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const captionEl = document.getElementById("viewerCaption");
     const prevBtn = document.getElementById("viewerPrev");
     const nextBtn = document.getElementById("viewerNext");
-    const page3 = viewer; // your id "viewer" acts as page3 here
+    const page3 = viewer;
     const titleEl = document.getElementById("flavorTitle");
     const shortEl = document.getElementById("flavorShort");
     const descEl = document.getElementById("flavorDesc");
@@ -261,15 +263,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // helpers & state
-    const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
     let index = 0;
-    let isAnimating = false;
-    let idleTween = null;
-    let autoSlideInterval = null;
     let currentDirection = "next";
+    let autoSlideInterval = null;
     let isAutoSliding = true;
+    let isAnimating = false;
 
     function norm(i) {
       if (i < 0) return images.length - 1;
@@ -284,168 +282,100 @@ document.addEventListener("DOMContentLoaded", () => {
       if (descEl) descEl.innerHTML = p.desc || "";
     }
 
-    // idle animation (GSAP)
-    function stopIdle() {
-      if (idleTween) {
-        try {
-          idleTween.kill();
-        } catch (e) {}
-        idleTween = null;
-        if (typeof gsap !== "undefined") gsap.set(imgEl, { clearProps: "all" });
-      }
-    }
-    function startIdle() {
-      stopIdle();
-      if (prefersReduced || typeof gsap === "undefined") return;
-      idleTween = gsap.to(imgEl, {
-        y: "random(-3,3)",
-        x: "random(-2,2)",
-        rotation: "random(-0.5,0.5)",
-        duration: 4.5,
-        ease: "sine.inOut",
-        yoyo: true,
-        repeat: -1,
-        repeatRefresh: true,
-      });
+    // Add CSS for smooth transitions
+    function addSliderStyles() {
+      const style = document.createElement("style");
+      style.textContent = `
+        #viewerImg {
+          transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                     transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #flavorTitle, #flavorShort, #flavorDesc {
+          transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        #viewer {
+          transition: background 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+      `;
+      document.head.appendChild(style);
     }
 
-    function createOutgoingClone(src) {
-      const clone = imgEl.cloneNode(true);
-      clone.src = src;
-      Object.assign(clone.style, {
-        position: "absolute",
-        left: "50%",
-        top: "50%",
-        transform: "translate(-50%,-50%)",
-        width: "100%",
-        height: "100%",
-        objectFit: "contain",
-        zIndex: 50,
-        pointerEvents: "none",
-      });
-      viewer.appendChild(clone);
-      return clone;
-    }
-
-    // main goTo with animations preserved
-    function goTo(newIndex, direction = "next") {
+    // Simple smooth slide animation
+    async function goTo(newIndex, direction = "next") {
       if (isAnimating) return;
-      newIndex = norm(newIndex);
-
-      // reduced / fallback branch
-      if (prefersReduced || typeof gsap === "undefined") {
-        index = newIndex;
-        imgEl.src = images[index];
-        imgEl.alt = "Gallery image " + (index + 1);
-        captionEl.textContent = `Image ${index + 1} of ${images.length}`;
-        if (page3) page3.style.background = bgGradients[index];
-        renderInfo(index);
-        return;
-      }
-
       isAnimating = true;
-      stopIdle();
 
+      newIndex = norm(newIndex);
       const isNext = direction === "next";
-      const oldSrc = imgEl.src;
-      const outgoing = createOutgoingClone(oldSrc);
 
+      // Set initial transform for slide effect
+      imgEl.style.opacity = "0.7";
+      imgEl.style.transform = isNext
+        ? "translateX(20px) scale(0.98)"
+        : "translateX(-20px) scale(0.98)";
+
+      // Fade out text
+      if (titleEl) titleEl.style.opacity = "0";
+      if (shortEl) shortEl.style.opacity = "0";
+      if (descEl) descEl.style.opacity = "0";
+
+      // Update background gradient
+      // if (page3) page3.style.background = bgGradients[newIndex];
+
+      // Wait for fade out
+      await new Promise((resolve) => setTimeout(resolve, 200));
+
+      // Update content
       index = newIndex;
-      if (page3) page3.style.background = bgGradients[index];
       imgEl.src = images[index];
       imgEl.alt = "Gallery image " + (index + 1);
       captionEl.textContent = `Image ${index + 1} of ${images.length}`;
-
-      const incomingStartX = isNext ? "120%" : "-120%";
-      const outgoingFirstMoveX = isNext ? "40%" : "-40%";
-      const outgoingSweepX = isNext ? "-120%" : "120%";
-      const outgoingRotationStart = isNext ? 2 : -2;
-      const outgoingRotationEnd = isNext ? -8 : 8;
-      const incomingRotationStart = isNext ? 6 : -6;
-
-      gsap.set(imgEl, {
-        x: incomingStartX,
-        y: 0,
-        scale: 0.72,
-        rotation: incomingRotationStart,
-        opacity: 0,
-      });
-      gsap.set([titleEl, shortEl, descEl], { y: 14, opacity: 0 });
       renderInfo(index);
 
-      const tl = gsap.timeline({
-        defaults: { ease: "power2.inOut" },
-        onComplete: () => {
-          try {
-            outgoing.remove();
-          } catch (e) {}
-          isAnimating = false;
-          startIdle();
-        },
-      });
+      // Prepare for fade in with opposite direction
+      imgEl.style.transform = isNext
+        ? "translateX(-20px) scale(0.98)"
+        : "translateX(20px) scale(0.98)";
 
-      tl.to(descEl, { y: -14, opacity: 0, duration: 0.14 }, 0);
-      tl.to(shortEl, { y: -12, opacity: 0, duration: 0.12 }, 0.02);
-      tl.to(titleEl, { y: -10, opacity: 0, duration: 0.12 }, 0.04);
+      // Wait a tiny bit for image to start loading
+      await new Promise((resolve) => setTimeout(resolve, 50));
 
-      tl.to(
-        outgoing,
-        {
-          x: outgoingFirstMoveX,
-          duration: 0.18,
-          rotation: outgoingRotationStart,
-          scale: 1.02,
-          ease: "power3.out",
-        },
-        0
-      );
-      tl.to(
-        outgoing,
-        {
-          x: outgoingSweepX,
-          y: "-6%",
-          scale: 0.6,
-          opacity: 0,
-          rotation: outgoingRotationEnd,
-          duration: 0.34,
-          ease: "power3.in",
-        },
-        "+=0.06"
-      );
+      // Animate in
+      imgEl.style.opacity = "1";
+      imgEl.style.transform = "translateX(0) scale(1)";
 
-      tl.to(
-        imgEl,
-        {
-          x: "0%",
-          scale: 1,
-          rotation: 0,
-          opacity: 1,
-          duration: 0.44,
-          ease: "expo.out",
-        },
-        "-=0.18"
-      );
+      // Fade in text with slight delay
+      setTimeout(() => {
+        if (titleEl) {
+          titleEl.style.opacity = "1";
+          titleEl.style.transform = "translateY(0)";
+        }
+      }, 100);
 
-      tl.to(
-        titleEl,
-        { y: 0, opacity: 1, duration: 0.16, ease: "power3.out" },
-        "-=0.12"
-      );
-      tl.to(
-        shortEl,
-        { y: 0, opacity: 1, duration: 0.14, ease: "power3.out" },
-        "-=0.06"
-      );
-      tl.to(
-        descEl,
-        { y: 0, opacity: 1, duration: 0.16, ease: "power3.out" },
-        "+=0.02"
-      );
+      setTimeout(() => {
+        if (shortEl) {
+          shortEl.style.opacity = "1";
+          shortEl.style.transform = "translateY(0)";
+        }
+      }, 200);
+
+      setTimeout(() => {
+        if (descEl) {
+          descEl.style.opacity = "1";
+          descEl.style.transform = "translateY(0)";
+        }
+      }, 300);
+
+      // Reset animation state
+      setTimeout(() => {
+        isAnimating = false;
+      }, 600);
     }
 
-    // auto-slide logic (keeps direction reversal)
+    // auto-slide logic
     function autoSlide() {
       if (isAnimating) return;
+
       if (currentDirection === "next" && index === images.length - 1) {
         currentDirection = "prev";
         goTo(index - 1, currentDirection);
@@ -457,11 +387,13 @@ document.addEventListener("DOMContentLoaded", () => {
         else goTo(index - 1, currentDirection);
       }
     }
+
     function startAutoSlide() {
       if (autoSlideInterval) clearInterval(autoSlideInterval);
       autoSlideInterval = setInterval(autoSlide, 3000);
       isAutoSliding = true;
     }
+
     function stopAutoSlide() {
       if (autoSlideInterval) {
         clearInterval(autoSlideInterval);
@@ -469,6 +401,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       isAutoSliding = false;
     }
+
     function toggleAutoSlide() {
       if (isAutoSliding) stopAutoSlide();
       else startAutoSlide();
@@ -476,12 +409,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Manual controls
     const prev = () => {
+      if (isAnimating) return;
       currentDirection = "prev";
       goTo(index - 1, currentDirection);
       stopAutoSlide();
       startAutoSlide();
     };
+
     const next = () => {
+      if (isAnimating) return;
       currentDirection = "next";
       goTo(index + 1, currentDirection);
       stopAutoSlide();
@@ -523,7 +459,7 @@ document.addEventListener("DOMContentLoaded", () => {
       imgEl.addEventListener(
         "touchend",
         (e) => {
-          if (startX === null) return;
+          if (startX === null || isAnimating) return;
           const endX = e.changedTouches[0].clientX;
           const dx = endX - startX;
           if (dx > threshold) prev();
@@ -535,31 +471,61 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     }
 
-    // init
-    if (prefersReduced || typeof gsap === "undefined") {
+    // Initialize the gallery
+    function initializeGallery() {
+      // Add CSS styles
+      addSliderStyles();
+
+      // Set initial state
       index = 0;
       imgEl.src = images[0];
-      if (page3) page3.style.background = bgGradients[0];
-      renderInfo(0);
-      startAutoSlide(); // keep auto-slide for reduced motion fallback
-    } else {
-      gsap.set(imgEl, { opacity: 0, x: 0, scale: 1 });
-      gsap.set([titleEl, shortEl, descEl], { opacity: 0, y: 12 });
-      index = 0;
-      imgEl.src = images[0];
-      if (page3) page3.style.background = bgGradients[0];
+      imgEl.alt = "Gallery image 1";
+      captionEl.textContent = `Image 1 of ${images.length}`;
+
+      // Set initial styles for smooth entrance
+      imgEl.style.opacity = "0";
+      imgEl.style.transform = "translateY(20px) scale(0.95)";
+
+      // if (page3) {
+      //   page3.style.background = bgGradients[0];
+      //   page3.style.opacity = "0";
+      // }
+
+      if (titleEl) titleEl.style.opacity = "0";
+      if (shortEl) shortEl.style.opacity = "0";
+      if (descEl) descEl.style.opacity = "0";
+
       renderInfo(0);
 
-      const intro = gsap.timeline({
-        onComplete: () => startAutoSlide(),
-      });
-      intro.to(imgEl, { opacity: 1, duration: 0.5, ease: "power3.out" }, 0);
-      intro.to(titleEl, { y: 0, opacity: 1, duration: 0.18 }, "-=0.32");
-      intro.to(shortEl, { y: 0, opacity: 1, duration: 0.14 }, "-=0.12");
-      intro.to(descEl, { y: 0, opacity: 1, duration: 0.16 }, "+=0.03");
-      intro.call(startIdle, null, "+=0.12");
+      // Animate in
+      setTimeout(() => {
+        imgEl.style.opacity = "1";
+        imgEl.style.transform = "translateY(2) scale(2)";
+
+        if (page3) page3.style.opacity = "1";
+      }, 100);
+
+      setTimeout(() => {
+        if (titleEl) titleEl.style.opacity = "1";
+      }, 300);
+
+      setTimeout(() => {
+        if (shortEl) shortEl.style.opacity = "1";
+      }, 400);
+
+      setTimeout(() => {
+        if (descEl) descEl.style.opacity = "1";
+
+        // Start auto-slide
+        setTimeout(() => {
+          startAutoSlide();
+        }, 500);
+      }, 500);
     }
-  })(); // end gallery IIFE
+
+    // Start the gallery
+    initializeGallery();
+  })();
 
   // ---------- About section animations & stagger ----------
   (function initAboutAnimations() {
