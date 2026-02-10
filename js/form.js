@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-const sections = document.querySelectorAll("main > section");
+const sections = document.querySelectorAll("main > section, #contact");
 const navLinks = document.querySelectorAll(".nav-link");
 const mobileLinks = document.querySelectorAll(".mobile-link");
 

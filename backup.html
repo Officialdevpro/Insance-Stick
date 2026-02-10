@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -19,7 +19,6 @@
   <link rel="stylesheet" href="./css/style.css" />
   <link rel="stylesheet" href="./css/footer.css" />
   <link rel="stylesheet" href="./css/mediaquery.css" />
-  <link rel="stylesheet" href="./css/products.css" />
 
   <!-- Small page-scoped styles (merged/trimmed) -->
   <style>
@@ -77,11 +76,11 @@
       border: 2px solid #8b4513;
     }
 
+
     #viewerImg {
       position: relative;
       z-index: 2;
-      transition:
-        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
         opacity 0.6s ease;
       will-change: transform, opacity;
     }
@@ -116,35 +115,21 @@
               aria-hidden="true"></span></a>
         </div>
 
-        <!-- Right side icons group (Profile, Cart, Hamburger) -->
-        <div class="nav-right-group">
-          <div class="user-info">
-            <a class="user-btn profile-btn" href="#" role="menuitem">
-              <i class="fas fa-user"></i>
-              <span>Profile</span>
-            </a>
-            <a class="user-btn cart-btn" role="menuitem" onclick="toggleCard()">
-              <i class="fas fa-shopping-cart"></i>
-              <span class="cart-count" id="nav-cart-count">0</span>
-            </a>
-          </div>
+        <div class="mobile-button-wrap">
+          <input id="menu-toggle" class="menu-checkbox" type="checkbox" aria-hidden="true" />
+          <label for="menu-toggle" class="menu-label" aria-controls="mobile-menu">
+            <span class="sr-only">Toggle navigation</span>
 
-          <div class="mobile-button-wrap">
-            <input id="menu-toggle" class="menu-checkbox" type="checkbox" aria-hidden="true" />
-            <label for="menu-toggle" class="menu-label" aria-controls="mobile-menu">
-              <span class="sr-only">Toggle navigation</span>
+            <svg class="icon-open" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
 
-              <svg class="icon-open" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
-                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
-
-              <svg class="icon-close" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
-                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M18 6L6 18M6 6l12 12"></path>
-              </svg>
-            </label>
-          </div>
+            <svg class="icon-close" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 6L6 18M6 6l12 12"></path>
+            </svg>
+          </label>
         </div>
       </div>
 
@@ -159,223 +144,11 @@
       </div>
     </nav>
   </header>
-  <style>
-    main {
-      position: relative;
-      min-height: 200vh;
-      /* just to show scrolling */
-    }
-
-    #card {
-      width: 35%;
-      height: calc(100vh - 60px);
-      /* ✅ IMPORTANT */
-      background-color: #ffffff;
-      position: fixed;
-      top: 60px;
-      right: 0;
-      z-index: 20;
-
-      display: flex;
-      flex-direction: column;
-
-      overflow-y: auto;
-      /* ✅ use auto, not scroll */
-      transform: translateX(100%);
-      transition: transform 0.5s ease-in-out;
-    }
-
-    /* Mobile: Cart takes 100% width */
-    @media (max-width: 767px) {
-      #card {
-        width: 100%;
-        top: 0;
-        height: 100vh;
-      }
-    }
-
-    /* When active */
-    #card.active {
-      transform: translateX(0);
-    }
-
-    /* Prevent page scroll when card is open */
-    body.no-scroll {
-      overflow: hidden;
-    }
-
-    /* Cart Backdrop Overlay */
-    .cart-backdrop {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
-      z-index: 15;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-    }
-
-    .cart-backdrop.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .product-details {
-      text-align: center;
-
-      font-size: 16px;
-      width: 100% !important;
-    }
-
-    .product-details .selecteditems {
-      display: flex;
-      justify-content: start;
-      align-items: center;
-      text-align: left;
-      padding: 10px 10px;
-      border-bottom: 1px solid #818181;
-      width: 100%;
-    }
-
-    .product-details .selecteditems .card-img img {
-      width: 120px;
-      height: 120px;
-      -o-object-fit: cover;
-      object-fit: cover;
-      -o-object-position: center;
-      object-position: center;
-      border-radius: 10%;
-    }
-
-    .product-details .selecteditems .product-d {
-      margin-left: 10px;
-    }
-
-    .product-details .selecteditems .product-d p,
-    .product-details .selecteditems .product-d span {
-      font-size: 12px !important;
-      color: #666666;
-    }
-
-    .product-details .selecteditems .product-d .btns {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      width: 100%;
-    }
-
-    .product-details .selecteditems .product-d .btns {
-      border: none;
-      border-radius: 3px;
-    }
-
-    .btns {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-top: 10px;
-    }
-
-    /* Quantity box */
-    .qty-control {
-      display: flex;
-      align-items: center;
-      border: 1px solid #aaa;
-      border-radius: 6px;
-      overflow: hidden;
-    }
-
-    /* + and - buttons */
-    .qty-btn {
-      width: 32px;
-      height: 32px;
-      border: none;
-      background: #f5f5f5;
-      font-size: 20px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .qty-btn:hover {
-      background: #ddd;
-    }
-
-    /* Quantity number */
-    .qty-value {
-      width: 40px;
-      text-align: center;
-      font-size: 16px;
-      font-weight: bold;
-      background: #fff;
-    }
-
-    /* Remove button */
-    .remove {
-      background: #ffb703;
-      border: none;
-      padding: 9px 30px;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-  </style>
 
   <main>
-    <!-- Cart Backdrop - blurs content when cart is open -->
-    <div class="cart-backdrop" id="cart-backdrop" onclick="toggleCard()"></div>
-
-    <div id="card">
-      <!-- Cart Header -->
-      <div class="cart-header">
-        <h3>Your Cart</h3>
-        <span id="cart-item-count">0 items</span>
-      </div>
-
-      <!-- Cart Items Container - Dynamically populated -->
-      <div id="cart-items-container">
-        <!-- Cart items will be loaded dynamically via JavaScript -->
-        <div class="empty-cart-message" id="empty-cart-msg">
-          <i class="fas fa-shopping-cart" style="font-size: 48px; color: #ccc; margin-bottom: 10px;"></i>
-          <p>Your cart is empty</p>
-          <small>Add products to see them here</small>
-        </div>
-      </div>
-
-      <!-- Cart Summary -->
-      <div class="cart-summary" id="cart-summary">
-        <div class="summary-row total">
-          <span>Total:</span>
-          <span id="cart-total">₹0</span>
-        </div>
-        <button class="checkout-btn" id="checkout-btn">
-          Proceed to Checkout
-        </button>
-      </div>
-    </div>
     <section id="home">
-      <!-- Golden sparkle particles -->
-      <div class="sparkle-particles">
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
-      </div>
-
       <div class="hero-content">
-        <h1 class="hero-title">
-          <span class="hero-title-line">Divine</span>
-          <span class="hero-title-line highlight">Fragrances</span>
-        </h1>
-        <p class="hero-subtitle">Sacred Aromas from Temple Flowers</p>
+        <h1>Divine Fragrances</h1>
       </div>
     </section>
 
@@ -421,31 +194,6 @@
           <div class="image-wrap">
             <img src="./assets/images/images/8fragrances.png" alt="Decorative hero" />
           </div>
-        </div>
-      </div>
-    </section>
-
-
-
-    <section class="pro-cont">
-      <div class="veg-container showcard">
-        <h3>Products</h3>
-        <ul class="products-ul">
-          <!-- Products loaded dynamically via JavaScript -->
-        </ul>
-      </div>
-
-      <div class="non-veg-container showcard">
-        <h3>Combo Pack</h3>
-        <ul class="products-ul">
-          <!-- Combo Pack loaded dynamically via JavaScript -->
-        </ul>
-      </div>
-
-      <div class="recommended-section showcard">
-        <h3>Gift Pack</h3>
-        <div class="cards-container">
-          <!-- Gift Pack loaded dynamically via JavaScript -->
         </div>
       </div>
     </section>
@@ -938,45 +686,10 @@
     </footer>
   </main>
 
-  <script>
-    function toggleCard() {
-      const card = document.getElementById("card");
-      const backdrop = document.getElementById("cart-backdrop");
-      const menuCheckbox = document.getElementById("menu-toggle");
-
-      // Close mobile menu if open (uncheck the checkbox)
-      if (menuCheckbox && menuCheckbox.checked) {
-        menuCheckbox.checked = false;
-      }
-
-      document.body.classList.toggle("no-scroll");
-      card.classList.toggle("active");
-      backdrop.classList.toggle("active");
-    }
-
-    // Quantity buttons
-    document.addEventListener("click", (e) => {
-      if (e.target.classList.contains("qty-btn")) {
-        const control = e.target.closest(".qty-control");
-        const valueEl = control.querySelector(".qty-value");
-        let value = parseInt(valueEl.textContent);
-
-        if (e.target.classList.contains("plus")) {
-          value++;
-        } else if (e.target.classList.contains("minus") && value > 1) {
-          value--;
-        }
-
-        valueEl.textContent = value;
-      }
-    });
-  </script>
-
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="./js/app.js"></script>
   <script src="./js/form.js"></script>
-  <script src="./js/products.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Journey - Arudhra Creations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        /* Journey Section */
+        .journey-section {
+            padding: 80px 20px;
+            background: #f9f7ff;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: #1a1a1a;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .divider {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            margin: 0 auto 50px;
+            border-radius: 2px;
+        }
+
+        /* Journey Timeline */
+        .journey-timeline {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-image {
+            flex: 0 0 45%;
+            height: 350px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .timeline-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .timeline-item:hover .timeline-image img {
+            transform: scale(1.05);
+        }
+
+        .timeline-content {
+            flex: 0 0 55%;
+            padding: 40px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            padding-left: 60px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            padding-right: 60px;
+            text-align: right;
+        }
+
+        .chapter-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            color: #764ba2;
+            opacity: 0.1;
+            position: absolute;
+            top: 20px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd) .chapter-number {
+            left: 40px;
+        }
+
+        .timeline-item:nth-child(even) .chapter-number {
+            right: 40px;
+        }
+
+        .chapter-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .chapter-text {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .chapter-tag {
+            display: inline-block;
+            padding: 8px 25px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Connector Line */
+        .timeline-item:not(:last-child) .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+            height: 60px;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 992px) {
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .timeline-image {
+                flex: 0 0 300px;
+                width: 100%;
+                max-width: 500px;
+                margin-bottom: 30px;
+            }
+
+            .timeline-content {
+                flex: 1;
+                padding: 30px !important;
+            }
+
+            .chapter-number {
+                position: relative;
+                top: 0;
+                left: 0 !important;
+                right: 0 !important;
+                margin-bottom: 20px;
+            }
+
+            .timeline-item:not(:last-child) .timeline-content::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                min-height: 80vh;
+            }
+
+            .journey-section {
+                padding: 60px 15px;
+            }
+
+            .timeline-image {
+                height: 250px;
+            }
+
+            .chapter-title {
+                font-size: 1.7rem;
+            }
+
+            .chapter-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+
+    <!-- Journey Section -->
+    <section class="journey-section">
+        <h2 class="section-title">The Arudhra Story</h2>
+        <p class="section-subtitle">A four-chapter journey of transformation and purpose</p>
+        <div class="divider"></div>
+
+        <div class="journey-timeline">
+            <!-- Chapter 1 -->
+            <div class="timeline-item">
+                <div class="timeline-image">
+                    <img src="./waste.png" alt="Temple flowers">
+                </div>
+                <div class="timeline-content">
+                    
+                    <h3 class="chapter-title">The Sacred Problem</h3>
+                    <p class="chapter-text">Every day, thousands of tons of flowers offered in temples are discarded as waste. Shri C Valliappa, Managing Trustee of three ancient temples in Salem, observed this contradiction between devotion and environmental responsibility, sparking a vision for sustainable transformation.</p>
+                    <span class="chapter-tag">A Vision Born</span>
+                </div>
+            </div>
+
+            <!-- Chapter 2 -->
+            <div class="timeline-item">
+                <div class="timeline-image">
+                    <img src="./flowers.png" alt="Research and discovery">
+                </div>
+                <div class="timeline-content">
+                   
+                    <h3 class="chapter-title">Research & Discovery</h3>
+                    <p class="chapter-text">Mentoring Dr M E Paramasivam from Sona College of Technology, they employed design thinking methodology to explore solutions. Market analysis revealed that dried temple flowers could serve as premium, eco-friendly raw material for agarbathi production—a perfect blend of tradition and innovation.</p>
+                    <span class="chapter-tag">Innovation Through Research</span>
+                </div>
+            </div>
+
+            <!-- Chapter 3 -->
+            <div class="timeline-item">
+                <div class="timeline-image">
+                    <img src="./award.png" alt="Women empowerment">
+                </div>
+                <div class="timeline-content">
+                    
+                    <h3 class="chapter-title">The Catalyst</h3>
+                    <p class="chapter-text">Shri C Valliappa shared this opportunity with Mrs G C Saranya, an MCA graduate and software professional. Rather than returning to corporate employment, he mentored her toward social entrepreneurship—transforming potential barriers into opportunities for women-led business and community impact.</p>
+                    <span class="chapter-tag">Women Leadership</span>
+                </div>
+            </div>
+
+            <!-- Chapter 4 -->
+            <div class="timeline-item">
+                <div class="timeline-image">
+                    <img src="./image.png" alt="New beginning">
+                </div>
+                <div class="timeline-content">
+                    
+                    <h3 class="chapter-title">Arudhra is Born</h3>
+                    <p class="chapter-text">In August 2025, Arudhra Creations Pvt Limited was established as a women-led rural startup, recognized as a faculty startup under NEP 2020 at Sona College of Technology. The name "Arudhra" embodies compassion and sacred devotion—values that drive everything we create.</p>
+                    <span class="chapter-tag">A New Beginning</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Scroll animation for timeline items
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        timelineItems.forEach(item => {
+            observer.observe(item);
+        });
+
+        // Smooth scroll to journey section
+        document.querySelector('.hero').addEventListener('click', () => {
+            document.querySelector('.journey-section').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

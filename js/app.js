@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const log = (...args) => console.log(...args);
   log("Project Loaded Successfully!");
 
-  
+
 
   const clickBtn = document.getElementById("clickBtn");
   if (clickBtn) {
@@ -189,22 +189,22 @@ document.addEventListener("DOMContentLoaded", () => {
       "./assets/images/Fragrances/sambrani.png",
       "./assets/images/Fragrances/8.png",
     ];
-function createOutgoingClone(src) {
-  const clone = imgEl.cloneNode(true);
-  clone.src = src;
-  clone.style.position = "absolute";
-  clone.style.top = "0";
-  clone.style.left = "0";
-  clone.style.width = "100%";
-  clone.style.height = "100%";
-  clone.style.objectFit = "cover";
-  clone.style.zIndex = "1";
-  clone.style.transition =
-    "transform 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.6s ease";
+    function createOutgoingClone(src) {
+      const clone = imgEl.cloneNode(true);
+      clone.src = src;
+      clone.style.position = "absolute";
+      clone.style.top = "0";
+      clone.style.left = "0";
+      clone.style.width = "100%";
+      clone.style.height = "100%";
+      clone.style.objectFit = "cover";
+      clone.style.zIndex = "1";
+      clone.style.transition =
+        "transform 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.6s ease";
 
-  viewer.appendChild(clone);
-  return clone;
-}
+      viewer.appendChild(clone);
+      return clone;
+    }
     // const bgGradients = [
     //   "radial-gradient(circle,rgba(255,255,255,1) 0%, rgba(8,150,0,1) 82%)",
     //   "radial-gradient(circle,rgba(255, 255, 255, 1) 30%, rgba(255, 213, 0, 1) 82%)",
@@ -317,55 +317,55 @@ function createOutgoingClone(src) {
     }
 
     // Simple smooth slide animation
-  async function goTo(newIndex, direction = "next") {
-  if (isAnimating) return;
-  isAnimating = true;
+    async function goTo(newIndex, direction = "next") {
+      if (isAnimating) return;
+      isAnimating = true;
 
-  newIndex = norm(newIndex);
-  const isNext = direction === "next";
+      newIndex = norm(newIndex);
+      const isNext = direction === "next";
 
-  const oldSrc = imgEl.src;
+      const oldSrc = imgEl.src;
 
-  // create outgoing image
-  const outgoing = createOutgoingClone(oldSrc);
+      // create outgoing image
+      const outgoing = createOutgoingClone(oldSrc);
 
-  // prepare incoming image
-  imgEl.style.transition = "none";
-  imgEl.style.opacity = "1";
-  imgEl.style.transform = isNext
-    ? "translateX(100%) scale(1.08)"
-    : "translateX(-100%) scale(1.08)";
+      // prepare incoming image
+      imgEl.style.transition = "none";
+      imgEl.style.opacity = "1";
+      imgEl.style.transform = isNext
+        ? "translateX(100%) scale(1.08)"
+        : "translateX(-100%) scale(1.08)";
 
-  // update content
-  index = newIndex;
-  imgEl.src = images[index];
-  imgEl.alt = "Gallery image " + (index + 1);
-  captionEl.textContent = `Image ${index + 1} of ${images.length}`;
-  renderInfo(index);
+      // update content
+      index = newIndex;
+      imgEl.src = images[index];
+      imgEl.alt = "Gallery image " + (index + 1);
+      captionEl.textContent = `Image ${index + 1} of ${images.length}`;
+      renderInfo(index);
 
-  // force reflow
-  imgEl.offsetHeight;
+      // force reflow
+      imgEl.offsetHeight;
 
-  // animate both
-  imgEl.style.transition =
-    "transform 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.6s ease";
-  outgoing.style.transform = isNext
-    ? "translateX(-100%)"
-    : "translateX(100%)";
+      // animate both
+      imgEl.style.transition =
+        "transform 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.6s ease";
+      outgoing.style.transform = isNext
+        ? "translateX(-100%)"
+        : "translateX(100%)";
 
-  imgEl.style.transform = "translateX(0) scale(1)";
+      imgEl.style.transform = "translateX(0) scale(1)";
 
-  // zoom-out after fit
-  setTimeout(() => {
-    imgEl.style.transform = "translateX(0) scale(1)";
-  }, 350);
+      // zoom-out after fit
+      setTimeout(() => {
+        imgEl.style.transform = "translateX(0) scale(1)";
+      }, 350);
 
-  // cleanup
-  setTimeout(() => {
-    outgoing.remove();
-    isAnimating = false;
-  }, 650);
-}
+      // cleanup
+      setTimeout(() => {
+        outgoing.remove();
+        isAnimating = false;
+      }, 650);
+    }
 
     // auto-slide logic
     function autoSlide() {
