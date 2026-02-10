@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="./css/footer.css" />
   <link rel="stylesheet" href="./css/mediaquery.css" />
   <link rel="stylesheet" href="./css/products.css" />
+  <link rel="stylesheet" href="./css/ourstory.css" />
 
   <!-- Small page-scoped styles (merged/trimmed) -->
   <style>
@@ -35,11 +36,14 @@
 
     .hero-content {
       display: flex;
-      justify-content: center;
-      align-items: start;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
       width: 100%;
       height: 100%;
-      margin-top: 107px;
+      padding-top: 15vh;
+      /* Push down from top */
+      text-align: center;
     }
 
     /* hero buttons */
@@ -217,7 +221,9 @@
       z-index: 15;
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
     }
 
     .cart-backdrop.active {
@@ -340,7 +346,7 @@
       <div id="cart-items-container">
         <!-- Cart items will be loaded dynamically via JavaScript -->
         <div class="empty-cart-message" id="empty-cart-msg">
-          <i class="fas fa-shopping-cart" style="font-size: 48px; color: #ccc; margin-bottom: 10px;"></i>
+          <i class="fas fa-shopping-cart" style="font-size: 48px; color: #ccc; margin-bottom: 10px"></i>
           <p>Your cart is empty</p>
           <small>Add products to see them here</small>
         </div>
@@ -425,8 +431,6 @@
       </div>
     </section>
 
-
-
     <section class="pro-cont">
       <div class="veg-container showcard">
         <h3>Products</h3>
@@ -451,73 +455,75 @@
     </section>
 
     <section id="page3" aria-label="Image viewer">
-      <div class="viewer-container" id="page-three">
-        <div class="gallery-container">
-          <button class="viewer-btn prev" aria-label="Previous image" id="viewerPrev">
-            &larr;
-          </button>
+      <div class="page3-inner">
+        <div class="viewer-container" id="page-three">
+          <div class="gallery-container">
+            <button class="viewer-btn prev" aria-label="Previous image" id="viewerPrev">
+              &larr;
+            </button>
 
-          <div class="viewer" id="viewer" role="region" aria-roledescription="image gallery"
-            aria-label="Product gallery">
-            <img id="viewerImg" src="./assets/images/Fragrances/1.png" alt="Gallery image" />
-            <div id="viewerCaption" class="viewer-caption" style="display: none">
-              Image 1 of 8
+            <div class="viewer" id="viewer" role="region" aria-roledescription="image gallery"
+              aria-label="Product gallery">
+              <img id="viewerImg" src="./assets/images/Fragrances/1.png" alt="Gallery image" />
+              <div id="viewerCaption" class="viewer-caption" style="display: none">
+                Image 1 of 8
+              </div>
             </div>
-          </div>
 
-          <button class="viewer-btn next" aria-label="Next image" id="viewerNext">
-            &rarr;
-          </button>
-        </div>
-      </div>
-
-      <div class="fragrance-details">
-        <div class="fd-advanced">
-          <svg class="fd-flourish" viewBox="0 0 200 60" aria-hidden="true">
-            <defs>
-              <linearGradient id="g1" x1="0" x2="1">
-                <stop offset="0" stop-color="#f6e7b4" />
-                <stop offset="1" stop-color="#b8860b" />
-              </linearGradient>
-            </defs>
-            <path d="M2 40 C40 -10, 160 -10, 198 40" fill="none" stroke="url(#g1)" stroke-width="2.8"
-              stroke-linecap="round" stroke-linejoin="round" opacity="0.9" />
-          </svg>
-
-          <div class="fd-left-deco"></div>
-
-          <header class="fd-head">
-            <h1 id="flavorTitle" class="flavor-title">Jasmine</h1>
-            <div class="fd-meta">
-              <span class="meta-chip">Temple • Floral</span>
-            </div>
-          </header>
-
-          <p id="flavorShort" class="flavor-short">
-            Fresh, floral jasmine aroma
-          </p>
-
-          <div id="flavorDesc" class="flavor-desc">
-            <ul>
-              <li>Inspired by jasmine garlands in Tamil temples</li>
-              <li>Perfect for festive and spiritual gatherings</li>
-              <li>Gentle, long-lasting ceremonial warmth</li>
-            </ul>
-          </div>
-
-          <div class="fd-actions">
-            <div class="fd-price">From <span class="price">₹</span></div>
-            <button class="btn-glow" aria-label="Shop Jasmine">
-              <span class="btn-inner">Shop Now
-                <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fill="currentColor" d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </span>
+            <button class="viewer-btn next" aria-label="Next image" id="viewerNext">
+              &rarr;
             </button>
           </div>
+        </div>
 
-          <div class="fd-particles" aria-hidden="true">
-            <span></span><span></span><span></span><span></span><span></span>
+        <div class="fragrance-details">
+          <div class="fd-advanced">
+            <svg class="fd-flourish" viewBox="0 0 200 60" aria-hidden="true">
+              <defs>
+                <linearGradient id="g1" x1="0" x2="1">
+                  <stop offset="0" stop-color="#f6e7b4" />
+                  <stop offset="1" stop-color="#b8860b" />
+                </linearGradient>
+              </defs>
+              <path d="M2 40 C40 -10, 160 -10, 198 40" fill="none" stroke="url(#g1)" stroke-width="2.8"
+                stroke-linecap="round" stroke-linejoin="round" opacity="0.9" />
+            </svg>
+
+            <div class="fd-left-deco"></div>
+
+            <header class="fd-head">
+              <h1 id="flavorTitle" class="flavor-title">Jasmine</h1>
+              <div class="fd-meta">
+                <span class="meta-chip">Temple • Floral</span>
+              </div>
+            </header>
+
+            <p id="flavorShort" class="flavor-short">
+              Fresh, floral jasmine aroma
+            </p>
+
+            <div id="flavorDesc" class="flavor-desc">
+              <ul>
+                <li>Inspired by jasmine garlands in Tamil temples</li>
+                <li>Perfect for festive and spiritual gatherings</li>
+                <li>Gentle, long-lasting ceremonial warmth</li>
+              </ul>
+            </div>
+
+            <div class="fd-actions">
+              <div class="fd-price">From <span class="price">₹</span></div>
+              <button class="btn-glow" aria-label="Shop Jasmine">
+                <span class="btn-inner">Shop Now
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="currentColor" d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </button>
+            </div>
+
+            <div class="fd-particles" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
           </div>
         </div>
       </div>
@@ -721,10 +727,461 @@
     </div>
 
     <section id="ourstory">
-      <div class="divider-section">
-        <div class="divider-line"></div>
-        <h1 class="divider-text attractive">Our Story</h1>
-        <div class="divider-line"></div>
+      <div class="ourstory-container">
+        <!-- Header -->
+        <div class="ourstory-header">
+          <div class="sparkle-particles">
+            <span class="sparkle"></span>
+            <span class="sparkle"></span>
+            <span class="sparkle"></span>
+            <span class="sparkle"></span>
+            <span class="sparkle"></span>
+            <span class="sparkle"></span>
+          </div>
+          <h1>Shri C Valliappa's Visionary Mentorship</h1>
+          <p>Transforming Temple Waste into a Women-Led Social Enterprise</p>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="tab-navigation">
+          <button class="tab-btn active" onclick="openTab(event, 'overview')">
+            Overview
+          </button>
+          <button class="tab-btn" onclick="openTab(event, 'problem')">
+            The Problem
+          </button>
+          <button class="tab-btn" onclick="openTab(event, 'vision')">
+            The Vision
+          </button>
+          <button class="tab-btn" onclick="openTab(event, 'solution')">
+            The Solution
+          </button>
+          <button class="tab-btn" onclick="openTab(event, 'impact')">
+            Impact
+          </button>
+        </div>
+
+        <!-- Tab Content: Overview -->
+        <div id="overview" class="tab-content active">
+          <h2 class="os-section-title">
+            A Story of Sustainability, Tradition & Empowerment
+          </h2>
+
+          <p class="content-text">
+            In the ancient Hindu tradition, flowers offered to Lord Almighty in
+            temples symbolize devotion, gratitude, and reverence. Yet, a paradox
+            persists in our sacred spaces: every single day, thousands of tons of
+            these flowers—symbols of spiritual offering—are discarded as waste.
+            This stark contradiction between devotion and waste caught the
+            attention of Shri C Valliappa, the Managing Trustee of three ancient
+            temples in Salem.
+          </p>
+
+          <div class="scroll-container">
+            <div class="scroll-track">
+              <!-- Original Set -->
+              <div class="image-card">
+                <img src="./waste.png" alt="Temple flowers discarded" />
+                <div class="caption">
+                  Temple flowers thrown in the garbage
+                </div>
+              </div>
+              <div class="image-card">
+                <img src="./flowers.png" alt="Blessed flowers as waste" />
+                <div class="caption">
+                  Temple blessed flowers destined for disposal
+                </div>
+              </div>
+              <div class="image-card">
+                <img src="./imag.png" alt="Shri C Valliappa" />
+                <div class="caption">
+                  Shri C Valliappa - The Visionary Mentor
+                </div>
+              </div>
+              <div class="image-card">
+                <img src="./product.png" alt="Arudhra products" />
+                <div class="caption">
+                  Arudhra Creations - Sacred Agarbathi Products
+                </div>
+              </div>
+
+              <!-- Duplicate Set for Infinite Scroll -->
+              <div class="image-card">
+                <img src="./waste.png" alt="Temple flowers discarded" />
+                <div class="caption">
+                  Fig 1: Temple flowers thrown in the garbage
+                </div>
+              </div>
+              <div class="image-card">
+                <img src="./flowers.png" alt="Blessed flowers as waste" />
+                <div class="caption">
+                  Fig 2: Temple blessed flowers destined for disposal
+                </div>
+              </div>
+              <div class="image-card">
+                <img src="./imag.png" alt="Shri C Valliappa" />
+                <div class="caption">
+                  Fig 3: Shri C Valliappa - The Visionary Mentor
+                </div>
+              </div>
+              <div class="image-card">
+                <img src="./product.png" alt="Arudhra products" />
+                <div class="caption">
+                  Fig 4: Arudhra Creations - Sacred Agarbathi Products
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="quote-box">
+            "This is more than an environmental initiative—it's about aligning
+            spiritual values with entrepreneurial innovation, creating
+            opportunities where waste once existed."
+          </div>
+        </div>
+
+        <!-- Tab Content: The Problem -->
+        <div id="problem" class="tab-content">
+          <h2 class="os-section-title">The Paradox of Sacred Waste</h2>
+
+          <p class="content-text">
+            During his tenure as Managing Trustee at Shri Rajaganapathi Temple,
+            Sri Suganvaneswara Temple, and Sri Kashi Vishwanathar Temple in Salem,
+            Shri C Valliappa observed an alarming reality. The daily rituals of
+            temple worship generated enormous quantities of fresh flowers that,
+            despite their purity and fragrance, were destined for landfills.
+          </p>
+
+          <div class="highlight-box">
+            <h3>The Critical Challenge</h3>
+            <p>
+              These flowers, blessed by centuries of spiritual tradition, were
+              treated as waste products rather than valuable resources. The
+              cognitive dissonance between honoring the divine and discarding
+              these offerings troubled his conscience, propelling him to seek
+              solutions that could align spiritual values with environmental
+              responsibility.
+            </p>
+          </div>
+
+          <div class="two-column">
+            <div class="content-block">
+              <h3>Environmental Impact</h3>
+              <p>
+                Thousands of tons of organic waste generated daily from temples
+                across India contribute to:
+              </p>
+              <ul>
+                <li>Landfill burden and methane emissions</li>
+                <li>Loss of valuable organic resources</li>
+                <li>Environmental degradation</li>
+                <li>Missed circular economy opportunities</li>
+              </ul>
+            </div>
+
+            <div class="content-block">
+              <h3>Social-Economic Gap</h3>
+              <p>The waste represented a missed opportunity for:</p>
+              <ul>
+                <li>Sustainable value creation</li>
+                <li>Rural women's employment</li>
+                <li>Economic empowerment initiatives</li>
+                <li>Community development programs</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="featured-image">
+            <img src="./assets/images/images/temp.jpg" alt="Temple waste problem" />
+          </div>
+        </div>
+
+        <!-- Tab Content: The Vision -->
+        <div id="vision" class="tab-content">
+          <h2 class="os-section-title">Design Thinking Meets Mentorship</h2>
+
+          <p class="content-text">
+            Recognizing the magnitude of the challenge, Shri C Valliappa mentored
+            Dr M E Paramasivam, a faculty member at Sona College of Technology,
+            whose expertise in business analysis and market research proved
+            invaluable. Together, they embarked on an extensive exploration using
+            design thinking methodology.
+          </p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <h4>Problem Definition</h4>
+              <p>
+                Identified the paradox of sacred offerings becoming environmental
+                waste while rural women lacked economic opportunities.
+              </p>
+            </div>
+            <div class="timeline-item">
+              <h4>Market Research</h4>
+              <p>
+                Dr Paramasivam's analysis revealed that dried temple flowers could
+                serve as premium raw material for agarbathi (incense) production.
+              </p>
+            </div>
+            <div class="timeline-item">
+              <h4>Solution Prototyping</h4>
+              <p>
+                Developed circular economy model aligning with India's
+                sustainability vision and growing consumer demand for eco-friendly
+                products.
+              </p>
+            </div>
+            <div class="timeline-item">
+              <h4>Mentorship Catalyst</h4>
+              <p>
+                Shri Valliappa mentored Mrs G C Saranya, transforming her from
+                returning professional to social entrepreneur.
+              </p>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <h3>The Transformative Mentorship</h3>
+            <p>
+              The turning point came when Shri C Valliappa discussed this market
+              opportunity with Mrs G C Saranya, an MCA graduate and software
+              professional who had stepped away to embrace motherhood. Rather than
+              encouraging conventional employment, he mentored her toward
+              entrepreneurship—specifically, social entrepreneurship that combined
+              personal agency with community impact.
+            </p>
+          </div>
+
+          <div class="quote-box">
+            "True mentorship is not about directing people back to familiar
+            paths—it's about illuminating new possibilities that align personal
+            potential with societal need."
+          </div>
+        </div>
+
+        <!-- Tab Content: The Solution -->
+        <div id="solution" class="tab-content">
+          <h2 class="os-section-title">
+            Arudhra Creations: From Concept to Reality
+          </h2>
+
+          <div class="solution-layout">
+            <div class="solution-text">
+              <p class="content-text">
+                In August 2025, Arudhra Creations Pvt Limited was formally established
+                as a women-led rural startup dedicated to manufacturing agarbathi from
+                temple-blessed flowers. The name "Arudhra," synonymous with compassion
+                and sacred devotion, encapsulates the enterprise's dual mission:
+                honoring spiritual tradition while creating tangible economic value.
+              </p>
+            </div>
+            <div class="featured-image">
+              <img src="./award.png" alt="Women entrepreneurs at Arudhra Creations" />
+            </div>
+          </div>
+
+          <div class="two-column">
+            <div class="content-block">
+              <h3>Product Innovation</h3>
+              <ul>
+                <li>Sacred raw material from post-worship flower collection</li>
+                <li>Artisanal processing using traditional drying methods</li>
+                <li>Zero-waste manufacturing with composted byproducts</li>
+                <li>Premium positioning with cultural authenticity</li>
+                <li>Natural fragrance and therapeutic properties</li>
+              </ul>
+            </div>
+
+            <div class="content-block">
+              <h3>Institutional Recognition</h3>
+              <ul>
+                <li>Faculty startup under NEP 2020 framework</li>
+                <li>Sona Incubation Foundation support</li>
+                <li>Aligned with Startup India Initiative</li>
+                <li>Women-led enterprise certification</li>
+                <li>Sustainable Development Goals compliance</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <h3>Circular Economy in Action</h3>
+            <p>
+              The agarbathi produced by Arudhra Creations embodies sustainable
+              entrepreneurship principles. Every aspect of the production
+              process—from sacred flower collection to artisanal processing to
+              zero-waste byproduct management—demonstrates practical
+              implementation of circular economy ideals. Market validation through
+              EXPO events and preliminary sales have demonstrated strong consumer
+              acceptance among temple devotees, spirituality enthusiasts, and
+              eco-conscious consumers.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tab Content: Impact -->
+        <div id="impact" class="tab-content">
+          <h2 class="os-section-title">
+            National Vision Alignment & Scalable Impact
+          </h2>
+
+          <p class="content-text">
+            The Prime Minister's vision of "Startup India" articulates a
+            comprehensive entrepreneurial ecosystem where innovation drives
+            inclusive economic growth and sustainable development. Arudhra
+            Creations embodies this vision across multiple dimensions, creating a
+            blueprint for transformation that extends far beyond Salem.
+          </p>
+
+          <div class="scroll-container">
+            <div class="scroll-track">
+              <!-- Original Set -->
+              <div class="impact-card">
+                <div class="icon">♻️</div>
+                <h4>Circular Economy</h4>
+                <p>
+                  Converting waste into value, supporting India's commitment to
+                  sustainable development and smart waste management
+                </p>
+              </div>
+              <div class="impact-card">
+                <div class="icon">👩‍💼</div>
+                <h4>Women Empowerment</h4>
+                <p>
+                  Creating dignified employment for rural women, advancing gender
+                  equality and economic independence
+                </p>
+              </div>
+              <div class="impact-card">
+                <div class="icon">🌾</div>
+                <h4>Rural Development</h4>
+                <p>
+                  Addressing geographic inequality and supporting rural prosperity
+                  through inclusive growth
+                </p>
+              </div>
+              <div class="impact-card">
+                <div class="icon">🎓</div>
+                <h4>Academic Innovation</h4>
+                <p>
+                  NEP 2020 alignment promoting innovation, problem-solving, and
+                  entrepreneurial education
+                </p>
+              </div>
+              <div class="impact-card">
+                <div class="icon">🇮🇳</div>
+                <h4>Startup India</h4>
+                <p>
+                  Demonstrating that profitability and social impact are mutually
+                  reinforcing when structured with purpose
+                </p>
+              </div>
+              <div class="impact-card">
+                <div class="icon">📈</div>
+                <h4>Scalable Model</h4>
+                <p>
+                  Replicable blueprint for thousands of temples across India,
+                  multiplying positive impact nationwide
+                </p>
+              </div>
+
+              <!-- Duplicate Set for Infinite Scroll -->
+              <div class="impact-card">
+                <div class="icon">♻️</div>
+                <h4>Circular Economy</h4>
+                <p>
+                  Converting waste into value, supporting India's commitment to
+                  sustainable development and smart waste management
+                </p>
+              </div>
+              <div class="impact-card">
+                <div class="icon">👩‍💼</div>
+                <h4>Women Empowerment</h4>
+                <p>
+                  Creating dignified employment for rural women, advancing gender
+                  equality and economic independence
+                </p>
+              </div>
+              <div class="impact-card">
+                <div class="icon">🌾</div>
+                <h4>Rural Development</h4>
+                <p>
+                  Addressing geographic inequality and supporting rural prosperity
+                  through inclusive growth
+                </p>
+              </div>
+              <div class="impact-card">
+                <div class="icon">🎓</div>
+                <h4>Academic Innovation</h4>
+                <p>
+                  NEP 2020 alignment promoting innovation, problem-solving, and
+                  entrepreneurial education
+                </p>
+              </div>
+              <div class="impact-card">
+                <div class="icon">🇮🇳</div>
+                <h4>Startup India</h4>
+                <p>
+                  Demonstrating that profitability and social impact are mutually
+                  reinforcing when structured with purpose
+                </p>
+              </div>
+              <div class="impact-card">
+                <div class="icon">📈</div>
+                <h4>Scalable Model</h4>
+                <p>
+                  Replicable blueprint for thousands of temples across India,
+                  multiplying positive impact nationwide
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <h3>The Ripple Effect</h3>
+            <p>
+              Perhaps most significantly, Arudhra Creations presents a replicable
+              model that extends far beyond Salem. India contains thousands of
+              temples, each generating daily flower waste. Each represents an
+              opportunity for similar social enterprises. The modular nature of
+              the business model—temple flower collection, artisanal processing,
+              product manufacturing, rural women employment—can be adapted to
+              diverse geographies, products, and communities.
+            </p>
+          </div>
+
+          <div class="quote-box">
+            "In Salem's temples, where flowers continue their daily journey from
+            offering to earth, a new narrative is unfolding—one where ancient
+            spiritual practice intersects with modern entrepreneurship, where
+            waste becomes resource, where returning mothers become enterprise
+            leaders, and where a mentor's vision catalyzes systemic change."
+          </div>
+
+          <div class="two-column">
+            <div class="content-block">
+              <h3>Key Success Factors</h3>
+              <ul>
+                <li>Visionary mentorship approach</li>
+                <li>Design thinking methodology</li>
+                <li>Academic-industry collaboration</li>
+                <li>Women-centric empowerment model</li>
+                <li>Cultural sensitivity and respect</li>
+              </ul>
+            </div>
+
+            <div class="content-block">
+              <h3>Future Potential</h3>
+              <ul>
+                <li>National temple network integration</li>
+                <li>Product line diversification</li>
+                <li>Export market expansion</li>
+                <li>Franchise model development</li>
+                <li>Technology integration for scale</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -977,6 +1434,7 @@
   <script src="./js/app.js"></script>
   <script src="./js/form.js"></script>
   <script src="./js/products.js"></script>
+  <script src="./js/ourstory.js"></script>
 </body>
 
 </html>

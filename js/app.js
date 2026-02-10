@@ -66,18 +66,29 @@ document.addEventListener("DOMContentLoaded", () => {
   })();
 
   // ---------- Mobile menu toggle ----------
+  // ---------- Mobile menu toggle ----------
   if (menuToggle && menuLabel && mobileMenu) {
     const setMenuState = (isOpen) => {
       menuLabel.setAttribute("aria-expanded", String(isOpen));
-      mobileMenu.style.display = isOpen ? "block" : "none";
+
+      if (isOpen) {
+        mobileMenu.classList.add("active");
+        document.body.classList.add("no-scroll");
+      } else {
+        mobileMenu.classList.remove("active");
+        document.body.classList.remove("no-scroll");
+      }
     };
 
-    // reflect initial state
-    setMenuState(Boolean(menuToggle.checked));
+    // reflect initial state if checked (browser refresh)
+    if (menuToggle.checked) {
+      setMenuState(true);
+    }
 
     menuToggle.addEventListener("change", () =>
       setMenuState(menuToggle.checked)
     );
+
     mobileLinks.forEach((link) =>
       link.addEventListener("click", () => {
         menuToggle.checked = false;
