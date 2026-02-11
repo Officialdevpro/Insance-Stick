@@ -527,7 +527,7 @@ body {
 .profile-btn:hover {
   background: #7f0403;
   color: white;
-  transform: translateY(-2px);
+  
 }
 
 .profile-btn i {
@@ -544,7 +544,7 @@ body {
 
 .cart-btn:hover {
   background: linear-gradient(135deg, #a00505, #7f0403);
-  transform: translateY(-2px);
+  
 }
 
 .cart-btn i {
@@ -1361,6 +1361,7 @@ a:focus,
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  flex-wrap: wrap;
 }
 
 /* Main container */
@@ -2042,7 +2043,8 @@ a:focus,
   }
 
   .viewer {
-    height: min(350px, 50vh);
+    width: 300px;
+    height: min(300px, 50vh);
     border-radius: 15px;
   }
 

@@ -352,7 +352,7 @@
 
   .mission-statement,
   .point-card {
-    padding: 20px;
+    padding: 10px;
   }
 
   .mission-text {
@@ -405,9 +405,9 @@
   }
 
   .mobile-menu {
-    margin-top: 20px;
-    background: rgba(255, 255, 255, 0.12);
-    border-radius: 16px;
+    /* margin-top: 20px; */
+    background: rgb(255, 255, 255);
+    /* border-radius: 16px; */
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(6.3px);
     -webkit-backdrop-filter: blur(6.3px);

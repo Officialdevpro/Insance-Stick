@@ -193,8 +193,8 @@
     @media (max-width: 767px) {
       #card {
         width: 100%;
-        top: 0;
-        height: 100vh;
+        top: 50px;
+       height: calc(100vh - 50px);
       }
     }
 
@@ -216,8 +216,8 @@
       width: 100%;
       height: 100%;
       background: rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
+      backdrop-filter: blur(0px);
+      -webkit-backdrop-filter: blur(0px);
       z-index: 15;
       opacity: 0;
       visibility: hidden;
@@ -510,7 +510,7 @@
               </ul>
             </div>
 
-            <div class="fd-actions">
+            <!-- <div class="fd-actions">
               <div class="fd-price">From <span class="price">₹</span></div>
               <button class="btn-glow" aria-label="Shop Jasmine">
                 <span class="btn-inner">Shop Now
@@ -519,7 +519,7 @@
                   </svg>
                 </span>
               </button>
-            </div>
+            </div> -->
 
             <div class="fd-particles" aria-hidden="true">
               <span></span><span></span><span></span><span></span><span></span>
